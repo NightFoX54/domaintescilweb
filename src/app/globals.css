@@ -1,26 +1,62 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@config "../../tailwind.config.ts";
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand */
+  /* Stored as RGB triplets to support Tailwind opacity utilities */
+  --brand-primary: 0 71 255; /* #0047FF */
+  --brand-primary-dark: 0 53 204; /* #0035CC */
+  --brand-primary-light: 232 238 255; /* #E8EEFF */
+  --brand-accent: 0 212 255; /* #00D4FF */
+  --brand-cta: 255 107 53; /* #FF6B35 */
+  --brand-cta-hover: 232 90 36; /* #E85A24 */
+
+  /* Neutrals (WCAG-friendly) */
+  --neutral-950: 6 6 17; /* #060611 */
+  --neutral-900: 14 14 26; /* #0E0E1A */
+  --neutral-50: 248 250 255; /* #F8FAFF */
+
+  --neutral-600: 75 85 99; /* #4B5563 */
+  --neutral-500: 107 114 128; /* #6B7280 */
+  --neutral-400: 156 163 175; /* #9CA3AF */
+  --neutral-300: 209 213 219; /* #D1D5DB */
+  --neutral-200: 229 231 235; /* #E5E7EB */
+
+  /* Status */
+  --success: 0 196 140; /* #00C48C */
+  --warning: 255 184 0; /* #FFB800 */
+  --error: 255 69 69; /* #FF4545 */
+
+  /* SSL badges (tailwind-like values) */
+  --ssl-dv-bg: 220 252 231; /* #DCFCE7 */
+  --ssl-dv-text: 21 128 61; /* #15803D */
+  --ssl-ov-bg: 219 234 254; /* #DBEAFE */
+  --ssl-ov-text: 29 78 216; /* #1D4ED8 */
+  --ssl-ev-bg: 233 213 255; /* #E9D5FF */
+  --ssl-ev-text: 109 40 217; /* #6D28D9 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  min-height: 100%;
+  /* Default pages are light; set readable baseline text */
+  background: rgb(var(--neutral-50));
+  color: rgb(var(--neutral-600));
 }
+
+/* Scrollbar helper used for horizontal TLD lists */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
