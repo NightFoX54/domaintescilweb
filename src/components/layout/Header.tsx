@@ -21,8 +21,6 @@ export default function Header() {
   const [domainHovering, setDomainHovering] = useState(false);
   const [hostingMenuOpen, setHostingMenuOpen] = useState(false);
   const [hostingHovering, setHostingHovering] = useState(false);
-  const [sslMenuOpen, setSslMenuOpen] = useState(false);
-  const [sslHovering, setSslHovering] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -58,15 +56,6 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [hostingMenuOpen]);
 
-  useEffect(() => {
-    if (!sslMenuOpen) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSslMenuOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [sslMenuOpen]);
-
   // Smooth hover intent: don't instantly close when crossing small gaps.
   useEffect(() => {
     if (domainHovering) {
@@ -85,15 +74,6 @@ export default function Header() {
     const t = window.setTimeout(() => setHostingMenuOpen(false), 120);
     return () => window.clearTimeout(t);
   }, [hostingHovering]);
-
-  useEffect(() => {
-    if (sslHovering) {
-      setSslMenuOpen(true);
-      return;
-    }
-    const t = window.setTimeout(() => setSslMenuOpen(false), 120);
-    return () => window.clearTimeout(t);
-  }, [sslHovering]);
 
   const nav = useMemo(() => {
     const isTr = locale === "tr";
@@ -137,17 +117,13 @@ export default function Header() {
             { label: "Joomla Hosting", href: getNavHref(locale, "/joomla-hosting", "/en/joomla-hosting") },
           ],
         },
-        ssl: {
-          label: labels.ssl,
-          items: [
-            { label: isTr ? "SSL Sertifikaları" : "SSL Certificates", href: getNavHref(locale, "/ssl-satin-al", "/en/ssl-certificates") },
-            { label: isTr ? "SSL Türleri (DV/OV/EV)" : "SSL Types (DV/OV/EV)", href: getNavHref(locale, "/ssl-satin-al#ssl-types", "/en/ssl-certificates#ssl-types") },
-            { label: isTr ? "Fiyatlar" : "Pricing", href: getNavHref(locale, "/ssl-satin-al#ssl-pricing", "/en/ssl-certificates#ssl-pricing") },
-            { label: isTr ? "İade Koşulları" : "Refund Policy", href: getNavHref(locale, "/ssl-satin-al#refund", "/en/ssl-certificates#refund") },
-          ],
-        },
+        ssl: { label: labels.ssl, href: getNavHref(locale, "/ssl-satin-al", "/en/ssl-certificates") },
         blog: { label: labels.blog, href: getNavHref(locale, "/blog", "/en/blog") },
         contact: { label: labels.contact, href: getNavHref(locale, "/iletisim", "/en/contact") },
+      },
+      auth: {
+        loginHref: getNavHref(locale, "/giris", "/en/sign-in"),
+        registerHref: getNavHref(locale, "/kayit", "/en/sign-up"),
       },
     };
   }, [locale]);
@@ -325,70 +301,7 @@ export default function Header() {
               ) : null}
             </div>
 
-            <div
-              className="relative"
-              onMouseEnter={() => setSslHovering(true)}
-              onMouseLeave={() => setSslHovering(false)}
-            >
-              <button
-                type="button"
-                className={[
-                  "min-h-[44px] inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-150",
-                  scrolled ? "text-neutral-600" : "text-white/90",
-                  "hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
-                  activeKey === "ssl" ? "text-brand-primary" : "",
-                ].join(" ")}
-                aria-haspopup="menu"
-                aria-expanded={sslMenuOpen}
-                onFocus={() => setSslMenuOpen(true)}
-                onBlur={(e) => {
-                  const next = e.relatedTarget as HTMLElement | null;
-                  if (next && next.closest('[data-ssl-menu="root"]')) return;
-                  setSslMenuOpen(false);
-                }}
-                data-ssl-menu="root"
-              >
-                {nav.navLinks.ssl.label}
-                <ChevronDown size={16} className="opacity-80" aria-hidden="true" />
-              </button>
-
-              {sslMenuOpen ? (
-                <div className="absolute left-0 top-full w-64 pt-2" data-ssl-menu="root">
-                  <div
-                    role="menu"
-                    className={[
-                      "rounded-2xl shadow-xl p-2",
-                      scrolled
-                        ? "border border-neutral-200 bg-white/95 backdrop-blur-xl"
-                        : "border border-white/10 bg-white/10 backdrop-blur-xl",
-                    ].join(" ")}
-                    onMouseEnter={() => setSslHovering(true)}
-                    onMouseLeave={() => setSslHovering(false)}
-                  >
-                    {nav.navLinks.ssl.items.map((it) => (
-                      <Link
-                        key={it.href}
-                        href={it.href}
-                        role="menuitem"
-                        className={[
-                          "min-h-[44px] px-3 py-2 rounded-xl flex items-center text-sm font-semibold",
-                          scrolled ? "text-neutral-900" : "text-white/90",
-                          scrolled
-                            ? "hover:bg-brand-primary-light hover:text-brand-primary"
-                            : "hover:bg-white/10 hover:text-white",
-                          "focus-visible:ring-2 focus-visible:ring-brand-primary",
-                        ].join(" ")}
-                        onFocus={() => setSslMenuOpen(true)}
-                      >
-                        {it.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </div>
-
-            {(["blog", "contact"] as const).map((key) => {
+            {(["ssl", "blog", "contact"] as const).map((key) => {
               const item = nav.navLinks[key];
               const isActive = key === activeKey;
               return (
@@ -440,11 +353,9 @@ export default function Header() {
             </div>
 
             <Link
-              href={
-                "https://panel.domaintescil.com/clientarea.php"
-              }
+              href={nav.auth.loginHref}
               className={[
-                "min-h-[44px] px-4 rounded-full border text-sm font-semibold transition-colors",
+                "min-h-[44px] px-4 rounded-full border text-sm font-semibold transition-colors inline-flex items-center justify-center leading-none text-center",
                 scrolled
                   ? "border-neutral-200 text-neutral-700 hover:border-brand-primary hover:text-brand-primary"
                   : "border-white/20 text-white/90 hover:border-brand-primary hover:text-white",
@@ -452,18 +363,6 @@ export default function Header() {
               ].join(" ")}
             >
               {nav.login}
-            </Link>
-            <Link
-              href={
-                "https://panel.domaintescil.com/register.php"
-              }
-              className={[
-                "min-h-[44px] px-5 rounded-full text-sm font-bold transition-colors",
-                "bg-brand-primary text-white hover:bg-brand-primary-dark shadow-lg",
-                "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
-              ].join(" ")}
-            >
-              {nav.register}
             </Link>
           </div>
 
@@ -519,20 +418,8 @@ export default function Header() {
               </Link>
             ))}
 
-            <div className="text-xs font-semibold text-neutral-500 px-3 mt-4">SSL</div>
-            {nav.navLinks.ssl.items.map((it) => (
-              <Link
-                key={it.href}
-                href={it.href}
-                onClick={() => setDrawerOpen(false)}
-                className="min-h-[44px] px-3 py-2 rounded-xl text-neutral-900 font-semibold hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
-              >
-                {it.label}
-              </Link>
-            ))}
-
             <div className="text-xs font-semibold text-neutral-500 px-3 mt-4">Diğer</div>
-            {(["blog", "contact"] as const).map((key) => {
+            {(["ssl", "blog", "contact"] as const).map((key) => {
               const item = nav.navLinks[key];
               return (
                 <Link
@@ -574,18 +461,11 @@ export default function Header() {
 
           <div className="mt-5 flex flex-col gap-3">
             <Link
-              href={"https://panel.domaintescil.com/clientarea.php"}
+              href={nav.auth.loginHref}
               className="min-h-[44px] px-4 py-3 rounded-full border border-neutral-200 text-sm font-semibold text-neutral-700 hover:border-brand-primary hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
               onClick={() => setDrawerOpen(false)}
             >
               {nav.login}
-            </Link>
-            <Link
-              href={"https://panel.domaintescil.com/register.php"}
-              className="min-h-[44px] px-4 py-3 rounded-full bg-brand-primary text-white text-sm font-bold hover:bg-brand-primary-dark shadow-lg focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
-              onClick={() => setDrawerOpen(false)}
-            >
-              {nav.register}
             </Link>
           </div>
         </div>
