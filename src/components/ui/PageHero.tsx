@@ -6,12 +6,14 @@ export default function PageHero({
   breadcrumb,
   primary,
   children,
+  compact = false,
 }: Readonly<{
   title: string;
   subtitle: string;
   breadcrumb?: ReactNode;
   primary?: ReactNode;
   children?: ReactNode;
+  compact?: boolean;
 }>) {
   return (
     <section className="relative bg-neutral-950 text-white overflow-hidden">
@@ -30,7 +32,14 @@ export default function PageHero({
         </svg>
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-28 pb-14 lg:pt-32 lg:pb-16 min-h-[60vh] flex flex-col justify-center gap-6">
+      <div
+        className={[
+          "relative mx-auto max-w-6xl px-4 sm:px-6 flex flex-col justify-center gap-6",
+          compact
+            ? "pt-24 pb-10 lg:pt-28 lg:pb-12 min-h-[44vh]"
+            : "pt-28 pb-14 lg:pt-32 lg:pb-16 min-h-[60vh]",
+        ].join(" ")}
+      >
         {breadcrumb ? <div>{breadcrumb}</div> : null}
         <div className="max-w-3xl">
           <h1 className="font-display font-semibold text-[40px] sm:text-[56px] leading-[1.05] tracking-tight">

@@ -3,8 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu, ShoppingCart } from "lucide-react";
 import MobileDrawer from "./MobileDrawer";
+import useCart from "@/components/cart/useCart";
+import usePortalAuth from "@/components/panel/usePortalAuth";
 
 function getNavHref(locale: string, hrefTr: string, hrefEn: string) {
   return locale === "tr" ? hrefTr : hrefEn;
@@ -14,6 +16,8 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
+  const { items } = useCart();
+  const { user, logout } = usePortalAuth();
 
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -123,6 +127,7 @@ export default function Header() {
       },
       auth: {
         loginHref: getNavHref(locale, "/giris", "/en/sign-in"),
+        panelHref: getNavHref(locale, "/panel", "/en/panel"),
         registerHref: getNavHref(locale, "/kayit", "/en/sign-up"),
       },
     };
@@ -143,6 +148,33 @@ export default function Header() {
     en: locale === "en",
   };
 
+  const darkHeroRoutes = [
+    /^\/$/,
+    /^\/en\/?$/,
+    /domain-ara/,
+    /domain-search/,
+    /domain-transfer-et/,
+    /domain-transfer/,
+    /hosting/,
+    /linux-hosting/,
+    /wordpress-hosting/,
+    /joomla-hosting/,
+    /ssl-satin-al/,
+    /ssl-certificates/,
+    /iletisim/,
+    /contact/,
+    /knowledgebase/,
+    /blog/,
+    /gizlilik-politikasi/,
+    /privacy-policy/,
+    /giris/,
+    /sign-in/,
+    /kayit/,
+    /sign-up/,
+  ];
+  const hasDarkHeroAtTop = darkHeroRoutes.some((re) => re.test(pathname || "/"));
+  const useLightHeader = scrolled || !hasDarkHeroAtTop;
+
   const toggleLocale = (target: "tr" | "en") => {
     if (!pathname) return;
     const toTr = (p: string) => (p.startsWith("/en/") ? p.replace(/^\/en/, "") : p.startsWith("/en") ? "/" : p);
@@ -152,7 +184,8 @@ export default function Header() {
     router.replace(nextPath);
   };
 
-  const headerBg = scrolled ? "bg-white/95 backdrop-blur-xl border-b border-white/10" : "bg-transparent";
+  const headerBg = useLightHeader ? "bg-white/95 backdrop-blur-xl border-b border-white/10" : "bg-transparent";
+  const cartHref = locale === "tr" ? "/sepet" : "/en/cart";
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 ${headerBg}`}>
@@ -166,7 +199,7 @@ export default function Header() {
             <span
               className={[
                 "font-display text-xl font-semibold tracking-tight",
-                scrolled ? "text-neutral-950" : "text-white",
+                useLightHeader ? "text-neutral-950" : "text-white",
               ].join(" ")}
             >
               domaintescil
@@ -183,7 +216,7 @@ export default function Header() {
                 type="button"
                 className={[
                   "min-h-[44px] inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-150",
-                  scrolled ? "text-neutral-600" : "text-white/90",
+                  useLightHeader ? "text-neutral-600" : "text-white/90",
                   "hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
                   activeKey === "domain" ? "text-brand-primary" : "",
                 ].join(" ")}
@@ -208,7 +241,7 @@ export default function Header() {
                     role="menu"
                     className={[
                       "rounded-2xl shadow-xl p-2",
-                      scrolled
+                      useLightHeader
                         ? "border border-neutral-200 bg-white/95 backdrop-blur-xl"
                         : "border border-white/10 bg-white/10 backdrop-blur-xl",
                     ].join(" ")}
@@ -222,8 +255,8 @@ export default function Header() {
                         role="menuitem"
                         className={[
                           "min-h-[44px] px-3 py-2 rounded-xl flex items-center text-sm font-semibold",
-                          scrolled ? "text-neutral-900" : "text-white/90",
-                          scrolled
+                          useLightHeader ? "text-neutral-900" : "text-white/90",
+                          useLightHeader
                             ? "hover:bg-brand-primary-light hover:text-brand-primary"
                             : "hover:bg-white/10 hover:text-white",
                           "focus-visible:ring-2 focus-visible:ring-brand-primary",
@@ -247,7 +280,7 @@ export default function Header() {
                 type="button"
                 className={[
                   "min-h-[44px] inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-150",
-                  scrolled ? "text-neutral-600" : "text-white/90",
+                  useLightHeader ? "text-neutral-600" : "text-white/90",
                   "hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
                   activeKey === "hosting" ? "text-brand-primary" : "",
                 ].join(" ")}
@@ -271,7 +304,7 @@ export default function Header() {
                     role="menu"
                     className={[
                       "rounded-2xl shadow-xl p-2",
-                      scrolled
+                      useLightHeader
                         ? "border border-neutral-200 bg-white/95 backdrop-blur-xl"
                         : "border border-white/10 bg-white/10 backdrop-blur-xl",
                     ].join(" ")}
@@ -285,8 +318,8 @@ export default function Header() {
                         role="menuitem"
                         className={[
                           "min-h-[44px] px-3 py-2 rounded-xl flex items-center text-sm font-semibold",
-                          scrolled ? "text-neutral-900" : "text-white/90",
-                          scrolled
+                          useLightHeader ? "text-neutral-900" : "text-white/90",
+                          useLightHeader
                             ? "hover:bg-brand-primary-light hover:text-brand-primary"
                             : "hover:bg-white/10 hover:text-white",
                           "focus-visible:ring-2 focus-visible:ring-brand-primary",
@@ -310,7 +343,7 @@ export default function Header() {
                   href={item.href}
                   className={[
                     "text-sm font-semibold transition-colors duration-150 min-h-[44px] inline-flex items-center",
-                    scrolled ? "text-neutral-600" : "text-white/90",
+                    useLightHeader ? "text-neutral-600" : "text-white/90",
                     "hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
                     isActive ? "text-brand-primary" : "",
                   ].join(" ")}
@@ -319,6 +352,23 @@ export default function Header() {
                 </Link>
               );
             })}
+
+            <Link
+              href={cartHref}
+              className={[
+                "relative min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-full",
+                useLightHeader ? "text-neutral-600" : "text-white/90",
+                "hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded-full",
+              ].join(" ")}
+              aria-label={locale === "tr" ? "Sepet" : "Cart"}
+            >
+              <ShoppingCart size={18} aria-hidden="true" />
+              {items.length > 0 ? (
+                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-brand-cta text-white text-[11px] font-bold inline-flex items-center justify-center">
+                  {items.length}
+                </span>
+              ) : null}
+            </Link>
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
@@ -328,14 +378,14 @@ export default function Header() {
                 onClick={() => toggleLocale("tr")}
                 className={[
                   "min-h-[44px] px-3 rounded-full text-sm font-semibold transition-colors",
-                  langToggle.tr ? "text-brand-primary" : scrolled ? "text-neutral-600" : "text-white/90",
+                  langToggle.tr ? "text-brand-primary" : useLightHeader ? "text-neutral-600" : "text-white/90",
                   "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
                 ].join(" ")}
                 aria-label="Türkçe"
               >
                 TR
               </button>
-              <span className={scrolled ? "text-neutral-300 px-1" : "text-white/30 px-1"} aria-hidden="true">
+              <span className={useLightHeader ? "text-neutral-300 px-1" : "text-white/30 px-1"} aria-hidden="true">
                 /
               </span>
               <button
@@ -343,7 +393,7 @@ export default function Header() {
                 onClick={() => toggleLocale("en")}
                 className={[
                   "min-h-[44px] px-3 rounded-full text-sm font-semibold transition-colors",
-                  langToggle.en ? "text-brand-primary" : scrolled ? "text-neutral-600" : "text-white/90",
+                  langToggle.en ? "text-brand-primary" : useLightHeader ? "text-neutral-600" : "text-white/90",
                   "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
                 ].join(" ")}
                 aria-label="English"
@@ -352,18 +402,48 @@ export default function Header() {
               </button>
             </div>
 
-            <Link
-              href={nav.auth.loginHref}
-              className={[
-                "min-h-[44px] px-4 rounded-full border text-sm font-semibold transition-colors inline-flex items-center justify-center leading-none text-center",
-                scrolled
-                  ? "border-neutral-200 text-neutral-700 hover:border-brand-primary hover:text-brand-primary"
-                  : "border-white/20 text-white/90 hover:border-brand-primary hover:text-white",
-                "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
-              ].join(" ")}
-            >
-              {nav.login}
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  href={nav.auth.panelHref}
+                  className={[
+                    "min-h-[44px] px-4 rounded-full border text-sm font-semibold transition-colors inline-flex items-center justify-center leading-none text-center",
+                    useLightHeader
+                      ? "border-neutral-200 text-neutral-700 hover:border-brand-primary hover:text-brand-primary"
+                      : "border-white/20 text-white/90 hover:border-brand-primary hover:text-white",
+                    "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
+                  ].join(" ")}
+                >
+                  Panel
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => logout()}
+                  className={[
+                    "min-h-[44px] px-4 rounded-full border text-sm font-semibold transition-colors inline-flex items-center justify-center leading-none text-center",
+                    useLightHeader
+                      ? "border-neutral-200 text-neutral-700 hover:border-brand-primary hover:text-brand-primary"
+                      : "border-white/20 text-white/90 hover:border-brand-primary hover:text-white",
+                    "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
+                  ].join(" ")}
+                >
+                  Çıkış
+                </button>
+              </>
+            ) : (
+              <Link
+                href={nav.auth.loginHref}
+                className={[
+                  "min-h-[44px] px-4 rounded-full border text-sm font-semibold transition-colors inline-flex items-center justify-center leading-none text-center",
+                  scrolled
+                    ? "border-neutral-200 text-neutral-700 hover:border-brand-primary hover:text-brand-primary"
+                    : "border-white/20 text-white/90 hover:border-brand-primary hover:text-white",
+                  "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
+                ].join(" ")}
+              >
+                {nav.login}
+              </Link>
+            )}
           </div>
 
           <div className="md:hidden flex items-center">
@@ -371,7 +451,7 @@ export default function Header() {
               type="button"
               className={[
                 "min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-full",
-                scrolled ? "text-neutral-950" : "text-white",
+                useLightHeader ? "text-neutral-950" : "text-white",
                 "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
               ].join(" ")}
               aria-label={drawerOpen ? "Menüyü Kapat" : "Menüyü Aç"}
@@ -460,13 +540,35 @@ export default function Header() {
           </div>
 
           <div className="mt-5 flex flex-col gap-3">
-            <Link
-              href={nav.auth.loginHref}
-              className="min-h-[44px] px-4 py-3 rounded-full border border-neutral-200 text-sm font-semibold text-neutral-700 hover:border-brand-primary hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
-              onClick={() => setDrawerOpen(false)}
-            >
-              {nav.login}
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  href={nav.auth.panelHref}
+                  className="min-h-[44px] px-4 py-3 rounded-full border border-neutral-200 text-sm font-semibold text-neutral-700 hover:border-brand-primary hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
+                  onClick={() => setDrawerOpen(false)}
+                >
+                  Panel
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    setDrawerOpen(false);
+                  }}
+                  className="min-h-[44px] px-4 py-3 rounded-full border border-neutral-200 text-sm font-semibold text-neutral-700 hover:border-brand-primary hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
+                >
+                  Çıkış
+                </button>
+              </>
+            ) : (
+              <Link
+                href={nav.auth.loginHref}
+                className="min-h-[44px] px-4 py-3 rounded-full border border-neutral-200 text-sm font-semibold text-neutral-700 hover:border-brand-primary hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
+                onClick={() => setDrawerOpen(false)}
+              >
+                {nav.login}
+              </Link>
+            )}
           </div>
         </div>
       </MobileDrawer>

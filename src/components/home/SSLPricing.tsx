@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import PricingCard from "@/components/ui/PricingCard";
+import { usePathname } from "next/navigation";
 
 type SSLItem = {
   plan: string;
@@ -68,6 +69,8 @@ const fallbackItems: SSLItem[] = [
 
 export default function SSLPricing() {
   const [items, setItems] = useState<SSLItem[]>(fallbackItems);
+  const pathname = usePathname();
+  const base = pathname?.startsWith("/en") ? "/en" : "";
 
   useEffect(() => {
     const run = async () => {
@@ -107,7 +110,7 @@ export default function SSLPricing() {
               benefit={undefined}
               features={it.features}
               ctaLabel="Satın Al"
-              ctaHref="/ssl-satin-al"
+              ctaHref={`${base}/ssl/konfigurasyon?plan=${encodeURIComponent(it.plan)}&type=${it.type}`}
               isRecommended={false}
               topBadges={
                 <div className="flex flex-col gap-2">

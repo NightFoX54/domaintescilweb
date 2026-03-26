@@ -10,6 +10,7 @@ import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
 import StepCards from "@/components/ui/StepCards";
 import { Search, MousePointerClick, BadgeCheck } from "lucide-react";
+import DomainSearchResultsMock from "@/components/ui/DomainSearchResultsMock";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -77,6 +78,7 @@ export default async function DomainSearchPage({
       >
         <div className="mt-4">
           <DomainSearchBox id="search-box" defaultValue={q} />
+          {q ? <DomainSearchResultsMock query={q} /> : null}
           <div className="mt-6">
             <TrustStrip />
           </div>

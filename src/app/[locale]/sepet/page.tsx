@@ -3,7 +3,8 @@ import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
-import AuthFormCard from "@/components/ui/AuthFormCard";
+import SectionHeading from "@/components/ui/SectionHeading";
+import CartClient from "./ui/CartClient";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -13,12 +14,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const isTr = locale === "tr";
 
-  const title = isTr ? "Kayıt Ol | Domaintescil" : "Sign up | Domaintescil";
-  const description = isTr
-    ? "Yeni hesap oluşturun ve müşteri panelini kullanmaya başlayın."
-    : "Create a new account and start using the client panel.";
-
-  const canonical = `${SITE_URL}${isTr ? "/kayit" : "/en/sign-up"}`;
+  const title = isTr ? "Sepet | Domaintescil" : "Cart | Domaintescil";
+  const description = isTr ? "Seçtiğiniz ürünleri gözden geçirin." : "Review the items you selected.";
+  const canonical = `${SITE_URL}${isTr ? "/sepet" : "/en/cart"}`;
 
   return {
     title,
@@ -26,16 +24,16 @@ export async function generateMetadata({
     alternates: {
       canonical,
       languages: {
-        tr: `${SITE_URL}/kayit`,
-        en: `${SITE_URL}/en/sign-up`,
-        "x-default": `${SITE_URL}/kayit`,
+        tr: `${SITE_URL}/sepet`,
+        en: `${SITE_URL}/en/cart`,
+        "x-default": `${SITE_URL}/sepet`,
       },
     },
-    robots: { index: true, follow: true },
+    robots: { index: false, follow: false },
   };
 }
 
-export default async function SignUpPage({
+export default async function CartPage({
   params,
 }: Readonly<{
   params: Promise<{ locale: string }>;
@@ -49,27 +47,29 @@ export default async function SignUpPage({
   return (
     <main id="main-content" className="flex flex-col">
       <PageHero
-        title={isTr ? "Kayıt Ol" : "Sign up"}
+        title={isTr ? "Sepet" : "Cart"}
         subtitle={
-          isTr
-            ? "Yeni hesap oluşturun ve işlemlere başlayın."
-            : "Create a new account and get started."
+          isTr ? "Seçimlerinizi hızlıca düzenleyin." : "Quickly review and edit your selections."
         }
         compact
         breadcrumb={
           <Breadcrumb
             items={[
               { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Kayıt Ol" : "Sign up" },
+              { label: isTr ? "Sepet" : "Cart" },
             ]}
           />
         }
       />
 
-      <ContentSection background="light" ariaLabel="Kayıt formu">
+      <ContentSection background="light" ariaLabel="Sepet içeriği">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
-          <div className="max-w-xl">
-            <AuthFormCard mode="sign-up" />
+          <SectionHeading
+            title={isTr ? "Sepetiniz" : "Your cart"}
+            lead={isTr ? "Ürünleri kaldırın veya düzenleyin." : "Remove or edit items."}
+          />
+          <div className="mt-10">
+            <CartClient />
           </div>
         </div>
       </ContentSection>

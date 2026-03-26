@@ -43,6 +43,7 @@ export default function HostingPricing({
   const reduced = useReducedMotion();
   const pathname = usePathname();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
+  const base = locale === "tr" ? "" : "/en";
   const [tab, setTab] = useState<TabKey>(initialTab);
   const [payload, setPayload] = useState<HostingPayload>({
     tabDescription: "Linux tabanlı projeler için ideal.",
@@ -64,6 +65,7 @@ export default function HostingPricing({
 
   const plans = [
     {
+      key: "baslangic",
       plan: "Başlangıç",
       price: "$25/yıl",
       benefit: "Kişisel blogunuz veya ilk projeniz için yeterli.",
@@ -80,9 +82,10 @@ export default function HostingPricing({
         "Web FTP",
       ],
       ctaLabel: "$25 ile Başla",
-      ctaHref: "/hosting",
+      ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=baslangic`,
     },
     {
+      key: "standart",
       plan: "Standart Web ★",
       price: "$55/yıl",
       benefit: "KOBİ'lerin ve ajansların en çok tercih ettiği paket.",
@@ -99,7 +102,7 @@ export default function HostingPricing({
         "Web FTP",
       ],
       ctaLabel: "Şimdi Başla",
-      ctaHref: "/hosting",
+      ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=standart`,
       isRecommended: true,
       topBadges: (
         <div className="flex flex-wrap gap-2">
@@ -113,6 +116,7 @@ export default function HostingPricing({
       ),
     },
     {
+      key: "profesyonel",
       plan: "Profesyonel",
       price: "$85/yıl",
       benefit: "Yüksek trafikli siteler ve çoklu proje yönetimi için.",
@@ -129,7 +133,7 @@ export default function HostingPricing({
         "Web FTP",
       ],
       ctaLabel: "Paketi Seç",
-      ctaHref: "/hosting",
+      ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=profesyonel`,
     },
   ] as const;
 

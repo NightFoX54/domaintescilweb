@@ -9,6 +9,8 @@ import SkipToContent from "@/components/layout/SkipToContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileStickyBar from "@/components/home/MobileStickyBar";
+import CartProvider from "@/components/cart/CartProvider";
+import PortalAuthProvider from "@/components/panel/PortalAuthProvider";
 
 export default async function LocaleLayout({
   children,
@@ -34,11 +36,15 @@ export default async function LocaleLayout({
       </head>
       <body className="min-h-full flex flex-col bg-neutral-50 text-neutral-600">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <SkipToContent />
-          <Header />
-          <MobileStickyBar />
-          <div className="flex-1 flex flex-col">{children}</div>
-          <Footer />
+          <PortalAuthProvider>
+            <CartProvider>
+              <SkipToContent />
+              <Header />
+              <MobileStickyBar />
+              <div className="flex-1 flex flex-col">{children}</div>
+              <Footer />
+            </CartProvider>
+          </PortalAuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

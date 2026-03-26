@@ -55,6 +55,7 @@ export default async function SignInPage({
             ? "Panelinize erişin ve işlemlerinizi yönetin."
             : "Access your panel and manage your services."
         }
+        compact
         breadcrumb={
           <Breadcrumb
             items={[

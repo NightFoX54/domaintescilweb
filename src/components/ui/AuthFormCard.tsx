@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import usePortalAuth from "@/components/panel/usePortalAuth";
 
 type Mode = "sign-in" | "sign-up";
 
@@ -16,8 +17,10 @@ export default function AuthFormCard({
   mode: Mode;
 }>) {
   const pathname = usePathname();
+  const router = useRouter();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
   const isTr = locale === "tr";
+  const { login, register } = usePortalAuth();
 
   const otherHref = useMemo(() => {
     return mode === "sign-in"
@@ -28,6 +31,12 @@ export default function AuthFormCard({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<{ name?: string; email?: string; password?: string }>({});
+
+  const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
   const title = isTr
     ? mode === "sign-in"
@@ -54,10 +63,71 @@ export default function AuthFormCard({
 
       <form
         className="mt-6 space-y-4"
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
+          setFormError(null);
+          setSuccess(null);
+
+          const nextErrors: typeof fieldErrors = {};
+          if (mode === "sign-up" && name.trim().length < 3) nextErrors.name = isTr ? "Ad soyad gerekli." : "Name is required.";
+          if (!validateEmail(email)) nextErrors.email = isTr ? "Geçerli bir e‑posta girin." : "Enter a valid email.";
+          if (password.trim().length < 6) nextErrors.password = isTr ? "Şifre en az 6 karakter olmalı." : "Password must be at least 6 characters.";
+
+          setFieldErrors(nextErrors);
+          if (Object.keys(nextErrors).length > 0) {
+            setFormError(isTr ? "Lütfen alanları kontrol edin." : "Please check the fields.");
+            return;
+          }
+
+          setSubmitting(true);
+          try {
+            if (mode === "sign-in") {
+              await login(email.trim(), password);
+            } else {
+              await register(name.trim(), email.trim(), password);
+            }
+            setSuccess(
+              isTr
+                ? mode === "sign-in"
+                  ? "Giriş başarılı, yönlendiriliyorsunuz…"
+                  : "Kayıt başarılı, yönlendiriliyorsunuz…"
+                : mode === "sign-in"
+                  ? "Sign-in successful, redirecting…"
+                  : "Sign-up successful, redirecting…",
+            );
+            router.push(locale === "tr" ? "/panel" : "/en/panel");
+          } catch {
+            setFormError(
+              isTr
+                ? "Giriş/kayıt sırasında bir hata oluştu."
+                : "An error occurred during authentication.",
+            );
+          } finally {
+            setSubmitting(false);
+          }
         }}
       >
+        {formError ? (
+          <div
+            role="alert"
+            className="rounded-2xl border border-error/20 bg-error/10 px-4 py-3 text-sm text-neutral-950"
+          >
+            <div className="font-semibold">{isTr ? "Hata" : "Error"}</div>
+            <div className="mt-1 text-neutral-700">{formError}</div>
+          </div>
+        ) : null}
+
+        {success ? (
+          <div
+            role="status"
+            aria-live="polite"
+            className="rounded-2xl border border-success/20 bg-success/10 px-4 py-3 text-sm text-neutral-950"
+          >
+            <div className="font-semibold">{isTr ? "Başarılı" : "Success"}</div>
+            <div className="mt-1 text-neutral-700">{success}</div>
+          </div>
+        ) : null}
+
         {mode === "sign-up" ? (
           <div>
             <label htmlFor="auth-name" className="block text-sm font-semibold text-neutral-950">
@@ -67,9 +137,19 @@ export default function AuthFormCard({
               id="auth-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-2 w-full min-h-[44px] rounded-xl border border-neutral-200 bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+              aria-invalid={Boolean(fieldErrors.name)}
+              aria-describedby={fieldErrors.name ? "auth-name-error" : undefined}
+              className={[
+                "mt-2 w-full min-h-[44px] rounded-xl border bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary",
+                fieldErrors.name ? "border-error/40" : "border-neutral-200",
+              ].join(" ")}
               autoComplete="name"
             />
+            {fieldErrors.name ? (
+              <div id="auth-name-error" className="mt-2 text-xs font-semibold text-error">
+                {fieldErrors.name}
+              </div>
+            ) : null}
           </div>
         ) : null}
 
@@ -82,10 +162,20 @@ export default function AuthFormCard({
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-2 w-full min-h-[44px] rounded-xl border border-neutral-200 bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+            aria-invalid={Boolean(fieldErrors.email)}
+            aria-describedby={fieldErrors.email ? "auth-email-error" : undefined}
+            className={[
+              "mt-2 w-full min-h-[44px] rounded-xl border bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary",
+              fieldErrors.email ? "border-error/40" : "border-neutral-200",
+            ].join(" ")}
             autoComplete="email"
             inputMode="email"
           />
+          {fieldErrors.email ? (
+            <div id="auth-email-error" className="mt-2 text-xs font-semibold text-error">
+              {fieldErrors.email}
+            </div>
+          ) : null}
         </div>
 
         <div>
@@ -97,22 +187,46 @@ export default function AuthFormCard({
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-2 w-full min-h-[44px] rounded-xl border border-neutral-200 bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+            aria-invalid={Boolean(fieldErrors.password)}
+            aria-describedby={fieldErrors.password ? "auth-password-error" : undefined}
+            className={[
+              "mt-2 w-full min-h-[44px] rounded-xl border bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary",
+              fieldErrors.password ? "border-error/40" : "border-neutral-200",
+            ].join(" ")}
             autoComplete={mode === "sign-in" ? "current-password" : "new-password"}
           />
+          {fieldErrors.password ? (
+            <div id="auth-password-error" className="mt-2 text-xs font-semibold text-error">
+              {fieldErrors.password}
+            </div>
+          ) : null}
         </div>
 
         <button
           type="submit"
-          className="w-full min-h-[44px] inline-flex items-center justify-center rounded-xl bg-brand-primary text-white font-bold hover:bg-brand-primary-dark focus-visible:ring-2 focus-visible:ring-brand-primary"
+          disabled={submitting}
+          className={[
+            "w-full min-h-[44px] inline-flex items-center justify-center rounded-xl bg-brand-primary text-white font-bold hover:bg-brand-primary-dark focus-visible:ring-2 focus-visible:ring-brand-primary",
+            submitting ? "opacity-80 cursor-not-allowed" : "",
+          ].join(" ")}
         >
-          {isTr ? (mode === "sign-in" ? "Giriş Yap" : "Kayıt Ol") : mode === "sign-in" ? "Sign in" : "Sign up"}
+          {submitting
+            ? isTr
+              ? "Gönderiliyor…"
+              : "Submitting…"
+            : isTr
+              ? mode === "sign-in"
+                ? "Giriş Yap"
+                : "Kayıt Ol"
+              : mode === "sign-in"
+                ? "Sign in"
+                : "Sign up"}
         </button>
 
         <div className="text-xs text-neutral-500 leading-relaxed">
           {isTr
-            ? "Frontend placeholder: Bu form şu an backend’e bağlanmıyor."
-            : "Frontend placeholder: This form is not connected to backend yet."}
+            ? "Laravel cookie-session akışı kullanılır; token localStorage'a yazılmaz."
+            : "Laravel cookie-session is used; no token is stored in localStorage."}
         </div>
       </form>
 
@@ -153,6 +267,10 @@ export default function AuthFormCard({
         >
           panel.domaintescil.com
         </a>
+      </div>
+      <div className="mt-3 rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-xs text-neutral-600">
+        {isTr ? "Demo giriş (geçici):" : "Temporary demo login:"}{" "}
+        <span className="font-mono text-neutral-950">demo@domaintescil.com / Demo123!</span>
       </div>
     </div>
   );
