@@ -48,6 +48,8 @@ function setDemoModeFlag(enabled: boolean) {
 
 function isLikelyConnectionError(error: unknown) {
   if (!(error instanceof Error)) return false;
+  const status = Number((error as any).status);
+  if (status === 404 || status >= 500) return true;
   const message = error.message.toLowerCase();
   return (
     error instanceof TypeError ||
