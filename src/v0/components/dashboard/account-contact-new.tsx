@@ -73,7 +73,7 @@ export function AccountContactNew() {
         <div className="min-w-0">
           <div className="flex items-center gap-3">
             <Button asChild variant="outline" style={{ borderColor: 'var(--border)' }}>
-              <Link href="/account/contacts">
+              <Link href="/panel/account/contacts">
                 <ArrowLeft size={16} />
                 Geri Dön
               </Link>

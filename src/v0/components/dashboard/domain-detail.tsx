@@ -412,7 +412,7 @@ export function DomainDetail({ domainId }: DomainDetailProps) {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <Link href="/domains" className="flex items-center gap-2 text-sm font-medium mb-4" style={{ color: 'var(--brand-primary)' }}>
+        <Link href="/panel/domains" className="flex items-center gap-2 text-sm font-medium mb-4" style={{ color: 'var(--brand-primary)' }}>
           <ArrowLeft size={16} />
           Geri Dön
         </Link>
