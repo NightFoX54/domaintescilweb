@@ -4,21 +4,21 @@ export const demoEmail = "demo@domaintescil.com";
 
 export const mockServices: PortalService[] = [
   {
-    id: "svc-1",
+    id: "1",
     kind: "domain",
     name: "ornekalanadi.com",
     status: "active",
     nextDueDate: "2026-11-21",
   },
   {
-    id: "svc-2",
+    id: "2",
     kind: "hosting",
     name: "Linux Hosting - Standart Web",
     status: "active",
     nextDueDate: "2026-08-03",
   },
   {
-    id: "svc-3",
+    id: "3",
     kind: "ssl",
     name: "Positive SSL",
     status: "pending",
