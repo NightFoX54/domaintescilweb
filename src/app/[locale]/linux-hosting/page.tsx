@@ -18,10 +18,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const isTr = locale === "tr";
 
-  const title = isTr ? "Linux Hosting | Domaintescil" : "Linux Hosting | Domaintescil";
+  const title = isTr
+    ? "Linux Hosting: cPanel, PHP ve Limitsiz Trafik | Domaintescil"
+    : "Linux Hosting: cPanel, PHP & Unlimited Traffic | Domaintescil";
   const description = isTr
-    ? "Güvenilir Linux hosting. ₺899/yıl'dan başlayan paketler, Türkçe cPanel, PHP 7.X, limitsiz trafik."
-    : "Reliable Linux hosting. Packages from ₺899/year, Turkish cPanel, PHP 7.X, unlimited traffic.";
+    ? "Linux hosting paketleri: Türkçe cPanel, PHP, MySQL, limitsiz trafik ve e-posta. $899/year'dan başlayan fiyatlarla kişisel projelerden ajanslara ölçeklenebilir altyapı. Anında kurulum ve yerel destek."
+    : "Linux hosting with Turkish cPanel, PHP, MySQL, unlimited traffic, and email. Scalable plans from $899/year for personal sites to agencies — fast setup and local support.";
 
   const canonical = `${SITE_URL}${isTr ? "/linux-hosting" : "/en/linux-hosting"}`;
 

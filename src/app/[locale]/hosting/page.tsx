@@ -20,8 +20,8 @@ export async function generateMetadata({
 
   const title = isTr ? "Web Hosting Paketleri | Domaintescil" : "Web Hosting Packages | Domaintescil";
   const description = isTr
-    ? "Linux, WordPress ve Joomla hosting paketleri. ₺899/yıl'dan başlayan fiyatlar, Türkçe cPanel, limitsiz trafik."
-    : "Linux, WordPress and Joomla hosting packages. Starting from ₺899/year with Turkish cPanel and unlimited traffic.";
+    ? "Linux, WordPress ve Joomla hosting paketleri. $899/year'dan başlayan fiyatlar, Türkçe cPanel, limitsiz trafik."
+    : "Linux, WordPress and Joomla hosting packages. Starting from $899/year with Turkish cPanel and unlimited traffic.";
 
   const canonical = `${SITE_URL}${isTr ? "/hosting" : "/en/hosting"}`;
 
@@ -74,8 +74,8 @@ export default async function HostingOverviewPage({
         title={isTr ? "Sitenizi Güçlü Temelde Büyütün" : "Grow Your Site on Solid Ground"}
         subtitle={
           isTr
-            ? "Linux, WordPress ve Joomla hosting seçenekleri. ₺899/yıl'dan başlıyor."
-            : "Linux, WordPress and Joomla hosting options. Starting from ₺899/year."
+            ? "Linux, WordPress ve Joomla hosting seçenekleri. $899/year'dan başlıyor."
+            : "Linux, WordPress and Joomla hosting options. Starting from $899/year."
         }
         breadcrumb={
           <Breadcrumb

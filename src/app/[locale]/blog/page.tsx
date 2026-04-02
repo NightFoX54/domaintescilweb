@@ -5,6 +5,8 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import BlogPostCards from "@/components/ui/BlogPostCards";
+import { blogPosts } from "@/lib/blogPosts";
+import { getBlogListingSchemaJsonLd } from "@/lib/schema";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -14,10 +16,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const isTr = locale === "tr";
 
-  const title = isTr ? "Blog | Domaintescil" : "Blog | Domaintescil";
+  const title = isTr
+    ? "Domain, Hosting ve SSL Blog Rehberleri | Domaintescil"
+    : "Domain, Hosting & SSL Guides and Tips | Domaintescil";
   const description = isTr
-    ? "Domain, hosting ve SSL hakkında kısa rehberler ve ipuçları."
-    : "Short guides and tips about domain, hosting and SSL.";
+    ? "Domain tescil, hosting ve SSL sertifikaları hakkında uygulanabilir rehberler, kısa ipuçları ve güncel içerikler. .com.tr, e-posta kurulumu ve sertifika türleri tek yerde."
+    : "Practical guides and tips on domain registration, hosting, and SSL certificates — including .com.tr, email setup, and choosing DV/OV/EV, all in one place.";
 
   const canonical = `${SITE_URL}${isTr ? "/blog" : "/en/blog"}`;
 
@@ -46,9 +50,16 @@ export default async function BlogPage({
 
   const isTr = locale === "tr";
   const base = isTr ? "" : "/en";
+  const siteLocale = isTr ? "tr" : "en";
 
   return (
     <main id="main-content" className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: getBlogListingSchemaJsonLd(siteLocale, blogPosts),
+        }}
+      />
       <PageHero
         title="Blog"
         subtitle={

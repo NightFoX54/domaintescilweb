@@ -22,8 +22,8 @@ export async function generateMetadata({
 
   const title = isTr ? "SSL Sertifikası Satın Al | Domaintescil" : "Buy SSL Certificates | Domaintescil";
   const description = isTr
-    ? "Comodo/Sectigo SSL sertifikaları. DV ₺349, Wildcard ₺5.499, OV ₺4.799, EV ₺5.999/yıl. 15 gün iade garantisi."
-    : "Comodo/Sectigo SSL certificates. DV ₺349, Wildcard ₺5,499, OV ₺4,799, EV ₺5,999/year. 15-day refund guarantee.";
+    ? "Comodo/Sectigo SSL sertifikaları. DV $349, Wildcard $5,499, OV $4,799, EV $5,999/year. 15 gün iade garantisi."
+    : "Comodo/Sectigo SSL certificates. DV $349, Wildcard $5,499, OV $4,799, EV $5,999/year. 15-day refund guarantee.";
 
   const canonical = `${SITE_URL}${isTr ? "/ssl-satin-al" : "/en/ssl-certificates"}`;
 
@@ -60,14 +60,80 @@ export default async function SSLPage({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Product",
-            name: "SSL Sertifikaları",
-            brand: { "@type": "Brand", name: "Comodo/Sectigo" },
-            offers: [
-              { "@type": "Offer", name: "Positive SSL", price: "349", priceCurrency: "TRY" },
-              { "@type": "Offer", name: "Positive SSL Wildcard", price: "5499", priceCurrency: "TRY" },
-              { "@type": "Offer", name: "Instant SSL Pro", price: "4799", priceCurrency: "TRY" },
-              { "@type": "Offer", name: "EV SSL", price: "5999", priceCurrency: "TRY" },
+            "@type": "ItemList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@type": "Product",
+                  name: "Positive SSL (DV)",
+                  description: "Domain Validated SSL. $350,000 warranty. 15-day refund on DV.",
+                  brand: { "@type": "Brand", name: "Sectigo" },
+                  offers: {
+                    "@type": "Offer",
+                    price: "349",
+                    priceCurrency: "USD",
+                    priceValidUntil: "2027-12-31",
+                    availability: "https://schema.org/InStock",
+                    url: `${SITE_URL}${isTr ? "/ssl-satin-al" : "/en/ssl-certificates"}`,
+                  },
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@type": "Product",
+                  name: "Positive SSL Wildcard (DV)",
+                  description: "Wildcard DV SSL. $350,000 warranty.",
+                  brand: { "@type": "Brand", name: "Sectigo" },
+                  offers: {
+                    "@type": "Offer",
+                    price: "5499",
+                    priceCurrency: "USD",
+                    priceValidUntil: "2027-12-31",
+                    availability: "https://schema.org/InStock",
+                    url: `${SITE_URL}${isTr ? "/ssl-satin-al" : "/en/ssl-certificates"}`,
+                  },
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                item: {
+                  "@type": "Product",
+                  name: "Instant SSL Pro (OV)",
+                  description: "Organization Validated SSL. $3,500,000 warranty.",
+                  brand: { "@type": "Brand", name: "Sectigo" },
+                  offers: {
+                    "@type": "Offer",
+                    price: "4799",
+                    priceCurrency: "USD",
+                    priceValidUntil: "2027-12-31",
+                    availability: "https://schema.org/InStock",
+                    url: `${SITE_URL}${isTr ? "/ssl-satin-al" : "/en/ssl-certificates"}`,
+                  },
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                item: {
+                  "@type": "Product",
+                  name: "EV SSL",
+                  description: "Extended Validation SSL for high-trust websites.",
+                  brand: { "@type": "Brand", name: "Sectigo" },
+                  offers: {
+                    "@type": "Offer",
+                    price: "5999",
+                    priceCurrency: "USD",
+                    priceValidUntil: "2027-12-31",
+                    availability: "https://schema.org/InStock",
+                    url: `${SITE_URL}${isTr ? "/ssl-satin-al" : "/en/ssl-certificates"}`,
+                  },
+                },
+              },
             ],
           }),
         }}

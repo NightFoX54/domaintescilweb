@@ -15,48 +15,54 @@ type Testimonial = {
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    quote: ".io domain aldığımda",
-    highlight: "anında aktivasyon",
+    quote:
+      ".io domain transferimizi öğleden önce başlattık, panelde tüm DNS adımlarını tek ekranda tamamladık ve akşama canlıya çıktık.",
+    highlight: "Anında aktivasyon ve kesintisiz geçiş",
     author: "Mert Yılmaz",
     title: "Yazılım Geliştirici",
     city: "İstanbul",
     date: "Şub 2026",
   },
   {
-    quote: ".com.tr için başvuruda",
-    highlight: "belgesiz alım",
+    quote:
+      ".com.tr tescil sürecinde ekibimiz evrak trafiğine takılmadan başvuruyu tamamladı; onay ve doğrulama adımlarını durum ekranından net takip ettik.",
+    highlight: "Belgesiz alım sürecinde net durum takibi",
     author: "Ece Kaya",
     title: "Girişimci",
     city: "Ankara",
     date: "Oca 2026",
   },
   {
-    quote: "SSL tarafında",
-    highlight: "iade garantisi",
+    quote:
+      "SSL yenileme tarihinde otomatik bildirim aldık, doğru sertifika tipini hızlıca seçtik ve ilk kurulumda destek ekibinden anında yönlendirme aldık.",
+    highlight: "15 gün iade güvencesiyle güvenli satın alma",
     author: "Deniz Şahin",
     title: "E-ticaret Yöneticisi",
     city: "İzmir",
     date: "Ara 2025",
   },
   {
-    quote: "Hosting seçimimizde",
-    highlight: "5 site",
+    quote:
+      "Ajans olarak tek pakette birden fazla müşteri sitesi yönetiyoruz; trafik artışlarında performans düşmeden ölçekleyebildik.",
+    highlight: "5 site yönetimi ve stabil performans",
     author: "Burak Demir",
     title: "Ajans Sahibi",
     city: "Bursa",
     date: "Kas 2025",
   },
   {
-    quote: "DNS panelini kullanırken",
-    highlight: "kolay kurulum",
+    quote:
+      "Yeni subdomain ve MX kayıtlarını dakikalar içinde tanımladık. Arayüz sade olduğu için teknik olmayan ekip üyeleri de işlemleri sorunsuz tamamladı.",
+    highlight: "Kolay DNS kurulumu ve hızlı devreye alma",
     author: "Selin Çetin",
     title: "Freelancer",
     city: "Antalya",
     date: "Eki 2025",
   },
   {
-    quote: "Operatör güvencesinde",
-    highlight: "ICANN + NIC.TR",
+    quote:
+      "Kurumsal tarafta en kritik beklentimiz güven ve erişilebilir destekti; hem satış öncesi hem operasyon sırasında hızlı geri dönüş aldık.",
+    highlight: "ICANN + NIC.TR akredite operatör güvencesi",
     author: "Alp Arslan",
     title: "Marka Yöneticisi",
     city: "İstanbul",

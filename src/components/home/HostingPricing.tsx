@@ -67,7 +67,7 @@ export default function HostingPricing({
     {
       key: "baslangic",
       plan: "Başlangıç",
-      price: "₺899/yıl",
+      price: "$899/year",
       benefit: "Kişisel blogunuz veya ilk projeniz için yeterli.",
       features: [
         "1 site",
@@ -87,7 +87,7 @@ export default function HostingPricing({
     {
       key: "standart",
       plan: "Standart Web ★",
-      price: "₺1.899/yıl",
+      price: "$1,899/year",
       benefit: "KOBİ'lerin ve ajansların en çok tercih ettiği paket.",
       features: [
         "5 site",
@@ -118,7 +118,7 @@ export default function HostingPricing({
     {
       key: "profesyonel",
       plan: "Profesyonel",
-      price: "₺2.899/yıl",
+      price: "$2,899/year",
       benefit: "Yüksek trafikli siteler ve çoklu proje yönetimi için.",
       features: [
         "10 site",

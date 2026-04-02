@@ -32,11 +32,18 @@ const channels: Channel[] = [
     icon: <Mail size={18} />,
     cta: "E-posta Gönder",
   },
+  {
+    title: "Satış E-posta",
+    detail: "satis@domaintescil.com",
+    href: "mailto:satis@domaintescil.com",
+    icon: <Mail size={18} />,
+    cta: "Satışa Yaz",
+  },
 ];
 
 export default function ContactChannelCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {channels.map((c) => (
         <div
           key={c.title}
@@ -55,7 +62,9 @@ export default function ContactChannelCards() {
                   ? "bg-success/15 text-success"
                   : c.title.includes("Telefon")
                     ? "bg-brand-primary-light text-brand-primary"
-                    : "bg-brand-cta/15 text-brand-cta",
+                    : c.title.includes("Satış")
+                      ? "bg-brand-cta/15 text-brand-cta"
+                      : "bg-brand-cta/15 text-brand-cta",
               ].join(" ")}
             >
               {c.icon}

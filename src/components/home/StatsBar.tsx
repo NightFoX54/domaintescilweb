@@ -77,32 +77,32 @@ export default function StatsBar() {
   });
 
   return (
-    <section aria-label="İstatistikler" className="bg-neutral-900 border-y border-white/10">
+    <section aria-label="İstatistikler" className="bg-[#0E0E1A] border-y border-white/10">
       <div ref={ref} className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
         <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10">
           <div className="py-6 flex flex-col items-center justify-center text-center sm:text-left">
             <div className="font-display text-[36px] sm:text-[48px] bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent tabular-nums">
               {stat1}
             </div>
-            <div className="mt-2 text-neutral-400 text-[14px]">Yıllık Deneyim</div>
+            <div className="mt-2 text-neutral-400 text-[14px]">Yıl</div>
           </div>
           <div className="py-6 flex flex-col items-center justify-center text-center sm:text-left">
             <div className="font-display text-[36px] sm:text-[48px] bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent tabular-nums">
               {stat2}
             </div>
-            <div className="mt-2 text-neutral-400 text-[14px]">TLD Uzantısı</div>
+            <div className="mt-2 text-neutral-400 text-[14px]">TLD</div>
           </div>
           <div className="py-6 flex flex-col items-center justify-center text-center sm:text-left">
             <div className="font-display text-[36px] sm:text-[48px] bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent tabular-nums">
               {stat3}
             </div>
-            <div className="mt-2 text-neutral-400 text-[14px]">Aktif Müşteri</div>
+            <div className="mt-2 text-neutral-400 text-[14px]">Müşteri</div>
           </div>
           <div className="py-6 flex flex-col items-center justify-center text-center sm:text-left">
             <div className="font-display text-[36px] sm:text-[48px] bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent tabular-nums">
               {stat4}
             </div>
-            <div className="mt-2 text-neutral-400 text-[14px]">Uptime Garantisi</div>
+            <div className="mt-2 text-neutral-400 text-[14px]">Uptime</div>
           </div>
         </div>
       </div>

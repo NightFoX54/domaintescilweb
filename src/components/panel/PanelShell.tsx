@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import PanelTopbar from "@/components/panel/PanelTopbar";
-import PanelWhmcsLinks from "@/components/panel/PanelWhmcsLinks";
 import {
   LayoutDashboard,
   Server,
@@ -55,14 +54,14 @@ export default function PanelShell({
 
   return (
     <div className="relative">
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="ambient-blob-a absolute -top-20 -right-20 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,rgb(var(--brand-accent)),transparent_65%)] opacity-18" />
         <div className="ambient-blob-b absolute -bottom-20 -left-20 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,rgb(var(--brand-primary)),transparent_65%)] opacity-14" />
         <div className="noise-overlay" />
       </div>
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-[270px_minmax(0,1fr)] gap-6 items-start">
-        <aside className="lg:sticky lg:top-6 space-y-4">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[270px_minmax(0,1fr)] gap-6 items-start">
+        <aside className="lg:sticky lg:top-6 space-y-4 relative z-10">
           <div className="bg-white/70 backdrop-blur-xl border border-neutral-200 rounded-3xl p-3 shadow-sm">
             <div className="px-2 pt-1 pb-2">
               <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wide">
@@ -72,7 +71,8 @@ export default function PanelShell({
 
             <nav aria-label="Panel menüsü" className="space-y-1">
               {nav.map((n) => {
-                const active = pathname === n.href;
+                const active =
+                  pathname === n.href || (n.href !== base && pathname?.startsWith(`${n.href}/`));
                 return (
                   <Link
                     key={n.href}
@@ -93,8 +93,6 @@ export default function PanelShell({
               })}
             </nav>
           </div>
-
-          <PanelWhmcsLinks isEn={isEn} />
         </aside>
 
         <div className="space-y-4">

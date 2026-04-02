@@ -119,6 +119,35 @@ export type PortalProfile = {
   company?: string;
 };
 
+export type PortalActionResult = {
+  success: boolean;
+  message: string;
+  [key: string]: unknown;
+};
+
+export type PortalContact = {
+  id: number;
+  firstname: string;
+  lastname: string;
+  companyname: string;
+  email: string;
+  phonenumber: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  postcode: string;
+  country: string;
+  emailPreferences: {
+    general: boolean;
+    product: boolean;
+    domain: boolean;
+    invoice: boolean;
+    support: boolean;
+    affiliate: boolean;
+  };
+};
+
 export type PortalTicket = {
   id: string;
   subject: string;

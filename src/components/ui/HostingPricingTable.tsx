@@ -37,9 +37,9 @@ const plans: Array<{
   price: string;
   popular?: boolean;
 }> = [
-  { key: "baslangic", title: "Başlangıç", price: "₺899/yıl" },
-  { key: "standart", title: "Standart Web", price: "₺1.899/yıl", popular: true },
-  { key: "profesyonel", title: "Profesyonel", price: "₺2.899/yıl" },
+  { key: "baslangic", title: "Başlangıç", price: "$899/year" },
+  { key: "standart", title: "Standart Web", price: "$1,899/year", popular: true },
+  { key: "profesyonel", title: "Profesyonel", price: "$2,899/year" },
 ];
 
 const rows: Array<{

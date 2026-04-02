@@ -3,8 +3,10 @@ import type {
   PortalInvoice,
   PortalOverview,
   PortalProfile,
+  PortalContact,
   PortalServiceActionResult,
   PortalService,
+  PortalActionResult,
   PortalSsoRequest,
   PortalSsoResult,
   PortalTicketDetail,
@@ -202,6 +204,37 @@ export async function updateProfile(payload: PortalProfile) {
   return request<PortalProfile>("/api/portal/profile", {
     method: "PATCH",
     body: JSON.stringify(payload),
+  });
+}
+
+export async function resetPassword(payload: { existingpw: string; newpw: string; confirmpw: string }) {
+  return request<PortalActionResult>("/api/portal/security/reset-password", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function listContacts() {
+  return request<PortalContact[]>("/api/portal/contacts");
+}
+
+export async function createContact(payload: Omit<PortalContact, "id" | "emailPreferences"> & { emailPreferences: PortalContact["emailPreferences"] }) {
+  return request<PortalActionResult>("/api/portal/contacts", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updateContact(id: number, payload: Omit<PortalContact, "id" | "emailPreferences"> & { emailPreferences: PortalContact["emailPreferences"] }) {
+  return request<PortalActionResult>(`/api/portal/contacts/${encodeURIComponent(String(id))}`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function deleteContact(id: number) {
+  return request<PortalActionResult>(`/api/portal/contacts/${encodeURIComponent(String(id))}`, {
+    method: "DELETE",
   });
 }
 

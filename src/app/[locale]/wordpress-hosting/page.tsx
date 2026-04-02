@@ -19,10 +19,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const isTr = locale === "tr";
 
-  const title = isTr ? "WordPress Hosting | Domaintescil" : "WordPress Hosting | Domaintescil";
+  const title = isTr
+    ? "WordPress Hosting: Hızlı Kurulum ve WooCommerce | Domaintescil"
+    : "WordPress Hosting: Fast Setup, WooCommerce-Ready | Domaintescil";
   const description = isTr
-    ? "WordPress için optimize hosting. ₺899/yıl'dan başlar, tek tık WP kurulumu, WooCommerce desteği."
-    : "Hosting optimized for WordPress. Starting from ₺899/year, one-click WP install, WooCommerce support.";
+    ? "WordPress için optimize sunucular, tek tık kurulum, güncel PHP ve WooCommerce uyumu. $899/year'dan başlayan paketlerle blogdan e-ticarete güvenli performans. Önbellek ve güvenlik odaklı yapılandırma."
+    : "Optimized WordPress hosting with one-click install, modern PHP, and WooCommerce compatibility. Plans from $899/year — from blogs to stores with performance and security in mind.";
 
   const canonical = `${SITE_URL}${isTr ? "/wordpress-hosting" : "/en/wordpress-hosting"}`;
 
@@ -58,8 +60,8 @@ export default async function WordPressHostingPage({
         title={isTr ? "WordPress Siteniz İçin En Uygun Hosting" : "Best Hosting for Your WordPress Site"}
         subtitle={
           isTr
-            ? "Tek tıkla kurulum, WooCommerce hazır altyapı. ₺899/yıl'dan başlıyor."
-            : "One-click install, WooCommerce-ready stack. Starting from ₺899/year."
+            ? "Tek tıkla kurulum, WooCommerce hazır altyapı. $899/year'dan başlıyor."
+            : "One-click install, WooCommerce-ready stack. Starting from $899/year."
         }
         breadcrumb={
           <Breadcrumb

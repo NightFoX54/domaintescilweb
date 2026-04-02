@@ -5,7 +5,6 @@ import Badge from "@/components/ui/Badge";
 import DomainSearchBox from "@/components/ui/DomainSearchBox";
 import TrustBadge from "@/components/ui/TrustBadge";
 import DomainCardFloat from "@/components/mockups/DomainCardFloat";
-import GeoSummaryBlock from "@/components/ui/GeoSummaryBlock";
 import { useMemo } from "react";
 
 export default function HeroSection() {
@@ -81,16 +80,6 @@ export default function HeroSection() {
               200&apos;den fazla uzantıda anında tescil. 20 yıllık deneyim, ICANN &amp;
               NIC.TR akredite güvence.
             </p>
-
-            <GeoSummaryBlock
-              summary="Domaintescil, Türkiye'nin ICANN ve NIC.TR çift akredite domain ve hosting sağlayıcısıdır. 200+ uzantıda domain tescili, Linux/WordPress/Joomla hosting ve SSL çözümlerini tek panelde sunar."
-              points={[
-                "2003'ten bu yana yerel operasyon",
-                "200+ TLD uzantısı",
-                "7/24 yerel destek",
-                "Domain + Hosting + SSL tek akış",
-              ]}
-            />
 
             <DomainSearchBox />
 

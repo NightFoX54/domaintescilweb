@@ -26,7 +26,7 @@ export default function DomainCardFloat() {
       <div className="space-y-4">
         <motion.div
           className={CARD_BASE}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 1, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           animate={float}
@@ -40,13 +40,13 @@ export default function DomainCardFloat() {
             </div>
           </div>
           <div className="mt-3 text-sm text-white/70">
-            Fiyat: <span className="font-mono text-white">₺349/yıl</span>
+            Price: <span className="font-mono text-white">$349/year</span>
           </div>
         </motion.div>
 
         <motion.div
           className={`${CARD_BASE} ring-2 ring-brand-primary`}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 1, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           animate={float}
@@ -59,13 +59,13 @@ export default function DomainCardFloat() {
             </div>
           </div>
           <div className="mt-3 text-sm text-white/70">
-            Fiyat: <span className="font-mono text-white">₺699/yıl</span>
+            Price: <span className="font-mono text-white">$699/year</span>
           </div>
         </motion.div>
 
         <motion.div
           className={CARD_BASE}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 1, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           animate={float}
@@ -78,7 +78,7 @@ export default function DomainCardFloat() {
             </div>
           </div>
           <div className="mt-3 text-sm text-white/70">
-            Fiyat: <span className="font-mono text-white">₺1.399/yıl</span>
+            Price: <span className="font-mono text-white">$1,399/year</span>
           </div>
         </motion.div>
       </div>

@@ -20,8 +20,8 @@ export async function generateMetadata({
 
   const title = isTr ? "Joomla Hosting | Domaintescil" : "Joomla Hosting | Domaintescil";
   const description = isTr
-    ? "Joomla için optimize hosting. ₺899/yıl'dan başlar, tek tık kurulum, Türkçe cPanel desteği."
-    : "Hosting optimized for Joomla. Starting from ₺899/year, one-click install, Turkish cPanel support.";
+    ? "Joomla için optimize hosting. $899/year'dan başlar, tek tık kurulum, Türkçe cPanel desteği."
+    : "Hosting optimized for Joomla. Starting from $899/year, one-click install, Turkish cPanel support.";
 
   const canonical = `${SITE_URL}${isTr ? "/joomla-hosting" : "/en/joomla-hosting"}`;
 

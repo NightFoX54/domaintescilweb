@@ -17,10 +17,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const isTr = locale === "tr";
 
-  const title = isTr ? "İletişim | Domaintescil" : "Contact | Domaintescil";
+  const title = isTr
+    ? "İletişim: Destek, Satış ve Ofis Bilgileri | Domaintescil"
+    : "Contact: Support, Sales & Office | Domaintescil";
   const description = isTr
-    ? "Domaintescil ile iletişime geçin. Telefon, e-posta destek ve satış ekibi. Kadıköy, İstanbul."
-    : "Contact Domaintescil. Phone, email support and sales team. Kadıköy, Istanbul.";
+    ? "Domaintescil destek ve satış ekipleri: telefon, WhatsApp, destek ve satış e-posta adresleri. Kadıköy ofis adresi, harita ve hızlı yönlendirmeler. Domain, hosting ve SSL için tek noktadan iletişim."
+    : "Reach Domaintescil support and sales by phone, WhatsApp, and email. Office address in Kadıköy with map and quick links — one place for domain, hosting, and SSL questions.";
 
   const canonical = `${SITE_URL}${isTr ? "/iletisim" : "/en/contact"}`;
 

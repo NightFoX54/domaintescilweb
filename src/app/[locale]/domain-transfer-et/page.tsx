@@ -23,12 +23,12 @@ export async function generateMetadata({
   const isTr = locale === "tr";
 
   const title = isTr
-    ? "Domain Transfer | Domaintescil"
-    : "Domain Transfer | Domaintescil";
+    ? "Domain Transfer: Hızlı Taşıma ve EPP Rehberi | Domaintescil"
+    : "Domain Transfer: Fast Moves & EPP Guide | Domaintescil";
 
   const description = isTr
-    ? "Domaininizi Domaintescil'e kolayca taşıyın. ICANN ve NIC.TR akredite güvence, hızlı transfer süreci."
-    : "Transfer your domain to Domaintescil with ICANN and NIC.TR accredited trust and a fast process.";
+    ? "Alan adınızı Domaintescil'e taşıyın: EPP/transfer kodu, NIC.TR ve uluslararası uzantılarda adım adım rehber. ICANN ve NIC.TR akredite operatör güvencesi, kesintisiz DNS ve destek ile hızlı transfer."
+    : "Transfer your domain to Domaintescil with a clear EPP/auth-code process for global TLDs and TR namespaces. Accredited operator trust, DNS continuity, and support through each step.";
 
   const canonical = `${SITE_URL}${isTr ? "/domain-transfer-et" : "/en/domain-transfer"}`;
 
