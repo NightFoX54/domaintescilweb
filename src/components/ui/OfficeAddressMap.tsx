@@ -10,6 +10,12 @@ export default function OfficeAddressMap() {
         <p className="mt-4 text-neutral-600 text-[16px] leading-relaxed max-w-[60ch]">
           Eğitim Mh. Eylül Sok. Dora İş Merkezi No:12, Kadıköy / İSTANBUL PK:34722
         </p>
+        <div className="mt-4 rounded-2xl border border-success/25 bg-success/10 p-4">
+          <div className="text-xs font-semibold text-neutral-700">Destek Saatleri</div>
+          <div className="mt-1 text-sm text-neutral-950">
+            7/24 teknik destek · Satış hattı hafta içi 09:00 - 18:00
+          </div>
+        </div>
         <div className="mt-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
           <div className="text-xs font-semibold text-neutral-500">Nameserver</div>
           <div className="mt-2 font-mono text-sm text-neutral-950">

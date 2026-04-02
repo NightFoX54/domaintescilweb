@@ -8,7 +8,7 @@ import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
 import SectionHeading from "@/components/ui/SectionHeading";
 import HostingComparison from "@/components/ui/HostingComparison";
-import { Building2, Globe2, Languages, Puzzle } from "lucide-react";
+import { Building2, Globe2, Languages, Puzzle, Layers3, Users, ShieldCheck } from "lucide-react";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -20,8 +20,8 @@ export async function generateMetadata({
 
   const title = isTr ? "Joomla Hosting | Domaintescil" : "Joomla Hosting | Domaintescil";
   const description = isTr
-    ? "Joomla için optimize hosting. $25/yıl'dan başlar, tek tık kurulum, Türkçe cPanel desteği."
-    : "Hosting optimized for Joomla. Starting from $25/year, one-click install, Turkish cPanel support.";
+    ? "Joomla için optimize hosting. ₺899/yıl'dan başlar, tek tık kurulum, Türkçe cPanel desteği."
+    : "Hosting optimized for Joomla. Starting from ₺899/year, one-click install, Turkish cPanel support.";
 
   const canonical = `${SITE_URL}${isTr ? "/joomla-hosting" : "/en/joomla-hosting"}`;
 
@@ -123,6 +123,77 @@ export default async function JoomlaHostingPage({
                 : ["Ease of use", "Large theme/plugin ecosystem", "Fast start"]
             }
           />
+        </div>
+      </ContentSection>
+
+      <ContentSection background="light" ariaLabel="Joomla özel avantajlar">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              isTr
+                ? { t: "Extension Ekosistemi", d: "Joomla extension yapısı ile modüler ve kontrollü büyüme." }
+                : { t: "Extension Ecosystem", d: "Modular and controlled growth with Joomla extensions." },
+              isTr
+                ? { t: "Çok Dilli Yapı", d: "Yerleşik çoklu dil yaklaşımıyla uluslararası içerik kurgusu." }
+                : { t: "Multilingual Core", d: "International content strategy with native multilingual support." },
+              isTr
+                ? { t: "Kurumsal Mimari", d: "Yetki seviyeleri ve içerik akışı gerektiren ekipler için uygun." }
+                : { t: "Enterprise Structure", d: "Great fit for teams needing roles and controlled workflows." },
+              isTr
+                ? { t: "Uzun Ömürlü Projeler", d: "Büyük içerik ağacı ve karmaşık site yapılarında esneklik." }
+                : { t: "Long-Lived Projects", d: "Flexibility for complex trees and large content websites." },
+            ].map((x) => (
+              <div key={x.t} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+                <div className="font-semibold text-neutral-950">{x.t}</div>
+                <p className="mt-2 text-sm text-neutral-600 leading-relaxed">{x.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ContentSection>
+
+      <ContentSection background="white" ariaLabel="Joomla kurumsal senaryolar">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
+          <SectionHeading
+            title={isTr ? "Joomla'nın Güçlü Olduğu Senaryolar" : "Scenarios Where Joomla Excels"}
+            lead={
+              isTr
+                ? "WordPress'e göre daha karmaşık içerik ağacı ve rol yapısı gerektiren projelerde öne çıkar."
+                : "Compared to WordPress, it stands out in projects requiring deeper role structures and content trees."
+            }
+          />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: <Layers3 size={18} />,
+                t: isTr ? "Büyük İçerik Mimarisi" : "Large Content Architecture",
+                d: isTr ? "Kategori, alt kategori ve çok seviyeli sayfa yapılarında düzenli yönetim." : "Structured handling of deep category/page hierarchies.",
+              },
+              {
+                icon: <Users size={18} />,
+                t: isTr ? "Rol Bazlı Ekipler" : "Role-Based Teams",
+                d: isTr ? "Editör, yönetici, içerik onayı gibi farklı iş akışlarına uygun yapı." : "Fits editorial/admin approval workflows with multiple roles.",
+              },
+              {
+                icon: <Languages size={18} />,
+                t: isTr ? "Çoklu Dil Operasyonu" : "Multilingual Operation",
+                d: isTr ? "Tek panelden farklı dil sürümlerini yönetmeyi kolaylaştırır." : "Makes it easier to run multiple language versions in one panel.",
+              },
+              {
+                icon: <ShieldCheck size={18} />,
+                t: isTr ? "Kurumsal Stabilite" : "Enterprise Stability",
+                d: isTr ? "Uzun ömürlü kurumsal projelerde daha öngörülebilir bakım döngüsü." : "Predictable maintenance cycle for long-term enterprise sites.",
+              },
+            ].map((item) => (
+              <div key={item.t} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary-light text-brand-primary">
+                  {item.icon}
+                </div>
+                <div className="mt-3 font-semibold text-neutral-950">{item.t}</div>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-600">{item.d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </ContentSection>
 

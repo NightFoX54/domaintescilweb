@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Phone, ShoppingCart } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 
 type Channel = {
   title: string;
@@ -11,6 +11,13 @@ type Channel = {
 };
 
 const channels: Channel[] = [
+  {
+    title: "WhatsApp Destek",
+    detail: "+90 (850) 441 0 574",
+    href: "https://wa.me/908504410574",
+    icon: <MessageCircle size={18} />,
+    cta: "WhatsApp'a Geç",
+  },
   {
     title: "Telefon",
     detail: "+90 (850) 441 0 574",
@@ -25,22 +32,32 @@ const channels: Channel[] = [
     icon: <Mail size={18} />,
     cta: "E-posta Gönder",
   },
-  {
-    title: "Satış E-posta",
-    detail: "satis@domaintescil.com",
-    href: "mailto:satis@domaintescil.com",
-    icon: <ShoppingCart size={18} />,
-    cta: "Teklif İste",
-  },
 ];
 
 export default function ContactChannelCards() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {channels.map((c) => (
-        <div key={c.title} className="bg-white border border-neutral-200 rounded-2xl shadow-sm p-6">
+        <div
+          key={c.title}
+          className={[
+            "bg-white border rounded-2xl shadow-sm p-6",
+            c.title.includes("WhatsApp")
+              ? "border-success/40 ring-1 ring-success/20"
+              : "border-neutral-200",
+          ].join(" ")}
+        >
           <div className="flex items-start gap-3">
-            <div className="min-h-[44px] min-w-[44px] rounded-xl bg-brand-primary-light text-brand-primary inline-flex items-center justify-center">
+            <div
+              className={[
+                "min-h-[48px] min-w-[48px] rounded-full inline-flex items-center justify-center",
+                c.title.includes("WhatsApp")
+                  ? "bg-success/15 text-success"
+                  : c.title.includes("Telefon")
+                    ? "bg-brand-primary-light text-brand-primary"
+                    : "bg-brand-cta/15 text-brand-cta",
+              ].join(" ")}
+            >
               {c.icon}
             </div>
             <div className="flex-1">
@@ -49,6 +66,8 @@ export default function ContactChannelCards() {
               <div className="mt-4">
                 <a
                   href={c.href}
+                  target={c.href.startsWith("http") ? "_blank" : undefined}
+                  rel={c.href.startsWith("http") ? "noreferrer" : undefined}
                   className="min-h-[44px] inline-flex items-center justify-center rounded-full px-5 border border-brand-primary text-brand-primary font-bold hover:bg-brand-primary-light focus-visible:ring-2 focus-visible:ring-brand-primary"
                 >
                   {c.cta}

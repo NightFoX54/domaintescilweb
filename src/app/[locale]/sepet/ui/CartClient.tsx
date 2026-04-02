@@ -29,13 +29,13 @@ export default function CartClient() {
                 href={locale === "tr" ? "/domain-ara" : "/en/domain-search"}
                 className="min-h-[44px] inline-flex items-center justify-center rounded-xl bg-brand-primary px-5 text-white font-bold hover:bg-brand-primary-dark focus-visible:ring-2 focus-visible:ring-brand-primary"
               >
-                Domain Ara
+                Hemen Başla
               </Link>
               <Link
                 href={locale === "tr" ? "/hosting" : "/en/hosting"}
                 className="min-h-[44px] inline-flex items-center justify-center rounded-xl border border-brand-primary px-5 text-brand-primary font-bold hover:bg-brand-primary-light focus-visible:ring-2 focus-visible:ring-brand-primary"
               >
-                Hosting İncele
+                Paketi İncele
               </Link>
             </div>
           </div>

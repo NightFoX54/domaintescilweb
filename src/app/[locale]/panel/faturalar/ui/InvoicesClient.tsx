@@ -1,18 +1,20 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { listInvoices } from "@/lib/portalApi";
 import type { PortalInvoice } from "@/types/portal";
 import DataTable from "@/components/panel/DataTable";
 import StatusBadge from "@/components/panel/StatusBadge";
 import EmptyState from "@/components/panel/EmptyState";
-import usePortalAuth from "@/components/panel/usePortalAuth";
-import { demoEmail, mockInvoices } from "@/lib/portalMock";
 
 type Filter = "all" | "paid" | "unpaid" | "overdue";
 
 export default function InvoicesClient() {
-  const { user } = usePortalAuth();
+  const pathname = usePathname();
+  const isEn = pathname?.startsWith("/en");
+  const invoiceBase = isEn ? "/en/panel/invoices" : "/panel/faturalar";
   const [rows, setRows] = useState<PortalInvoice[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -24,17 +26,13 @@ export default function InvoicesClient() {
         const data = await listInvoices();
         setRows(data);
       } catch {
-        if (user?.email === demoEmail) {
-          setRows(mockInvoices);
-        } else {
-          setError("Faturalar yüklenemedi.");
-        }
+        setError("Faturalar yüklenemedi.");
       } finally {
         setLoading(false);
       }
     };
     run();
-  }, [user?.email]);
+  }, []);
 
   const filtered = useMemo(
     () => (filter === "all" ? rows : rows.filter((x) => x.status === filter)),
@@ -65,20 +63,21 @@ export default function InvoicesClient() {
         ))}
       </div>
 
-      <DataTable columns={["No", "Tutar", "Durum", "Vade", "İşlem"]}>
+      <DataTable columns={["ID", "No", "Tutar", "Durum", "Vade", "İşlem"]}>
         {filtered.map((r) => (
           <tr key={r.id}>
+            <td className="p-3 border-b border-neutral-200 text-neutral-700">{r.id}</td>
             <td className="p-3 border-b border-neutral-200 text-neutral-950 font-semibold">{r.number}</td>
             <td className="p-3 border-b border-neutral-200 text-neutral-700">{r.amount}</td>
             <td className="p-3 border-b border-neutral-200"><StatusBadge value={r.status} /></td>
             <td className="p-3 border-b border-neutral-200 text-neutral-700">{r.dueDate}</td>
             <td className="p-3 border-b border-neutral-200">
-              <button
-                type="button"
+              <Link
+                href={`${invoiceBase}/${encodeURIComponent(r.id)}`}
                 className="min-h-[44px] inline-flex items-center justify-center rounded-xl px-4 border border-brand-primary text-brand-primary font-semibold hover:bg-brand-primary-light focus-visible:ring-2 focus-visible:ring-brand-primary"
               >
-                Öde
-              </button>
+                Detay
+              </Link>
             </td>
           </tr>
         ))}

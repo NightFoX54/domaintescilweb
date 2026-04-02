@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { createTicket, listTickets } from "@/lib/portalApi";
 import type { PortalTicket } from "@/types/portal";
 import DataTable from "@/components/panel/DataTable";
 import StatusBadge from "@/components/panel/StatusBadge";
 import EmptyState from "@/components/panel/EmptyState";
-import usePortalAuth from "@/components/panel/usePortalAuth";
-import { demoEmail, mockTickets } from "@/lib/portalMock";
 
 export default function TicketsClient() {
-  const { user } = usePortalAuth();
+  const pathname = usePathname();
+  const isEn = pathname?.startsWith("/en");
+  const ticketBase = isEn ? "/en/panel/tickets" : "/panel/ticketler";
   const [rows, setRows] = useState<PortalTicket[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -25,11 +26,7 @@ export default function TicketsClient() {
       const data = await listTickets();
       setRows(data);
     } catch {
-      if (user?.email === demoEmail) {
-        setRows(mockTickets);
-      } else {
-        setError("Ticketler yüklenemedi.");
-      }
+      setError("Ticketler yüklenemedi.");
     } finally {
       setLoading(false);
     }
@@ -37,7 +34,7 @@ export default function TicketsClient() {
 
   useEffect(() => {
     load();
-  }, [user?.email]);
+  }, []);
 
   const submit = async () => {
     setError(null);
@@ -47,25 +44,11 @@ export default function TicketsClient() {
       return;
     }
     try {
-      if (user?.email === demoEmail) {
-        const next: PortalTicket = {
-          id: `tk-demo-${Date.now()}`,
-          subject: subject.trim(),
-          department,
-          status: "open",
-          updatedAt: new Date().toISOString().slice(0, 10),
-        };
-        setRows((prev) => [next, ...prev]);
-        setSubject("");
-        setMessage("");
-        setSuccess("Ticket oluşturuldu (demo).");
-      } else {
-        await createTicket({ subject: subject.trim(), department, message: message.trim() });
-        setSubject("");
-        setMessage("");
-        setSuccess("Ticket oluşturuldu.");
-        load();
-      }
+      await createTicket({ subject: subject.trim(), department, message: message.trim() });
+      setSubject("");
+      setMessage("");
+      setSuccess("Ticket oluşturuldu.");
+      load();
     } catch {
       setError("Ticket oluşturulamadı.");
     }
@@ -133,7 +116,7 @@ export default function TicketsClient() {
               <td className="p-3 border-b border-neutral-200 text-neutral-700">{r.updatedAt}</td>
               <td className="p-3 border-b border-neutral-200">
                 <Link
-                  href={`ticketler/${encodeURIComponent(r.id)}`}
+                  href={`${ticketBase}/${encodeURIComponent(r.id)}`}
                   className="min-h-[44px] inline-flex items-center justify-center rounded-xl px-4 border border-brand-primary text-brand-primary font-semibold hover:bg-brand-primary-light focus-visible:ring-2 focus-visible:ring-brand-primary"
                 >
                   Aç

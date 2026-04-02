@@ -16,9 +16,24 @@ export default function FAQSectionVariant({
   asideLinkHref?: string;
   asideLinkLabel?: string;
 }>) {
+  const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  });
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-      <div>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
         <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
           {title}
         </h2>
@@ -35,14 +50,15 @@ export default function FAQSectionVariant({
             </Link>
           </div>
         ) : null}
-      </div>
+        </div>
 
-      <div className="space-y-4">
-        {items.map((item) => (
-          <AccordionItem key={item.q} question={item.q} answer={item.a} />
-        ))}
+        <div className="space-y-4">
+          {items.map((item) => (
+            <AccordionItem key={item.q} question={item.q} answer={item.a} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -11,6 +11,7 @@ import NumberedStepper from "@/components/ui/NumberedStepper";
 import NoteCard from "@/components/ui/NoteCard";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
+import GeoSummaryBlock from "@/components/ui/GeoSummaryBlock";
 import { ArrowRight, FileKey, MailCheck, ShieldCheck, Timer, Globe } from "lucide-react";
 
 const SITE_URL = "https://domaintescil.com";
@@ -79,12 +80,34 @@ export default async function DomainTransferPage({
             href={WHMCS_URLS.domainTransfer}
             className="min-h-[44px] inline-flex items-center justify-center rounded-xl px-6 bg-brand-cta text-white font-bold hover:bg-brand-cta-hover focus-visible:ring-2 focus-visible:ring-brand-primary"
           >
-            Transfer Başlat
+            Hemen Başla
             <ArrowRight size={18} className="ml-2" aria-hidden="true" />
           </Link>
         }
       >
         <div className="mt-6">
+          <GeoSummaryBlock
+            summary={
+              isTr
+                ? "Domain transfer sürecinde Domaintescil, EPP doğrulama, onay e-postası ve taşıma sonrası yönetim adımlarını uçtan uca takip eder. Mevcut yayındaki siteniz kesintiye uğramadan transfer tamamlandığında panel kontrolü size geçer."
+                : "During transfer, Domaintescil guides EPP verification, approval email and post-transfer control end-to-end. Your live site stays online and full management moves to your panel when transfer completes."
+            }
+            points={
+              isTr
+                ? [
+                    "5 adımda net transfer akışı",
+                    "No-downtime yaklaşımı",
+                    "Uzantıya göre +1 yıl avantajı",
+                    "7/24 yerel destek",
+                  ]
+                : [
+                    "Clear 5-step transfer flow",
+                    "No-downtime approach",
+                    "+1 year benefit for many TLDs",
+                    "24/7 local support",
+                  ]
+            }
+          />
           <TrustStrip />
         </div>
       </PageHero>
@@ -156,6 +179,34 @@ export default async function DomainTransferPage({
               title="NIC.TR Yetkili Operatör"
               body=" .tr transferleri NIC.TR süreçlerine bağlıdır ve bazı uzantılarda ek süre gerekebilir. Domaintescil, NIC.TR yetkili operatörüdür. 2023 itibarıyla belge zorunluluğu kalktı."
             />
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                title: isTr ? "Transferde +1 Yıl Avantaj" : "+1 Year on Transfer",
+                desc: isTr
+                  ? "Birçok uzantıda transfer tamamlandığında kullanım süresine 1 yıl eklenir."
+                  : "For many TLDs, one year is added after a successful transfer.",
+              },
+              {
+                title: isTr ? "Kesintisiz Geçiş" : "No-Downtime Transition",
+                desc: isTr
+                  ? "Transfer süreci DNS'i anlık kapatmaz; aktif siteniz erişilebilir kalır."
+                  : "Transfer does not instantly interrupt DNS; your live site stays accessible.",
+              },
+              {
+                title: isTr ? "7/24 Yerel Destek" : "24/7 Local Support",
+                desc: isTr
+                  ? "Transfer boyunca EPP, onay ve kilit adımlarında teknik destek sağlanır."
+                  : "Technical guidance is available for EPP, approval and lock steps.",
+              },
+            ].map((x) => (
+              <div key={x.title} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+                <div className="font-semibold text-neutral-950">{x.title}</div>
+                <p className="mt-2 text-sm text-neutral-600 leading-relaxed">{x.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </ContentSection>

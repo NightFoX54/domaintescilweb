@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ICANNBadge from "@/components/icons/ICANNBadge";
+import NICTRBadge from "@/components/icons/NICTRBadge";
+import TucowsBadge from "@/components/icons/TucowsBadge";
 import SSLBadge from "@/components/icons/SSLBadge";
 import KVKKBadge from "@/components/icons/KVKKBadge";
 
@@ -20,8 +22,13 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <div className="text-xl font-display font-semibold tracking-tight text-white">
-              domaintescil
+            <div className="inline-flex items-center gap-3">
+              <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-brand-accent to-brand-primary inline-flex items-center justify-center shadow-soft">
+                <span className="font-display text-white text-sm font-bold">d</span>
+              </div>
+              <div className="text-xl font-display font-semibold tracking-tight text-white">
+                domaintescil
+              </div>
             </div>
             <p className="text-sm leading-relaxed text-white/75 max-w-[20ch]">
               Dorabase Veri Merkezi Hizmetleri A.Ş. — ICANN ve NIC.TR akredite domain & hosting operatörü.
@@ -50,10 +57,12 @@ export default function Footer() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <ICANNBadge />
-              <SSLBadge />
-              <KVKKBadge />
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><ICANNBadge /></div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><NICTRBadge /></div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><TucowsBadge /></div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><SSLBadge /></div>
+              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><KVKKBadge /></div>
             </div>
           </div>
 

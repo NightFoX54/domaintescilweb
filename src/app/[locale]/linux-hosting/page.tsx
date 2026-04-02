@@ -8,6 +8,7 @@ import HostingComparison from "@/components/ui/HostingComparison";
 import HostingTechnicalSection from "@/components/ui/HostingTechnicalSection";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
+import { Cpu, TerminalSquare, Workflow, ShieldCheck } from "lucide-react";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -19,8 +20,8 @@ export async function generateMetadata({
 
   const title = isTr ? "Linux Hosting | Domaintescil" : "Linux Hosting | Domaintescil";
   const description = isTr
-    ? "Güvenilir Linux hosting. $25/yıl'dan başlayan paketler, Türkçe cPanel, PHP 7.X, limitsiz trafik."
-    : "Reliable Linux hosting. Packages from $25/year, Turkish cPanel, PHP 7.X, unlimited traffic.";
+    ? "Güvenilir Linux hosting. ₺899/yıl'dan başlayan paketler, Türkçe cPanel, PHP 7.X, limitsiz trafik."
+    : "Reliable Linux hosting. Packages from ₺899/year, Turkish cPanel, PHP 7.X, unlimited traffic.";
 
   const canonical = `${SITE_URL}${isTr ? "/linux-hosting" : "/en/linux-hosting"}`;
 
@@ -102,6 +103,92 @@ export default async function LinuxHostingPage({
               isTr ? ["WP optimize", "Tek tık kurulum", "WooCommerce hazır"] : ["WP-optimized", "One-click install", "WooCommerce-ready"]
             }
           />
+        </div>
+      </ContentSection>
+
+      <ContentSection background="light" ariaLabel="Linux hosting öne çıkanlar">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              isTr
+                ? { t: "Tam Kontrol", d: "PHP sürümü, cron, DNS ve dosya erişiminde esnek yönetim." }
+                : { t: "Full Control", d: "Flexible management for PHP, cron, DNS and file access." },
+              isTr
+                ? { t: "Geliştirici Dostu", d: "Özel uygulamalar ve birden fazla CMS için uygun altyapı." }
+                : { t: "Developer Friendly", d: "Suitable for custom apps and multiple CMS stacks." },
+              isTr
+                ? { t: "Kararlı Performans", d: "Yoğun trafikte tutarlı kaynak yönetimi ve izlenebilirlik." }
+                : { t: "Stable Performance", d: "Consistent resource handling under growing traffic." },
+              isTr
+                ? { t: "Ajans Senaryoları", d: "Tek panelde birden fazla müşteri sitesi yönetimi." }
+                : { t: "Agency Scenarios", d: "Manage multiple client websites from one panel." },
+            ].map((x) => (
+              <div key={x.t} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+                <div className="font-semibold text-neutral-950">{x.t}</div>
+                <p className="mt-2 text-sm text-neutral-600 leading-relaxed">{x.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ContentSection>
+
+      <ContentSection background="white" ariaLabel="Linux teknik operasyon senaryoları">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="rounded-2xl border border-neutral-200 bg-neutral-950 text-white p-6 shadow-sm">
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-300">
+                <TerminalSquare size={16} />
+                {isTr ? "Geliştirici Akışı" : "Developer Workflow"}
+              </div>
+              <pre className="mt-4 overflow-x-auto rounded-xl bg-black/40 p-4 text-xs leading-6 text-neutral-200">
+                <code>
+{`# örnek deploy akışı
+git pull origin main
+composer install --no-dev
+php artisan cache:clear
+php artisan migrate --force`}
+                </code>
+              </pre>
+              <p className="mt-3 text-sm text-neutral-300">
+                {isTr
+                  ? "Terminal ve cron odaklı projelerde Linux hosting, operasyonu sadeleştirir."
+                  : "For terminal and cron-based projects, Linux hosting keeps operations simple."}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                {
+                  icon: <Cpu size={18} />,
+                  t: isTr ? "Sürüm Kontrolü" : "Version Control",
+                  d: isTr ? "PHP ve runtime sürümlerini proje ihtiyacına göre yönetin." : "Tune PHP/runtime versions per project.",
+                },
+                {
+                  icon: <Workflow size={18} />,
+                  t: isTr ? "Cron ve Job Akışları" : "Cron & Job Flows",
+                  d: isTr ? "Planlı görevler ve otomasyon işlerini panelden yönetin." : "Run scheduled jobs and automations from panel.",
+                },
+                {
+                  icon: <ShieldCheck size={18} />,
+                  t: isTr ? "İzolasyon ve Güvenlik" : "Isolation & Security",
+                  d: isTr ? "Hesap bazlı kaynak izolasyonu ile daha güvenli altyapı." : "Per-account resource isolation for safer hosting.",
+                },
+                {
+                  icon: <TerminalSquare size={18} />,
+                  t: isTr ? "Ajans Çoklu Proje" : "Agency Multi-Project",
+                  d: isTr ? "Farklı müşteri sitelerini tek düzen içinde ölçekleyin." : "Scale multiple client sites in one flow.",
+                },
+              ].map((item) => (
+                <div key={item.t} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary-light text-brand-primary">
+                    {item.icon}
+                  </div>
+                  <div className="mt-3 font-semibold text-neutral-950">{item.t}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-600">{item.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </ContentSection>
 

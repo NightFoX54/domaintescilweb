@@ -67,7 +67,7 @@ export default function HostingPricing({
     {
       key: "baslangic",
       plan: "Başlangıç",
-      price: "$25/yıl",
+      price: "₺899/yıl",
       benefit: "Kişisel blogunuz veya ilk projeniz için yeterli.",
       features: [
         "1 site",
@@ -81,13 +81,13 @@ export default function HostingPricing({
         "Anti-Spam",
         "Web FTP",
       ],
-      ctaLabel: "$25 ile Başla",
+      ctaLabel: "Hemen Başla",
       ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=baslangic`,
     },
     {
       key: "standart",
       plan: "Standart Web ★",
-      price: "$55/yıl",
+      price: "₺1.899/yıl",
       benefit: "KOBİ'lerin ve ajansların en çok tercih ettiği paket.",
       features: [
         "5 site",
@@ -101,7 +101,7 @@ export default function HostingPricing({
         "Anti-Spam",
         "Web FTP",
       ],
-      ctaLabel: "Şimdi Başla",
+      ctaLabel: "Hemen Başla",
       ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=standart`,
       isRecommended: true,
       topBadges: (
@@ -118,7 +118,7 @@ export default function HostingPricing({
     {
       key: "profesyonel",
       plan: "Profesyonel",
-      price: "$85/yıl",
+      price: "₺2.899/yıl",
       benefit: "Yüksek trafikli siteler ve çoklu proje yönetimi için.",
       features: [
         "10 site",
@@ -132,7 +132,7 @@ export default function HostingPricing({
         "Anti-Spam",
         "Web FTP",
       ],
-      ctaLabel: "Paketi Seç",
+      ctaLabel: "Paketi İncele",
       ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=profesyonel`,
     },
   ] as const;
@@ -201,10 +201,10 @@ export default function HostingPricing({
           ))}
         </div>
 
-        <div className="md:hidden overflow-x-auto scrollbar-hide">
+        <div className="md:hidden overflow-x-auto scrollbar-hide snap-x snap-mandatory">
           <div className="flex gap-4 pb-2">
             {plans.map((p) => (
-              <div key={p.plan} className="w-[320px] flex-shrink-0">
+              <div key={p.plan} className="w-[320px] flex-shrink-0 snap-start">
                 <PricingCard
                   plan={p.plan}
                   price={p.price}

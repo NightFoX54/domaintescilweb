@@ -186,6 +186,7 @@ export default function Header() {
 
   const headerBg = useLightHeader ? "bg-white/95 backdrop-blur-xl border-b border-white/10" : "bg-transparent";
   const cartHref = locale === "tr" ? "/sepet" : "/en/cart";
+  const domainSearchHref = locale === "tr" ? "/domain-ara" : "/en/domain-search";
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 ${headerBg}`}>
@@ -360,7 +361,7 @@ export default function Header() {
                 useLightHeader ? "text-neutral-600" : "text-white/90",
                 "hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded-full",
               ].join(" ")}
-              aria-label={locale === "tr" ? "Sepet" : "Cart"}
+              aria-label={locale === "tr" ? "Sepetim" : "My cart"}
             >
               <ShoppingCart size={18} aria-hidden="true" />
               {items.length > 0 ? (
@@ -372,6 +373,12 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
+            <Link
+              href={domainSearchHref}
+              className="min-h-[44px] px-4 rounded-full bg-brand-cta text-white text-sm font-semibold inline-flex items-center justify-center hover:bg-brand-cta-hover focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
+            >
+              {locale === "tr" ? "Domain Ara" : "Search Domain"}
+            </Link>
             <div className="flex items-center rounded-full border border-white/0">
               <button
                 type="button"

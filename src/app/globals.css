@@ -60,3 +60,39 @@ body {
   scrollbar-width: none;
 }
 
+@keyframes ambientFloatA {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-24px, 18px, 0) scale(1.06); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes ambientFloatB {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(26px, -14px, 0) scale(1.04); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.ambient-blob-a {
+  animation: ambientFloatA 42s ease-in-out infinite;
+}
+
+.ambient-blob-b {
+  animation: ambientFloatB 48s ease-in-out infinite;
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-blob-a,
+  .ambient-blob-b {
+    animation: none !important;
+  }
+}
+

@@ -20,8 +20,8 @@ export async function generateMetadata({
 
   const title = isTr ? "Web Hosting Paketleri | Domaintescil" : "Web Hosting Packages | Domaintescil";
   const description = isTr
-    ? "Linux, WordPress ve Joomla hosting paketleri. $25/yıl'dan başlayan fiyatlar, Türkçe cPanel, limitsiz trafik."
-    : "Linux, WordPress and Joomla hosting packages. Prices from $25/year, Turkish cPanel, unlimited traffic.";
+    ? "Linux, WordPress ve Joomla hosting paketleri. ₺899/yıl'dan başlayan fiyatlar, Türkçe cPanel, limitsiz trafik."
+    : "Linux, WordPress and Joomla hosting packages. Starting from ₺899/year with Turkish cPanel and unlimited traffic.";
 
   const canonical = `${SITE_URL}${isTr ? "/hosting" : "/en/hosting"}`;
 
@@ -53,12 +53,29 @@ export default async function HostingOverviewPage({
 
   return (
     <main id="main-content" className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: isTr ? "Web Hosting Hizmeti" : "Web Hosting Service",
+            provider: { "@type": "Organization", name: "Domaintescil", url: SITE_URL },
+            areaServed: "TR",
+            offers: [
+              { "@type": "Offer", name: "Başlangıç", price: "899", priceCurrency: "TRY" },
+              { "@type": "Offer", name: "Standart Web", price: "1899", priceCurrency: "TRY" },
+              { "@type": "Offer", name: "Profesyonel", price: "2899", priceCurrency: "TRY" },
+            ],
+          }),
+        }}
+      />
       <PageHero
         title={isTr ? "Sitenizi Güçlü Temelde Büyütün" : "Grow Your Site on Solid Ground"}
         subtitle={
           isTr
-            ? "Linux, WordPress ve Joomla hosting seçenekleri. $25/yıl'dan başlıyor."
-            : "Linux, WordPress and Joomla hosting options. Starting from $25/year."
+            ? "Linux, WordPress ve Joomla hosting seçenekleri. ₺899/yıl'dan başlıyor."
+            : "Linux, WordPress and Joomla hosting options. Starting from ₺899/year."
         }
         breadcrumb={
           <Breadcrumb
@@ -69,6 +86,21 @@ export default async function HostingOverviewPage({
           />
         }
       />
+
+      <ContentSection background="white" ariaLabel="Neden Domaintescil">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 lg:py-14">
+          <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6">
+            <h2 className="font-display font-semibold text-2xl text-neutral-950">
+              {isTr ? "Neden Domaintescil?" : "Why Domaintescil?"}
+            </h2>
+            <p className="mt-3 text-neutral-600 leading-relaxed">
+              {isTr
+                ? "Domaintescil, Türkiye pazarına odaklı web hosting altyapısını 2003'ten bu yana yerel destek ve çift akreditasyon güvencesiyle sunar. Linux, WordPress ve Joomla planlarında aynı panel deneyimiyle hızlı kurulum ve sürdürülebilir büyüme sağlar."
+                : "Domaintescil delivers Turkey-focused hosting since 2003 with local support and dual accreditation trust. Linux, WordPress and Joomla plans share one consistent panel for faster setup and scalable growth."}
+            </p>
+          </div>
+        </div>
+      </ContentSection>
 
       <ContentSection background="light" ariaLabel="Hosting türleri">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">

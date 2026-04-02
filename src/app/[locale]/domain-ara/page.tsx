@@ -11,6 +11,7 @@ import CTABand from "@/components/home/CTABand";
 import StepCards from "@/components/ui/StepCards";
 import { Search, MousePointerClick, BadgeCheck } from "lucide-react";
 import DomainSearchResultsMock from "@/components/ui/DomainSearchResultsMock";
+import GeoSummaryBlock from "@/components/ui/GeoSummaryBlock";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -60,6 +61,21 @@ export default async function DomainSearchPage({
 
   return (
     <main id="main-content" className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            url: SITE_URL,
+            potentialAction: {
+              "@type": "SearchAction",
+              target: `${SITE_URL}/domain-ara?q={search_term}`,
+              "query-input": "required name=search_term",
+            },
+          }),
+        }}
+      />
       <PageHero
         title={isTr ? "Hayalinizdeki Domaini Bulun" : "Find Your Perfect Domain"}
         subtitle={
@@ -77,6 +93,28 @@ export default async function DomainSearchPage({
         }
       >
         <div className="mt-4">
+          <GeoSummaryBlock
+            summary={
+              isTr
+                ? "Domaintescil ile 200+ uzantıda gerçek zamanlı domain uygunluk kontrolü yapabilir, transfere uygun adları tek akışta yönetebilirsiniz. ICANN ve NIC.TR akreditasyonu sayesinde Türkiye odaklı güvenli tescil deneyimi sunulur."
+                : "With Domaintescil, you can check availability across 200+ TLDs and manage transfer-eligible names in one flow. ICANN and NIC.TR accreditation ensures trusted, Turkey-focused operations."
+            }
+            points={
+              isTr
+                ? [
+                    ".com, .com.tr, .net ve daha fazlası",
+                    "Anında sorgu ve öneri",
+                    "Tescil + transfer tek deneyim",
+                    "Akredite operatör güvencesi",
+                  ]
+                : [
+                    ".com, .com.tr, .net and more",
+                    "Instant lookup and suggestions",
+                    "Registration + transfer in one flow",
+                    "Accredited operator trust",
+                  ]
+            }
+          />
           <DomainSearchBox id="search-box" defaultValue={q} />
           {q ? <DomainSearchResultsMock query={q} /> : null}
           <div className="mt-6">

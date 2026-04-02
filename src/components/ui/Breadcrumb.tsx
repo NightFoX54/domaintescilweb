@@ -27,7 +27,7 @@ export default function Breadcrumb({
 
   return (
     <>
-      <nav aria-label="Breadcrumb" className="text-sm text-white/80">
+      <nav aria-label="Breadcrumb" className="text-sm text-white/85">
         <ol className="flex flex-wrap items-center gap-2">
           {items.map((item, idx) => {
             const isLast = idx === lastIndex;
@@ -42,7 +42,10 @@ export default function Breadcrumb({
                     {item.label}
                   </Link>
                 ) : (
-                  <span aria-current={isLast ? "page" : undefined} className={isLast ? "text-white font-semibold" : ""}>
+                  <span
+                    aria-current={isLast ? "page" : undefined}
+                    className={isLast ? "text-white font-bold rounded-full border border-white/25 bg-white/10 px-3 py-1" : ""}
+                  >
                     {item.label}
                   </span>
                 )}

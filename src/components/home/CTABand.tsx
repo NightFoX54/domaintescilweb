@@ -32,13 +32,13 @@ export default function CTABand() {
               href={domainHref}
               className="min-h-[44px] inline-flex items-center justify-center rounded-full bg-white text-brand-primary px-6 font-bold focus-visible:ring-2 focus-visible:ring-brand-primary"
             >
-              Domain Sorgula
+              Hemen Başla
             </Link>
             <Link
               href={hostingHref}
               className="min-h-[44px] inline-flex items-center justify-center rounded-full border border-white/50 text-white px-6 font-bold focus-visible:ring-2 focus-visible:ring-brand-primary"
             >
-              Hosting İncele
+              Paketi İncele
             </Link>
           </div>
         </div>

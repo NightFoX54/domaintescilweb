@@ -9,7 +9,7 @@ import CTABand from "@/components/home/CTABand";
 import StatBadgesRow from "@/components/ui/StatBadgesRow";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedStepCards from "@/components/ui/AnimatedStepCards";
-import { ShoppingCart, Rocket, Wrench } from "lucide-react";
+import { ShoppingCart, Rocket, Wrench, Gauge, ShieldCheck, RefreshCcw, PlugZap } from "lucide-react";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -21,8 +21,8 @@ export async function generateMetadata({
 
   const title = isTr ? "WordPress Hosting | Domaintescil" : "WordPress Hosting | Domaintescil";
   const description = isTr
-    ? "WordPress için optimize hosting. $25/yıl'dan başlar, tek tık WP kurulumu, WooCommerce desteği."
-    : "Hosting optimized for WordPress. Starting from $25/year, one-click WP install, WooCommerce support.";
+    ? "WordPress için optimize hosting. ₺899/yıl'dan başlar, tek tık WP kurulumu, WooCommerce desteği."
+    : "Hosting optimized for WordPress. Starting from ₺899/year, one-click WP install, WooCommerce support.";
 
   const canonical = `${SITE_URL}${isTr ? "/wordpress-hosting" : "/en/wordpress-hosting"}`;
 
@@ -58,8 +58,8 @@ export default async function WordPressHostingPage({
         title={isTr ? "WordPress Siteniz İçin En Uygun Hosting" : "Best Hosting for Your WordPress Site"}
         subtitle={
           isTr
-            ? "Tek tıkla kurulum, WooCommerce hazır altyapı. $25/yıl'dan başlıyor."
-            : "One-click install, WooCommerce-ready stack. Starting from $25/year."
+            ? "Tek tıkla kurulum, WooCommerce hazır altyapı. ₺899/yıl'dan başlıyor."
+            : "One-click install, WooCommerce-ready stack. Starting from ₺899/year."
         }
         breadcrumb={
           <Breadcrumb
@@ -137,6 +137,77 @@ export default async function WordPressHostingPage({
                     ]
               }
             />
+          </div>
+        </div>
+      </ContentSection>
+
+      <ContentSection background="light" ariaLabel="WordPress özel avantajlar">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              isTr
+                ? { t: "WooCommerce Hazır", d: "Ürün katalogları ve ödeme akışı için optimize kaynak profili." }
+                : { t: "WooCommerce Ready", d: "Optimized resource profile for catalog and checkout flows." },
+              isTr
+                ? { t: "Hızlı Yayın", d: "WordPress kurulumu ve temel yapılandırma dakikalar içinde tamamlanır." }
+                : { t: "Fast Go-Live", d: "WordPress install and base setup complete in minutes." },
+              isTr
+                ? { t: "Eklenti Uyumluluğu", d: "Popüler SEO, cache ve güvenlik eklentileriyle sorunsuz çalışma." }
+                : { t: "Plugin Compatibility", d: "Reliable operation with common SEO, cache and security plugins." },
+              isTr
+                ? { t: "İçerik Ekipleri İçin", d: "Teknik yükü azaltan panel deneyimi ile editör odaklı kullanım." }
+                : { t: "For Content Teams", d: "Editor-focused workflow with lower technical overhead." },
+            ].map((x) => (
+              <div key={x.t} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+                <div className="font-semibold text-neutral-950">{x.t}</div>
+                <p className="mt-2 text-sm text-neutral-600 leading-relaxed">{x.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ContentSection>
+
+      <ContentSection background="white" ariaLabel="WordPress performans katmanları">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
+          <SectionHeading
+            title={isTr ? "WordPress'e Özel Performans Katmanları" : "WordPress-Specific Performance Layers"}
+            lead={
+              isTr
+                ? "Linux'tan farklı olarak WordPress operasyonu için hız, eklenti uyumu ve bakım tarafını öne alır."
+                : "Unlike generic Linux hosting, this stack prioritizes WordPress speed, plugin compatibility and maintenance."
+            }
+          />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                icon: <Gauge size={18} />,
+                t: isTr ? "Cache Uyumlu" : "Cache-Friendly",
+                d: isTr ? "Popüler cache eklentileriyle stabil çalışma." : "Stable with popular cache plugins.",
+              },
+              {
+                icon: <RefreshCcw size={18} />,
+                t: isTr ? "Güncelleme Kolaylığı" : "Easy Updates",
+                d: isTr ? "Çekirdek ve eklenti güncellemelerinde düşük kesinti." : "Low-friction core/plugin updates.",
+              },
+              {
+                icon: <PlugZap size={18} />,
+                t: isTr ? "Eklenti Ekosistemi" : "Plugin Ecosystem",
+                d: isTr ? "SEO, güvenlik ve form eklentileriyle yüksek uyum." : "High compatibility with SEO/security/form plugins.",
+              },
+              {
+                icon: <ShieldCheck size={18} />,
+                t: isTr ? "WooCommerce Hazır" : "WooCommerce Ready",
+                d: isTr ? "Sepet/ödeme trafiğinde tutarlı tepki süreleri." : "Consistent response times on cart/checkout traffic.",
+              },
+            ].map((item) => (
+              <div key={item.t} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary-light text-brand-primary">
+                  {item.icon}
+                </div>
+                <div className="mt-3 font-semibold text-neutral-950">{item.t}</div>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-600">{item.d}</p>
+              </div>
+            ))}
           </div>
         </div>
       </ContentSection>

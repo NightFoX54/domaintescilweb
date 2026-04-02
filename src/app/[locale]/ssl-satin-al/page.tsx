@@ -22,8 +22,8 @@ export async function generateMetadata({
 
   const title = isTr ? "SSL Sertifikası Satın Al | Domaintescil" : "Buy SSL Certificates | Domaintescil";
   const description = isTr
-    ? "Comodo/Sectigo SSL sertifikaları. DV $9.99, Wildcard $159, OV $139, EV $175/yıl. 15 gün iade garantisi."
-    : "Comodo/Sectigo SSL certificates. DV $9.99, Wildcard $159, OV $139, EV $175/year. 15-day refund guarantee.";
+    ? "Comodo/Sectigo SSL sertifikaları. DV ₺349, Wildcard ₺5.499, OV ₺4.799, EV ₺5.999/yıl. 15 gün iade garantisi."
+    : "Comodo/Sectigo SSL certificates. DV ₺349, Wildcard ₺5,499, OV ₺4,799, EV ₺5,999/year. 15-day refund guarantee.";
 
   const canonical = `${SITE_URL}${isTr ? "/ssl-satin-al" : "/en/ssl-certificates"}`;
 
@@ -55,6 +55,23 @@ export default async function SSLPage({
 
   return (
     <main id="main-content" className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "SSL Sertifikaları",
+            brand: { "@type": "Brand", name: "Comodo/Sectigo" },
+            offers: [
+              { "@type": "Offer", name: "Positive SSL", price: "349", priceCurrency: "TRY" },
+              { "@type": "Offer", name: "Positive SSL Wildcard", price: "5499", priceCurrency: "TRY" },
+              { "@type": "Offer", name: "Instant SSL Pro", price: "4799", priceCurrency: "TRY" },
+              { "@type": "Offer", name: "EV SSL", price: "5999", priceCurrency: "TRY" },
+            ],
+          }),
+        }}
+      />
       <PageHero
         title={isTr ? "Sitenizi HTTPS ile Güvene Alın" : "Secure Your Site with HTTPS"}
         subtitle={
@@ -76,7 +93,7 @@ export default async function SSLPage({
               href="#ssl-pricing"
               className="min-h-[44px] inline-flex items-center justify-center rounded-full bg-brand-primary px-6 text-white font-bold hover:bg-brand-primary-dark focus-visible:ring-2 focus-visible:ring-brand-primary"
             >
-              {isTr ? "SSL Satın Al" : "Buy SSL"}
+              {isTr ? "Hemen Başla" : "Get Started"}
             </a>
             <a
               href="#ssl-types"
@@ -91,6 +108,21 @@ export default async function SSLPage({
           <SSLBrowserMockup domain={isTr ? "siteadresiniz.com" : "yourdomain.com"} />
         </div>
       </PageHero>
+
+      <ContentSection background="white" ariaLabel="Neden Domaintescil SSL">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 lg:py-14">
+          <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6">
+            <h2 className="font-display font-semibold text-2xl text-neutral-950">
+              {isTr ? "Neden Domaintescil SSL?" : "Why Domaintescil SSL?"}
+            </h2>
+            <p className="mt-3 text-neutral-600 leading-relaxed">
+              {isTr
+                ? "Domaintescil, Comodo/Sectigo SSL ürünlerini Türkiye pazarına uygun destek modeliyle sunar. Doğru sertifika türünü seçmenize yardımcı olur, kurulum ve yenileme süreçlerinde kesintisiz rehberlik sağlar."
+                : "Domaintescil provides Comodo/Sectigo SSL with support tailored for Turkey. We help you choose the correct certificate type and guide installation and renewal without friction."}
+            </p>
+          </div>
+        </div>
+      </ContentSection>
 
       <ContentSection background="white" ariaLabel="SSL türleri ve fiyatlar">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">

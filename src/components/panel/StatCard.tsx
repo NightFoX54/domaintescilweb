@@ -8,7 +8,7 @@ export default function StatCard({
   value: string;
 }>) {
   return (
-    <div className="bg-white border border-neutral-200 rounded-2xl shadow-sm p-5">
+    <div className="bg-gradient-to-br from-brand-primary-light/70 via-white to-white border border-neutral-200 rounded-3xl shadow-sm p-5">
       <div className="text-xs font-semibold text-neutral-500">{label}</div>
       <div className="mt-2 text-[24px] font-display font-semibold text-neutral-950">{value}</div>
     </div>

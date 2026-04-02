@@ -52,6 +52,27 @@ export default async function ContactPage({
 
   return (
     <main id="main-content" className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Domaintescil",
+            url: SITE_URL,
+            telephone: "+90-850-441-0-574",
+            email: "destek@domaintescil.com",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Eğitim Mh. Eylül Sok. Dora İş Merkezi No:12",
+              addressLocality: "Kadıköy",
+              addressRegion: "İstanbul",
+              postalCode: "34722",
+              addressCountry: "TR",
+            },
+          }),
+        }}
+      />
       <PageHero
         title={isTr ? "Size Nasıl Yardımcı Olabiliriz?" : "How Can We Help You?"}
         subtitle={

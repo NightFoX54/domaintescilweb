@@ -11,14 +11,6 @@ import {
 import type { PortalUser } from "@/types/portal";
 import { PortalAuthContext } from "@/components/panel/PortalAuthContext";
 
-const MOCK_USER: PortalUser = {
-  id: 999999,
-  fullName: "Demo Kullanıcı",
-  email: "demo@domaintescil.com",
-};
-
-const MOCK_PASSWORD = "Demo123!";
-
 export default function PortalAuthProvider({
   children,
 }: Readonly<{ children: ReactNode }>) {
@@ -43,30 +35,25 @@ export default function PortalAuthProvider({
   const login = useCallback(async (email: string, password: string) => {
     setLoading(true);
     try {
-      try {
-        const me = await apiLogin({ email, password });
-        setUser(me);
-      } catch {
-        // Temporary frontend-only fallback for local demo/testing.
-        if (
-          email.trim().toLowerCase() === MOCK_USER.email &&
-          password === MOCK_PASSWORD
-        ) {
-          setUser(MOCK_USER);
-          return;
-        }
-        throw new Error("AUTH_FAILED");
-      }
+      const me = await apiLogin({ email, password });
+      setUser(me);
     } finally {
       setLoading(false);
     }
   }, []);
 
   const register = useCallback(
-    async (fullName: string, email: string, password: string) => {
+    async (payload: {
+      fullName: string;
+      email: string;
+      password: string;
+      phone: string;
+      userType: "individual" | "corporate";
+      taxId?: string;
+    }) => {
       setLoading(true);
       try {
-        const me = await apiRegister({ fullName, email, password });
+        const me = await apiRegister(payload);
         setUser(me);
       } finally {
         setLoading(false);

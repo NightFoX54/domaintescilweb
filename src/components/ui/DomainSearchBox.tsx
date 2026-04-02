@@ -36,8 +36,12 @@ export default function DomainSearchBox({
         onSubmit={onSubmit}
         className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-4"
       >
+        <label htmlFor={`${id || "domain-search"}-input`} className="block text-sm font-semibold text-white mb-2">
+          {locale === "tr" ? "Domain adı" : "Domain name"}
+        </label>
         <div className="flex flex-col sm:flex-row gap-3">
           <input
+            id={`${id || "domain-search"}-input`}
             aria-label="Domain adı ara"
             name="q"
             value={value}
@@ -50,7 +54,7 @@ export default function DomainSearchBox({
             type="submit"
             className="min-h-[44px] sm:w-[160px] px-5 rounded-xl bg-brand-cta text-white font-bold transition-colors hover:bg-brand-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           >
-            Hemen Ara
+            Hemen Başla
           </button>
         </div>
 
@@ -71,6 +75,7 @@ export default function DomainSearchBox({
                 "border border-white/20 hover:border-brand-accent hover:text-white",
                 "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded-full",
               ].join(" ")}
+              aria-pressed={value.trim().endsWith(tld)}
             >
               {tld}
             </button>

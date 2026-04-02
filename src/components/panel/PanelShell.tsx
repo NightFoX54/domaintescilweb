@@ -4,8 +4,15 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import PanelTopbar from "@/components/panel/PanelTopbar";
-
-type NavItem = { label: string; href: string };
+import PanelWhmcsLinks from "@/components/panel/PanelWhmcsLinks";
+import {
+  LayoutDashboard,
+  Server,
+  CreditCard,
+  User,
+  Ticket,
+  ArrowRight,
+} from "lucide-react";
 
 export default function PanelShell({
   title,
@@ -17,46 +24,98 @@ export default function PanelShell({
   const pathname = usePathname();
   const isEn = pathname?.startsWith("/en");
   const base = isEn ? "/en/panel" : "/panel";
-  const nav: NavItem[] = [
-    { label: "Dashboard", href: base },
-    { label: isEn ? "Services" : "Hizmetler", href: isEn ? `${base}/services` : `${base}/hizmetler` },
-    { label: isEn ? "Invoices" : "Faturalar", href: isEn ? `${base}/invoices` : `${base}/faturalar` },
-    { label: isEn ? "Profile" : "Profil", href: isEn ? `${base}/profile` : `${base}/profil` },
-    { label: isEn ? "Tickets" : "Ticketler", href: isEn ? `${base}/tickets` : `${base}/ticketler` },
-  ];
+
+  const nav = [
+    {
+      label: isEn ? "Dashboard" : "Dashboard",
+      href: base,
+      icon: <LayoutDashboard size={16} aria-hidden="true" />,
+    },
+    {
+      label: isEn ? "Services" : "Hizmetler",
+      href: isEn ? `${base}/services` : `${base}/hizmetler`,
+      icon: <Server size={16} aria-hidden="true" />,
+    },
+    {
+      label: isEn ? "Invoices" : "Faturalar",
+      href: isEn ? `${base}/invoices` : `${base}/faturalar`,
+      icon: <CreditCard size={16} aria-hidden="true" />,
+    },
+    {
+      label: isEn ? "Profile" : "Profil",
+      href: isEn ? `${base}/profile` : `${base}/profil`,
+      icon: <User size={16} aria-hidden="true" />,
+    },
+    {
+      label: isEn ? "Tickets" : "Ticketler",
+      href: isEn ? `${base}/tickets` : `${base}/ticketler`,
+      icon: <Ticket size={16} aria-hidden="true" />,
+    },
+  ] as const;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[240px_minmax(0,1fr)] gap-6 items-start">
-      <aside className="bg-white border border-neutral-200 rounded-2xl shadow-sm p-3">
-        <nav aria-label="Panel menüsü" className="space-y-1">
-          {nav.map((n) => {
-            const active = pathname === n.href;
-            return (
-              <Link
-                key={n.href}
-                href={n.href}
-                className={[
-                  "min-h-[44px] px-3 py-2 rounded-xl text-sm font-semibold inline-flex items-center w-full",
-                  active
-                    ? "bg-brand-primary-light text-brand-primary"
-                    : "text-neutral-700 hover:bg-neutral-50 hover:text-neutral-950",
-                  "focus-visible:ring-2 focus-visible:ring-brand-primary",
-                ].join(" ")}
-              >
-                {n.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </aside>
+    <div className="relative">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="ambient-blob-a absolute -top-20 -right-20 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,rgb(var(--brand-accent)),transparent_65%)] opacity-18" />
+        <div className="ambient-blob-b absolute -bottom-20 -left-20 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,rgb(var(--brand-primary)),transparent_65%)] opacity-14" />
+        <div className="noise-overlay" />
+      </div>
 
-      <div className="space-y-4">
-        <PanelTopbar />
-        <div className="bg-white border border-neutral-200 rounded-2xl shadow-sm p-6">
-          <h1 className="font-display font-semibold text-[28px] leading-tight text-neutral-950">
-            {title}
-          </h1>
-          <div className="mt-6">{children}</div>
+      <div className="relative grid grid-cols-1 lg:grid-cols-[270px_minmax(0,1fr)] gap-6 items-start">
+        <aside className="lg:sticky lg:top-6 space-y-4">
+          <div className="bg-white/70 backdrop-blur-xl border border-neutral-200 rounded-3xl p-3 shadow-sm">
+            <div className="px-2 pt-1 pb-2">
+              <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wide">
+                {isEn ? "Client panel" : "Müşteri paneli"}
+              </div>
+            </div>
+
+            <nav aria-label="Panel menüsü" className="space-y-1">
+              {nav.map((n) => {
+                const active = pathname === n.href;
+                return (
+                  <Link
+                    key={n.href}
+                    href={n.href}
+                    className={[
+                      "min-h-[44px] px-3 py-2 rounded-2xl text-sm font-semibold inline-flex items-center w-full gap-2",
+                      active
+                        ? "bg-gradient-to-r from-brand-primary-light/90 to-white text-neutral-950 border border-brand-primary/20"
+                        : "text-neutral-700 hover:bg-neutral-50 hover:text-neutral-950 border border-transparent",
+                      "focus-visible:ring-2 focus-visible:ring-brand-primary",
+                    ].join(" ")}
+                  >
+                    {n.icon}
+                    <span className="flex-1">{n.label}</span>
+                    {active ? <ArrowRight size={16} className="opacity-80" aria-hidden="true" /> : null}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+
+          <PanelWhmcsLinks isEn={isEn} />
+        </aside>
+
+        <div className="space-y-4">
+          <PanelTopbar />
+          <section className="bg-white/70 backdrop-blur-xl border border-neutral-200 rounded-3xl shadow-sm p-6">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="max-w-[60ch]">
+                <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wide">
+                  {isEn ? "Your account" : "Hesabınız"}
+                </div>
+                <h1 className="mt-2 font-display font-semibold text-[30px] leading-tight tracking-tight text-neutral-950">
+                  {title}
+                </h1>
+              </div>
+              <div className="hidden sm:block w-full sm:w-auto">
+                <div className="h-1 w-full bg-gradient-to-r from-brand-accent/70 via-brand-primary/40 to-transparent rounded-full" />
+              </div>
+            </div>
+
+            <div className="mt-6">{children}</div>
+          </section>
         </div>
       </div>
     </div>

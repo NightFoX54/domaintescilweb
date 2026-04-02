@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 import { getProfile, updateProfile } from "@/lib/portalApi";
 import type { PortalProfile } from "@/types/portal";
 import EmptyState from "@/components/panel/EmptyState";
-import usePortalAuth from "@/components/panel/usePortalAuth";
-import { demoEmail, mockProfile } from "@/lib/portalMock";
 
 export default function ProfileClient() {
-  const { user } = usePortalAuth();
   const [profile, setProfile] = useState<PortalProfile>({
     fullName: "",
     email: "",
@@ -25,17 +22,13 @@ export default function ProfileClient() {
         const data = await getProfile();
         setProfile(data);
       } catch {
-        if (user?.email === demoEmail) {
-          setProfile(mockProfile);
-        } else {
-          setError("Profil bilgisi yüklenemedi.");
-        }
+        setError("Profil bilgisi yüklenemedi.");
       } finally {
         setLoading(false);
       }
     };
     run();
-  }, [user?.email]);
+  }, []);
 
   if (loading) return <div className="text-sm text-neutral-600">Yükleniyor...</div>;
   if (error) return <EmptyState title="Bir sorun oluştu" description={error} />;
@@ -48,14 +41,9 @@ export default function ProfileClient() {
       return;
     }
     try {
-      if (user?.email === demoEmail) {
-        setProfile(profile);
-        setSuccess("Profil güncellendi (demo).");
-      } else {
-        const updated = await updateProfile(profile);
-        setProfile(updated);
-        setSuccess("Profil güncellendi.");
-      }
+      const updated = await updateProfile(profile);
+      setProfile(updated);
+      setSuccess("Profil güncellendi.");
     } catch {
       setError("Profil güncellenemedi.");
     }

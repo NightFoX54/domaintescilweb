@@ -40,7 +40,7 @@ export default function DomainCardFloat() {
             </div>
           </div>
           <div className="mt-3 text-sm text-white/70">
-            Fiyat: <span className="font-mono text-white">$9.99/yıl</span>
+            Fiyat: <span className="font-mono text-white">₺349/yıl</span>
           </div>
         </motion.div>
 
@@ -59,7 +59,7 @@ export default function DomainCardFloat() {
             </div>
           </div>
           <div className="mt-3 text-sm text-white/70">
-            Fiyat: <span className="font-mono text-white">$19.99/yıl</span>
+            Fiyat: <span className="font-mono text-white">₺699/yıl</span>
           </div>
         </motion.div>
 
@@ -78,7 +78,7 @@ export default function DomainCardFloat() {
             </div>
           </div>
           <div className="mt-3 text-sm text-white/70">
-            Fiyat: <span className="font-mono text-white">$39.99/yıl</span>
+            Fiyat: <span className="font-mono text-white">₺1.399/yıl</span>
           </div>
         </motion.div>
       </div>

@@ -38,29 +38,29 @@ function TypeBadge({ type }: Readonly<{ type: "DV" | "OV" | "EV" }>) {
 const fallbackItems: SSLItem[] = [
   {
     plan: "Positive SSL",
-    price: "$9.99/yıl",
+    price: "₺349/yıl",
     type: "DV",
-    features: ["Tek domain", "$10.000 garanti", "15 gün iade ✓"],
+    features: ["Tek domain", "₺350.000 garanti", "15 gün iade ✓"],
     note: "15 gün iade garantisi ✓",
     special: "En Uygun",
   },
   {
     plan: "Positive SSL Wildcard",
-    price: "$159/yıl",
+    price: "₺5.499/yıl",
     type: "DV",
-    features: ["Limitsiz subdomain", "$10.000 garanti"],
+    features: ["Limitsiz subdomain", "₺350.000 garanti"],
     note: "İade yok",
   },
   {
     plan: "Instant SSL Pro",
-    price: "$139/yıl",
+    price: "₺4.799/yıl",
     type: "OV",
-    features: ["Tek domain", "$100.000 garanti"],
+    features: ["Tek domain", "₺3.500.000 garanti"],
     note: "Onaylandıktan sonra iade yapılmaz",
   },
   {
     plan: "EV SSL",
-    price: "$175/yıl",
+    price: "₺5.999/yıl",
     type: "EV",
     features: ["Tek domain"],
     note: "Onaylandıktan sonra iade yapılmaz",
@@ -101,7 +101,7 @@ export default function SSLPricing() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-6">
           {items.map((it) => (
             <PricingCard
               key={it.plan}
@@ -109,7 +109,7 @@ export default function SSLPricing() {
               price={it.price}
               benefit={undefined}
               features={it.features}
-              ctaLabel="Satın Al"
+              ctaLabel="Hemen Başla"
               ctaHref={`${base}/ssl/konfigurasyon?plan=${encodeURIComponent(it.plan)}&type=${it.type}`}
               isRecommended={false}
               topBadges={
@@ -136,6 +136,36 @@ export default function SSLPricing() {
               }
             />
           ))}
+        </div>
+
+        <div className="md:hidden overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+          <div className="flex gap-4 pb-2">
+            {items.map((it) => (
+              <div key={it.plan} className="w-[320px] flex-shrink-0 snap-start">
+                <PricingCard
+                  plan={it.plan}
+                  price={it.price}
+                  benefit={undefined}
+                  features={it.features}
+                  ctaLabel="Hemen Başla"
+                  ctaHref={`${base}/ssl/konfigurasyon?plan=${encodeURIComponent(it.plan)}&type=${it.type}`}
+                  isRecommended={false}
+                  topBadges={
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <TypeBadge type={it.type} />
+                        {it.special ? (
+                          <span className="inline-flex items-center rounded-full bg-brand-cta text-white px-3 py-1 text-xs font-semibold">
+                            {it.special}
+                          </span>
+                        ) : null}
+                      </div>
+                    </div>
+                  }
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -31,12 +31,22 @@ export default function AuthFormCard({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [userType, setUserType] = useState<"individual" | "corporate">("individual");
+  const [taxId, setTaxId] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const [fieldErrors, setFieldErrors] = useState<{ name?: string; email?: string; password?: string }>({});
+  const [fieldErrors, setFieldErrors] = useState<{
+    name?: string;
+    email?: string;
+    password?: string;
+    phone?: string;
+    userType?: string;
+  }>({});
 
   const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  const normalizePhone = (v: string) => v.replace(/[^\d]/g, "");
 
   const title = isTr
     ? mode === "sign-in"
@@ -72,6 +82,12 @@ export default function AuthFormCard({
           if (mode === "sign-up" && name.trim().length < 3) nextErrors.name = isTr ? "Ad soyad gerekli." : "Name is required.";
           if (!validateEmail(email)) nextErrors.email = isTr ? "Geçerli bir e‑posta girin." : "Enter a valid email.";
           if (password.trim().length < 6) nextErrors.password = isTr ? "Şifre en az 6 karakter olmalı." : "Password must be at least 6 characters.";
+          if (mode === "sign-up" && normalizePhone(phone).trim().length < 10) {
+            nextErrors.phone = isTr ? "Geçerli bir telefon girin." : "Enter a valid phone number.";
+          }
+          if (mode === "sign-up" && userType === "corporate" && taxId.trim().length < 10) {
+            nextErrors.userType = isTr ? "Kurumsal hesap için Vergi No / TC No gerekli." : "Tax ID is required for corporate accounts.";
+          }
 
           setFieldErrors(nextErrors);
           if (Object.keys(nextErrors).length > 0) {
@@ -84,7 +100,14 @@ export default function AuthFormCard({
             if (mode === "sign-in") {
               await login(email.trim(), password);
             } else {
-              await register(name.trim(), email.trim(), password);
+              await register({
+                fullName: name.trim(),
+                email: email.trim(),
+                password,
+                phone: normalizePhone(phone).trim(),
+                userType,
+                taxId: userType === "corporate" ? taxId.trim() : undefined,
+              });
             }
             setSuccess(
               isTr
@@ -96,12 +119,15 @@ export default function AuthFormCard({
                   : "Sign-up successful, redirecting…",
             );
             router.push(locale === "tr" ? "/panel" : "/en/panel");
-          } catch {
-            setFormError(
-              isTr
-                ? "Giriş/kayıt sırasında bir hata oluştu."
-                : "An error occurred during authentication.",
-            );
+          } catch (error) {
+            const fallback = isTr
+              ? "Giriş/kayıt sırasında bir hata oluştu."
+              : "An error occurred during authentication.";
+            const message =
+              error instanceof Error && error.message.trim()
+                ? error.message
+                : fallback;
+            setFormError(message);
           } finally {
             setSubmitting(false);
           }
@@ -150,6 +176,76 @@ export default function AuthFormCard({
                 {fieldErrors.name}
               </div>
             ) : null}
+          </div>
+        ) : null}
+
+        {mode === "sign-up" && userType === "corporate" ? (
+          <div>
+            <label htmlFor="auth-tax-id" className="block text-sm font-semibold text-neutral-950">
+              {isTr ? "Vergi No / T.C. No" : "Tax ID"}
+            </label>
+            <input
+              id="auth-tax-id"
+              value={taxId}
+              onChange={(e) => setTaxId(e.target.value)}
+              aria-invalid={Boolean(fieldErrors.userType)}
+              aria-describedby={fieldErrors.userType ? "auth-tax-id-error" : undefined}
+              className={[
+                "mt-2 w-full min-h-[44px] rounded-xl border bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary",
+                fieldErrors.userType ? "border-error/40" : "border-neutral-200",
+              ].join(" ")}
+              inputMode="numeric"
+              placeholder={isTr ? "11111111111" : "Enter tax id"}
+            />
+            {fieldErrors.userType ? (
+              <div id="auth-tax-id-error" className="mt-2 text-xs font-semibold text-error">
+                {fieldErrors.userType}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
+        {mode === "sign-up" ? (
+          <div>
+            <label htmlFor="auth-phone" className="block text-sm font-semibold text-neutral-950">
+              {isTr ? "Telefon" : "Phone"}
+            </label>
+            <input
+              id="auth-phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              aria-invalid={Boolean(fieldErrors.phone)}
+              aria-describedby={fieldErrors.phone ? "auth-phone-error" : undefined}
+              className={[
+                "mt-2 w-full min-h-[44px] rounded-xl border bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary",
+                fieldErrors.phone ? "border-error/40" : "border-neutral-200",
+              ].join(" ")}
+              autoComplete="tel"
+              inputMode="tel"
+              placeholder={isTr ? "05xx xxx xx xx" : "+90 ..."}
+            />
+            {fieldErrors.phone ? (
+              <div id="auth-phone-error" className="mt-2 text-xs font-semibold text-error">
+                {fieldErrors.phone}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
+        {mode === "sign-up" ? (
+          <div>
+            <label htmlFor="auth-user-type" className="block text-sm font-semibold text-neutral-950">
+              {isTr ? "Kullanıcı Tipi" : "Account type"}
+            </label>
+            <select
+              id="auth-user-type"
+              value={userType}
+              onChange={(e) => setUserType(e.target.value as any)}
+              className="mt-2 w-full min-h-[44px] rounded-xl border border-neutral-200 bg-white px-4 text-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+            >
+              <option value="individual">{isTr ? "Bireysel" : "Individual"}</option>
+              <option value="corporate">{isTr ? "Kurumsal" : "Corporate"}</option>
+            </select>
           </div>
         ) : null}
 

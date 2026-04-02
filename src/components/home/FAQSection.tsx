@@ -43,9 +43,22 @@ export default function FAQSection() {
   const pathname = usePathname();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
   const href = locale === "tr" ? "/knowledgebase" : "/en/knowledgebase";
+  const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  });
 
   return (
     <section className="bg-neutral-50 text-neutral-950" aria-label="Sıkça Sorulan Sorular">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           <div>

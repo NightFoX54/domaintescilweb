@@ -27,9 +27,9 @@ export const mockServices: PortalService[] = [
 ];
 
 export const mockInvoices: PortalInvoice[] = [
-  { id: "inv-1", number: "#INV-10234", amount: "$55.00", status: "unpaid", dueDate: "2026-04-10" },
-  { id: "inv-2", number: "#INV-10211", amount: "$9.99", status: "paid", dueDate: "2026-03-12" },
-  { id: "inv-3", number: "#INV-10189", amount: "$25.00", status: "overdue", dueDate: "2026-02-02" },
+  { id: "inv-1", number: "#INV-10234", amount: "₺1.899,00", status: "unpaid", dueDate: "2026-04-10" },
+  { id: "inv-2", number: "#INV-10211", amount: "₺349,00", status: "paid", dueDate: "2026-03-12" },
+  { id: "inv-3", number: "#INV-10189", amount: "₺899,00", status: "overdue", dueDate: "2026-02-02" },
 ];
 
 export const mockProfile: PortalProfile = {

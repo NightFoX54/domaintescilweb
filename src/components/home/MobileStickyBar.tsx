@@ -48,7 +48,7 @@ export default function MobileStickyBar() {
           className="w-full min-h-[44px] h-11 text-white font-bold rounded-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           onClick={() => router.push(targetHref)}
         >
-          Hemen Ara
+          Hemen Başla
         </button>
       </div>
     </div>
