@@ -44,11 +44,11 @@ export default function MobileStickyBar() {
       <div className="px-4 py-0">
         <button
           type="button"
-          aria-label="Domain ara"
+          aria-label={locale === "tr" ? "Domain ara" : "Search domain"}
           className="w-full min-h-[44px] h-11 text-white font-bold rounded-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           onClick={() => router.push(targetHref)}
         >
-          Hemen Başla
+          {locale === "tr" ? "Domain Ara" : "Search Domain"}
         </button>
       </div>
     </div>

@@ -8,7 +8,7 @@ export default function TrustStrip({
   items = [
     { icon: <ShieldCheck size={16} />, label: "ICANN Akredite" },
     { icon: <Landmark size={16} />, label: "BTK Yetkili" },
-    { icon: <Award size={16} />, label: "20+ Yıl Deneyim" },
+    { icon: <Award size={16} />, label: "20 Yıl Deneyim" },
   ],
 }: Readonly<{
   items?: Array<{ icon: ReactNode; label: string }>;

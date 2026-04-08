@@ -19,8 +19,8 @@ function buildMetadata(locale: Locale): Metadata {
     : "Fast Domain Registration, Hosting and SSL | Domaintescil";
 
   const description = isTr
-    ? "Domain tescil ve SSL sertifikalarıyla 200+ uzantıda hızlı sorgulama yapın. ICANN Akredite Kayıt Kuruluşu güvencesiyle 20 yılı aşkın tecrübeyle hizmet sunuyoruz."
-    : "Register domains and buy SSL certificates with instant checks across 200+ TLDs. As an ICANN-accredited registrar, we provide trusted service backed by 20+ years of experience.";
+    ? "Domain tescil ve SSL sertifikalarıyla 200+ uzantıda hızlı sorgulama yapın. ICANN Akredite Kayıt Kuruluşu güvencesiyle 20 yıllık tecrübeyle hizmet sunuyoruz."
+    : "Register domains and buy SSL certificates with instant checks across 200+ TLDs. As an ICANN-accredited registrar, we provide trusted service backed by 20 years of experience.";
 
   const canonical = `${SITE_URL}${isTr ? "/" : "/en/"}`;
   const ogLocale = isTr ? "tr_TR" : "en_US";

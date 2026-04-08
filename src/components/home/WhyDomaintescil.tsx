@@ -9,13 +9,13 @@ export default function WhyDomaintescil() {
 
   const points = isTr
     ? [
-        { icon: <ShieldCheck size={18} aria-hidden="true" />, title: "20+ yıl deneyim", text: "Uzun yıllara dayanan operasyon birikimi." },
+        { icon: <ShieldCheck size={18} aria-hidden="true" />, title: "20 yıl deneyim", text: "Uzun yıllara dayanan operasyon birikimi." },
         { icon: <Building2 size={18} aria-hidden="true" />, title: "ICANN & BTK yetkili", text: "Uluslararası ve yerel uyumla güvenli süreç." },
         { icon: <Wrench size={18} aria-hidden="true" />, title: "Tucows altyapısı", text: "Dünya standardında registrar altyapısı." },
         { icon: <Headphones size={18} aria-hidden="true" />, title: "7/24 Türkçe destek", text: "Teknik ve satış ekiplerine hızlı erişim." },
       ]
     : [
-        { icon: <ShieldCheck size={18} aria-hidden="true" />, title: "20+ years experience", text: "Long-term operational expertise." },
+        { icon: <ShieldCheck size={18} aria-hidden="true" />, title: "20 years experience", text: "Long-term operational expertise." },
         { icon: <Building2 size={18} aria-hidden="true" />, title: "ICANN & BTK authorized", text: "Secure processes with global and local compliance." },
         { icon: <Wrench size={18} aria-hidden="true" />, title: "Tucows infrastructure", text: "World-class registrar infrastructure." },
         { icon: <Headphones size={18} aria-hidden="true" />, title: "24/7 support", text: "Fast access to support and sales teams." },
@@ -33,7 +33,7 @@ export default function WhyDomaintescil() {
         </div>
         <div>
           <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
-            {isTr ? "Neden 20 yıldır bize güveniyorlar?" : "Why have businesses trusted us for 20+ years?"}
+            {isTr ? "Neden 20 yıldır bize güveniyorlar?" : "Why have businesses trusted us for 20 years?"}
           </h2>
           <p className="mt-3 text-neutral-600 leading-relaxed">
             {isTr

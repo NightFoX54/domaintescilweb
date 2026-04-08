@@ -39,6 +39,21 @@ export async function generateMetadata({
       },
     },
     robots: { index: true, follow: true },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale: isTr ? "tr_TR" : "en_US",
+      url: canonical,
+      images: [
+        {
+          url: `${SITE_URL}${isTr ? "/" : "/en/"}opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: isTr ? "Domaintescil Open Graph görseli" : "Domaintescil Open Graph image",
+        },
+      ],
+    },
   };
 }
 

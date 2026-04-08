@@ -3,8 +3,22 @@ export const organizationSchema = {
   "@type": "Organization",
   name: "Domaintescil",
   url: "https://domaintescil.com",
+  logo: "https://domaintescil.com/opengraph-image",
   telephone: "+90-850-441-0-574",
   email: "destek@domaintescil.com",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+90-850-441-0-574",
+      contactType: "customer support",
+      areaServed: "TR",
+      availableLanguage: ["tr", "en"],
+    },
+  ],
+  sameAs: [
+    "https://facebook.com/domaintescil",
+    "https://www.linkedin.com/company/domaintescil",
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Eğitim Mh. Eylül Sok. Dora İş Merkezi No:12",

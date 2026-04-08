@@ -15,8 +15,8 @@ export async function generateMetadata({
 
   const title = isTr ? "Hakkımızda | Domaintescil" : "About Us | Domaintescil";
   const description = isTr
-    ? "Domaintescil ekibi, 20+ yıllık alan adı ve hosting tecrübesiyle ICANN akredite kayıt kuruluşu olarak hizmet verir."
-    : "Meet the Domaintescil team. We serve as an ICANN-accredited registrar with 20+ years of domain and hosting experience.";
+    ? "Domaintescil ekibi, 20 yıllık alan adı ve hosting tecrübesiyle ICANN akredite kayıt kuruluşu olarak hizmet verir."
+    : "Meet the Domaintescil team. We serve as an ICANN-accredited registrar with 20 years of domain and hosting experience.";
   const canonical = `${SITE_URL}${isTr ? "/hakkimizda" : "/en/about"}`;
 
   return {
@@ -31,6 +31,21 @@ export async function generateMetadata({
       },
     },
     robots: { index: true, follow: true },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale: isTr ? "tr_TR" : "en_US",
+      url: canonical,
+      images: [
+        {
+          url: `${SITE_URL}${isTr ? "/" : "/en/"}opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: isTr ? "Domaintescil Open Graph görseli" : "Domaintescil Open Graph image",
+        },
+      ],
+    },
   };
 }
 
@@ -63,8 +78,8 @@ export default async function AboutPage({
         title={isTr ? "Domaintescil Hakkında" : "About Domaintescil"}
         subtitle={
           isTr
-            ? "ICANN akredite kayıt kuruluşu olarak 20+ yıldır domain, hosting ve SSL çözümleri sunuyoruz."
-            : "As an ICANN-accredited registrar, we have delivered domain, hosting and SSL services for 20+ years."
+            ? "ICANN akredite kayıt kuruluşu olarak 20 yıldır domain, hosting ve SSL çözümleri sunuyoruz."
+            : "As an ICANN-accredited registrar, we have delivered domain, hosting and SSL services for 20 years."
         }
         breadcrumb={
           <Breadcrumb
@@ -82,8 +97,8 @@ export default async function AboutPage({
             title={isTr ? "Ekibimiz" : "Our Team"}
             lead={
               isTr
-                ? "Kurucu ekip ve operasyon kadromuz, kesintisiz hizmet için birlikte çalışır."
-                : "Our leadership and operations teams work together for uninterrupted service."
+                ? "Kurucu ekip ve operasyon kadromuz, BTK Yetkili Kayıt Kuruluşu sorumluluğuyla kesintisiz hizmet için birlikte çalışır."
+                : "Our leadership and operations teams work together with BTK-authorized registrar responsibility."
             }
           />
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -1,13 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import DomainSearchBox from "@/components/ui/DomainSearchBox";
 
 export default function CTABand() {
   const pathname = usePathname();
-  const locale = pathname?.startsWith("/en") ? "en" : "tr";
-  const domainHref = locale === "tr" ? "/domain-ara" : "/en/domain-search";
-  const hostingHref = locale === "tr" ? "/hosting" : "/en/hosting";
+  const isTr = !pathname?.startsWith("/en");
 
   return (
     <section className="relative overflow-hidden bg-brand-primary text-white">
@@ -17,27 +15,28 @@ export default function CTABand() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="flex flex-col items-start gap-4">
-          <div className="text-sm text-white font-semibold">ICANN Akredite Kayıt Kuruluşu ★★★★★</div>
+          <div className="text-sm text-white font-semibold">
+            {isTr ? "ICANN Akredite Kayıt Kuruluşu" : "ICANN Accredited Registrar"}
+          </div>
           <h2 className="font-display font-semibold text-[28px] sm:text-[40px] leading-tight max-w-[26ch]">
-            Domain&apos;inizi Bugün Tescil Edin
+            {isTr ? "Markanızın alan adı hala müsait mi?" : "Is your brand domain still available?"}
           </h2>
           <p className="text-[16px] text-white leading-relaxed max-w-[70ch]">
-            200+ uzantıda anında sorgulama. Ücretsiz, bağlayıcı değil.
+            {isTr ? "Şimdi sorgula, saniyeler içinde öğren." : "Search now and learn in seconds."}
           </p>
 
-          <div className="mt-3 flex flex-col sm:flex-row gap-3 w-full">
-            <Link
-              href={domainHref}
-              className="min-h-[44px] inline-flex items-center justify-center rounded-full bg-white text-brand-primary px-6 font-bold focus-visible:ring-2 focus-visible:ring-brand-primary"
-            >
-              Domain Ara
-            </Link>
-            <Link
-              href={hostingHref}
-              className="min-h-[44px] inline-flex items-center justify-center rounded-full border border-white/50 text-white px-6 font-bold focus-visible:ring-2 focus-visible:ring-brand-primary"
-            >
-              Paketi İncele
-            </Link>
+          <div className="mt-3 w-full max-w-2xl">
+            <DomainSearchBox
+              id="final-cta-domain-search"
+              submitLabel={isTr ? "Domain Sorgula" : "Search Domain"}
+              placeholder={isTr ? "markaniz.com" : "yourbrand.com"}
+              helperText={
+                isTr
+                  ? "Ücretsiz sorgulama · Bağlayıcı değil · Anında sonuç"
+                  : "Free search · Non-binding · Instant results"
+              }
+              inputAriaLabel={isTr ? "Alan adı sorgula" : "Search domain name"}
+            />
           </div>
         </div>
       </div>

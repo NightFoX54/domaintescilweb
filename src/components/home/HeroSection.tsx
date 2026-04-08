@@ -1,20 +1,31 @@
 "use client";
 
-import { ShieldCheck, Globe, Zap, Lock, Mail } from "lucide-react";
-import Badge from "@/components/ui/Badge";
+import { Award, ShieldCheck, Wrench } from "lucide-react";
 import DomainSearchBox from "@/components/ui/DomainSearchBox";
 import TrustBadge from "@/components/ui/TrustBadge";
-import DomainCardFloat from "@/components/mockups/DomainCardFloat";
 import { useMemo } from "react";
+import { usePathname } from "next/navigation";
 
 export default function HeroSection() {
+  const pathname = usePathname();
+  const isTr = !pathname?.startsWith("/en");
+
   const trust = useMemo(
     () => [
-      { icon: <Zap size={16} />, label: "20+ Yıl" },
-      { icon: <Lock size={16} />, label: "Anında Aktivasyon" },
-      { icon: <Mail size={16} />, label: "200+ TLD" },
+      {
+        icon: <Award size={16} />,
+        label: isTr ? "20 Yıl Deneyim" : "20 Years Experience",
+      },
+      {
+        icon: <ShieldCheck size={16} />,
+        label: isTr ? "ICANN Akredite" : "ICANN Accredited",
+      },
+      {
+        icon: <Wrench size={16} />,
+        label: isTr ? "Tucows Altyapısı" : "Tucows Infrastructure",
+      },
     ],
-    []
+    [isTr]
   );
 
   return (
@@ -60,19 +71,25 @@ export default function HeroSection() {
               id="hero-heading"
               className="font-display font-semibold text-white text-[48px] sm:text-[66px] leading-[1.02] tracking-tight"
             >
-              Hayalinizdeki{" "}
-              <span className="bg-gradient-to-r from-brand-accent to-brand-primary bg-clip-text text-transparent">
-                Domain
-              </span>
-              <br />
-              Bir Tık Uzağınızda
+              {isTr ? "Markanın dijital adresi buradan başlar" : "Your brand's digital address starts here"}
             </h1>
 
             <p className="text-neutral-400 text-[18px] leading-relaxed max-w-[46ch]">
-              200&apos;den fazla uzantıda anında tescil. 20 yıllık deneyim.
+              {isTr
+                ? "200'den fazla uzantıda anında sorgulama yapın. Sıcak, hızlı ve güvenilir bir kayıt deneyimi."
+                : "Search instantly across 200+ extensions with a warm, fast and reliable registration flow."}
             </p>
 
-            <DomainSearchBox />
+            <DomainSearchBox
+              submitLabel={isTr ? "Domain Ara" : "Search Domain"}
+              placeholder={isTr ? "markaniz.com" : "yourbrand.com"}
+              helperText={
+                isTr
+                  ? "Ücretsiz sorgulama · Bağlayıcı değil · Anında sonuç"
+                  : "Free search · Non-binding · Instant results"
+              }
+              inputAriaLabel={isTr ? "Alan adı sorgula" : "Search domain name"}
+            />
 
             <div className="border-t border-white/10 mt-4">
               <div className="flex flex-wrap gap-6">
@@ -84,7 +101,19 @@ export default function HeroSection() {
           </div>
 
           <div className="col-span-12 lg:col-span-5 hidden lg:block">
-            <DomainCardFloat />
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <img
+                src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=1200&h=900&dpr=1"
+                alt={
+                  isTr
+                    ? "Laptop başında çalışan küçük işletme sahibi girişimci"
+                    : "Small business owner working on a laptop"
+                }
+                className="h-full w-full object-cover"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </div>
           </div>
         </div>
       </div>

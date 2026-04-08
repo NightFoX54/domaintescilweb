@@ -12,9 +12,17 @@ function getDomainSearchAction(locale: string) {
 export default function DomainSearchBox({
   defaultValue,
   id,
+  submitLabel = "Hemen Başla",
+  placeholder = "hayalindekidomain.com",
+  helperText = "Ücretsiz sorgulama · Bağlayıcı değil · Anında sonuç",
+  inputAriaLabel = "Domain adı ara",
 }: Readonly<{
   defaultValue?: string;
   id?: string;
+  submitLabel?: string;
+  placeholder?: string;
+  helperText?: string;
+  inputAriaLabel?: string;
 }>) {
   const pathname = usePathname();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
@@ -39,11 +47,11 @@ export default function DomainSearchBox({
         <div className="flex flex-col sm:flex-row gap-3">
           <input
             id={`${id || "domain-search"}-input`}
-            aria-label="Domain adı ara"
+            aria-label={inputAriaLabel}
             name="q"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            placeholder="hayalindekidomain.com"
+            placeholder={placeholder}
             autoComplete="off"
             className="flex-1 min-h-[44px] px-4 py-3 rounded-xl bg-transparent text-white placeholder:text-white/60 border border-white/0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           />
@@ -51,7 +59,7 @@ export default function DomainSearchBox({
             type="submit"
             className="min-h-[44px] sm:w-[160px] px-5 rounded-xl bg-brand-cta text-white font-bold transition-colors hover:bg-brand-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           >
-            Hemen Başla
+            {submitLabel}
           </button>
         </div>
 
@@ -80,7 +88,7 @@ export default function DomainSearchBox({
         </div>
 
         <div className="mt-3 text-sm text-neutral-500">
-          Ücretsiz sorgulama · Bağlayıcı değil · Anında sonuç
+          {helperText}
         </div>
       </form>
     </div>

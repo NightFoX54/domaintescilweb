@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import TestimonialCard from "@/components/ui/TestimonialCard";
+import { usePathname } from "next/navigation";
 
 type Testimonial = {
   quote: string;
@@ -13,7 +14,7 @@ type Testimonial = {
   date: string;
 };
 
-const TESTIMONIALS: Testimonial[] = [
+const TESTIMONIALS_TR: Testimonial[] = [
   {
     quote:
       ".io domain transferimizi öğleden önce başlattık, panelde tüm DNS adımlarını tek ekranda tamamladık ve akşama canlıya çıktık.",
@@ -70,7 +71,37 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
+const TESTIMONIALS_EN: Testimonial[] = [
+  {
+    quote: "We started our .io transfer in the morning, completed DNS steps in one panel and went live the same evening.",
+    highlight: "Instant activation and smooth migration",
+    author: "Mert Yilmaz",
+    title: "Software Developer",
+    city: "Istanbul",
+    date: "Feb 2026",
+  },
+  {
+    quote: "During .com.tr registration, we completed the process without paperwork and tracked approval steps clearly.",
+    highlight: "Clear status tracking for no-document flow",
+    author: "Ece Kaya",
+    title: "Founder",
+    city: "Ankara",
+    date: "Jan 2026",
+  },
+  {
+    quote: "We got SSL renewal reminders on time, picked the right certificate quickly and received immediate setup guidance.",
+    highlight: "Secure purchase with 15-day refund confidence",
+    author: "Deniz Sahin",
+    title: "E-commerce Manager",
+    city: "Izmir",
+    date: "Dec 2025",
+  },
+];
+
 export default function Testimonials() {
+  const pathname = usePathname();
+  const isTr = !pathname?.startsWith("/en");
+  const testimonials = isTr ? TESTIMONIALS_TR : TESTIMONIALS_EN;
   const reduced = useReducedMotion();
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -88,7 +119,7 @@ export default function Testimonials() {
     return 1;
   }, [viewportW]);
 
-  const maxIndex = Math.max(0, Math.ceil(TESTIMONIALS.length / cardsPerView) - 1);
+  const maxIndex = Math.max(0, Math.ceil(testimonials.length / cardsPerView) - 1);
 
   useEffect(() => {
     const calc = () => {
@@ -105,10 +136,10 @@ export default function Testimonials() {
   }, [maxIndex]);
 
   const maxDragLeft = useMemo(() => {
-    const total = TESTIMONIALS.length * step - gap; // last gap irrelevant
+    const total = testimonials.length * step - gap; // last gap irrelevant
     const visible = viewportW || cardW;
     return -(Math.max(0, total - visible));
-  }, [step, viewportW]);
+  }, [step, viewportW, testimonials.length]);
 
   const dragConstraints = { right: 0, left: maxDragLeft };
 
@@ -116,11 +147,11 @@ export default function Testimonials() {
   const onNext = () => setIndex((i) => Math.min(maxIndex, i + 1));
 
   return (
-    <section className="bg-white text-neutral-950" aria-label="Müşteri yorumları carousel">
+    <section className="bg-white text-neutral-950" aria-label={isTr ? "Müşteri yorumları carousel" : "Customer testimonials carousel"}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="mb-8">
           <div className="text-sm font-semibold text-neutral-600">
-            ★★★★★ 4.8/5 · 3.900+ değerlendirme (
+            ★★★★★ 4.8/5 · 3.900+ {isTr ? "değerlendirme" : "reviews"} (
             <a
               href="https://www.google.com/maps"
               target="_blank"
@@ -132,10 +163,10 @@ export default function Testimonials() {
             )
           </div>
           <h2 className="mt-3 font-display font-semibold text-[28px] sm:text-[36px] leading-tight max-w-[20ch]">
-            Müşterilerimiz Ne Diyor?
+            {isTr ? "Müşterilerimiz Ne Diyor?" : "What Our Customers Say"}
           </h2>
           <p className="mt-3 text-neutral-600 max-w-[60ch] leading-relaxed">
-            20 yıldır yanlarındayız — işte onların deneyimi.
+            {isTr ? "20 yıldır yanlarındayız — işte onların deneyimi." : "We have supported businesses for 20 years — here is their experience."}
           </p>
         </div>
 
@@ -143,7 +174,7 @@ export default function Testimonials() {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              aria-label="Önceki yorum"
+              aria-label={isTr ? "Önceki yorum" : "Previous testimonial"}
               className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-neutral-200 hover:border-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary"
               onClick={onPrev}
               disabled={index === 0}
@@ -152,7 +183,7 @@ export default function Testimonials() {
             </button>
             <button
               type="button"
-              aria-label="Sonraki yorum"
+              aria-label={isTr ? "Sonraki yorum" : "Next testimonial"}
               className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-neutral-200 hover:border-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary"
               onClick={onNext}
               disabled={index === maxIndex}
@@ -162,7 +193,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div ref={viewportRef} role="region" aria-label="Müşteri yorumları" className="overflow-hidden">
+        <div ref={viewportRef} role="region" aria-label={isTr ? "Müşteri yorumları" : "Customer testimonials"} className="overflow-hidden">
           <motion.div
             ref={trackRef}
             className="flex gap-4"
@@ -180,7 +211,7 @@ export default function Testimonials() {
               if (e.key === "ArrowRight") onNext();
             }}
           >
-            {TESTIMONIALS.map((t) => (
+            {testimonials.map((t) => (
               <div key={t.author} className="flex-shrink-0 w-[320px]">
                 <TestimonialCard {...t} />
               </div>

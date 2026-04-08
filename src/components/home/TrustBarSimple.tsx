@@ -9,14 +9,14 @@ export default function TrustBarSimple() {
 
   const items = isTr
     ? [
-        { icon: <Award size={16} aria-hidden="true" />, label: "20+ Yıl Deneyim" },
+        { icon: <Award size={16} aria-hidden="true" />, label: "20 Yıl Deneyim" },
         { icon: <ShieldCheck size={16} aria-hidden="true" />, label: "ICANN Akredite Kayıt Kuruluşu" },
         { icon: <Building2 size={16} aria-hidden="true" />, label: "BTK Yetkili" },
         { icon: <Wrench size={16} aria-hidden="true" />, label: "Tucows Altyapısı" },
         { icon: <Headphones size={16} aria-hidden="true" />, label: "7/24 Destek" },
       ]
     : [
-        { icon: <Award size={16} aria-hidden="true" />, label: "20+ Years Experience" },
+        { icon: <Award size={16} aria-hidden="true" />, label: "20 Years Experience" },
         { icon: <ShieldCheck size={16} aria-hidden="true" />, label: "ICANN Accredited Registrar" },
         { icon: <Building2 size={16} aria-hidden="true" />, label: "BTK Authorized" },
         { icon: <Wrench size={16} aria-hidden="true" />, label: "Tucows Infrastructure" },
