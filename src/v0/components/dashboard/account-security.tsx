@@ -47,6 +47,7 @@ export function AccountSecurity() {
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
   const [sessions, setSessions] = useState<Session[]>(initialSessions)
   const [verifRequired, setVerifRequired] = useState(true)
+  const [panelLanguage, setPanelLanguage] = useState<'tr' | 'en'>('tr')
 
   const twoFactorStatus: 'Aktif' | 'Kapalı' | 'Doğrulama Gerekli' = twoFactorEnabled ? 'Aktif' : verifRequired ? 'Doğrulama Gerekli' : 'Kapalı'
 
@@ -144,6 +145,28 @@ export function AccountSecurity() {
           </p>
 
           <div className="mt-5 space-y-3">
+            <div className="rounded-lg border p-4" style={{ borderColor: 'var(--border)', background: 'var(--muted)' }}>
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: 'var(--foreground)' }}>
+                    Panel dili
+                  </p>
+                  <p className="text-xs mt-0.5" style={{ color: 'var(--muted-foreground)' }}>
+                    Panel acilisinda hesap tercihiniz otomatik uygulanir.
+                  </p>
+                </div>
+                <select
+                  value={panelLanguage}
+                  onChange={(e) => setPanelLanguage(e.target.value as 'tr' | 'en')}
+                  className="min-h-[40px] rounded-lg border px-3 text-sm"
+                  style={{ borderColor: 'var(--border)', background: 'var(--card)', color: 'var(--foreground)' }}
+                  aria-label="Panel dili tercihi"
+                >
+                  <option value="tr">Turkce</option>
+                  <option value="en">English</option>
+                </select>
+              </div>
+            </div>
             <div className="rounded-lg border p-4" style={{ borderColor: 'var(--border)', background: 'var(--muted)' }}>
               <div className="flex items-center justify-between gap-3">
                 <div>

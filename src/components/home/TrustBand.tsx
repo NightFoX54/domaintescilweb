@@ -1,8 +1,7 @@
 "use client";
 
-import { Award, Building2, Globe, ShieldCheck } from "lucide-react";
+import { Award, Building2, Headphones, ShieldCheck } from "lucide-react";
 import ICANNBadge from "@/components/icons/ICANNBadge";
-import NICTRBadge from "@/components/icons/NICTRBadge";
 import TucowsBadge from "@/components/icons/TucowsBadge";
 
 const cards = [
@@ -13,8 +12,8 @@ const cards = [
   },
   {
     icon: <Building2 size={18} />,
-    title: "NIC.TR Yetkili",
-    description: ".tr uzantıları için resmi kayıt operatörü",
+    title: "BTK Yetkili",
+    description: "Yasal uyum ve yetkili kayıt hizmeti",
   },
   {
     icon: <Award size={18} />,
@@ -22,9 +21,9 @@ const cards = [
     description: "Dünya çapında güvenilen registrar altyapısı",
   },
   {
-    icon: <Globe size={18} />,
-    title: "50.000+ Müşteri",
-    description: "On binlerce aktif domain ve hosting müşterisi",
+    icon: <Headphones size={18} />,
+    title: "7/24 Destek",
+    description: "Uzman ekipten kesintisiz Türkçe destek",
   },
 ];
 
@@ -66,15 +65,14 @@ export default function TrustBand() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           <div>
             <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight max-w-[24ch]">
-              Türkiye&apos;de İki Akreditasyona Birden Sahip Platform
+              ICANN Akredite Kayıt Kuruluşu
             </h2>
             <p className="mt-4 text-neutral-400 max-w-[52ch] text-base leading-relaxed">
-              ICANN ve NIC.TR akreditasyonlarını aynı anda taşıyan ender operatörlerden biriyiz. 20 yıldır güvenilir.
+              20 yılı aşkın tecrübemizle domain, hosting ve SSL operasyonlarını ICANN standartlarında, güvenilir altyapı ile sunuyoruz.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-4 items-center">
               <ICANNBadge />
-              <NICTRBadge />
               <TucowsBadge />
             </div>
           </div>

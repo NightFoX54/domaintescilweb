@@ -27,7 +27,7 @@ export async function generateMetadata({
     : "Domain Transfer: Fast Moves & EPP Guide | Domaintescil";
 
   const description = isTr
-    ? "Alan adınızı Domaintescil'e taşıyın: EPP/transfer kodu, NIC.TR ve uluslararası uzantılarda adım adım rehber. ICANN ve NIC.TR akredite operatör güvencesi, kesintisiz DNS ve destek ile hızlı transfer."
+    ? "Alan adınızı Domaintescil'e taşıyın: EPP/transfer kodu, NIC.TR ve uluslararası uzantılarda adım adım rehber. ICANN akredite kayıt kuruluşu güvencesi, kesintisiz DNS ve destek ile hızlı transfer."
     : "Transfer your domain to Domaintescil with a clear EPP/auth-code process for global TLDs and TR namespaces. Accredited operator trust, DNS continuity, and support through each step.";
 
   const canonical = `${SITE_URL}${isTr ? "/domain-transfer-et" : "/en/domain-transfer"}`;

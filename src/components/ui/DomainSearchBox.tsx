@@ -36,9 +36,6 @@ export default function DomainSearchBox({
         onSubmit={onSubmit}
         className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-4"
       >
-        <label htmlFor={`${id || "domain-search"}-input`} className="block text-sm font-semibold text-white mb-2">
-          {locale === "tr" ? "Domain adı" : "Domain name"}
-        </label>
         <div className="flex flex-col sm:flex-row gap-3">
           <input
             id={`${id || "domain-search"}-input`}

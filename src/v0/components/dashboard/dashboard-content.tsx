@@ -85,6 +85,7 @@ export function DashboardContent() {
   const [welcomeHovered, setWelcomeHovered] = useState<string | null>(null)
   const [quickActionsHovered, setQuickActionsHovered] = useState<number | null>(null)
   const [renewHovered, setRenewHovered] = useState(false)
+  const [renewNotice, setRenewNotice] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
 
   return (
     <div className="flex flex-col gap-6">
@@ -116,7 +117,8 @@ export function DashboardContent() {
             Hoş geldiniz, Ahmet Bey.
           </h2>
           <p className="text-sm text-white opacity-75 mt-1">
-            Hesabınızda 2 ödenmemiş fatura ve 1 yaklaşan yenileme bulunuyor.
+            Hesabınızda <span className="inline-flex rounded-full bg-[rgba(255,69,69,0.18)] px-2 py-0.5 text-xs font-semibold text-white">2 ödenmemiş fatura</span> ve{' '}
+            <span className="inline-flex rounded-full bg-[rgba(255,184,0,0.22)] px-2 py-0.5 text-xs font-semibold text-white">1 yaklaşan yenileme</span> bulunuyor.
           </p>
         </div>
         <div className="relative z-10 hidden sm:flex flex-col items-end gap-2 shrink-0">
@@ -277,9 +279,27 @@ export function DashboardContent() {
               style={{ background: renewHovered ? 'var(--brand-cta-hover)' : 'var(--brand-cta)' }}
               onMouseEnter={() => setRenewHovered(true)}
               onMouseLeave={() => setRenewHovered(false)}
+              onClick={() => {
+                const accepted = window.confirm('3 hizmetiniz yenilenecek. Devam etmek istiyor musunuz?')
+                if (!accepted) {
+                  setRenewNotice({ type: 'error', message: 'Toplu yenileme islemi iptal edildi.' })
+                  return
+                }
+                setRenewNotice({ type: 'success', message: 'Toplu yenileme istegi alindi.' })
+              }}
             >
               Hepsi Yenile
             </button>
+            {renewNotice ? (
+              <p
+                className="text-xs text-center"
+                role={renewNotice.type === 'error' ? 'alert' : 'status'}
+                aria-live={renewNotice.type === 'error' ? 'assertive' : 'polite'}
+                style={{ color: renewNotice.type === 'error' ? 'var(--brand-error)' : 'var(--brand-success)' }}
+              >
+                {renewNotice.message}
+              </p>
+            ) : null}
             <p className="text-xs text-muted-foreground text-center">
               Toplam:{' '}
               <span className="font-semibold font-mono text-foreground">$111.97</span>

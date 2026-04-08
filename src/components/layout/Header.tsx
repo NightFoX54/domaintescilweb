@@ -87,6 +87,7 @@ export default function Header() {
           hosting: "Hosting",
           ssl: "SSL",
           blog: "Blog",
+          about: "Hakkımızda",
           contact: "İletişim",
         }
       : {
@@ -94,6 +95,7 @@ export default function Header() {
           hosting: "Hosting",
           ssl: "SSL",
           blog: "Blog",
+          about: "About",
           contact: "Contact",
         };
 
@@ -123,6 +125,7 @@ export default function Header() {
         },
         ssl: { label: labels.ssl, href: getNavHref(locale, "/ssl-satin-al", "/en/ssl-certificates") },
         blog: { label: labels.blog, href: getNavHref(locale, "/blog", "/en/blog") },
+        about: { label: labels.about, href: getNavHref(locale, "/hakkimizda", "/en/about") },
         contact: { label: labels.contact, href: getNavHref(locale, "/iletisim", "/en/contact") },
       },
       auth: {
@@ -138,6 +141,7 @@ export default function Header() {
     if (p.includes("hosting")) return "hosting";
     if (p.includes("ssl")) return "ssl";
     if (p.includes("blog")) return "blog";
+    if (p.includes("hakkimizda") || p.includes("about")) return "about";
     if (p.includes("iletisim") || p.includes("contact")) return "contact";
     if (p.includes("domain-ara") || p.includes("domain-transfer-et")) return "domain";
     return "domain";
@@ -186,7 +190,7 @@ export default function Header() {
 
   const headerBg = useLightHeader ? "bg-white/95 backdrop-blur-xl border-b border-white/10" : "bg-transparent";
   const cartHref = locale === "tr" ? "/sepet" : "/en/cart";
-  const domainSearchHref = locale === "tr" ? "/domain-ara" : "/en/domain-search";
+  const isPanelRoute = (pathname || "").includes("/panel");
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 ${headerBg}`}>
@@ -341,7 +345,7 @@ export default function Header() {
               </div>
             </div>
 
-            {(["ssl", "blog", "contact"] as const).map((key) => {
+            {(["ssl", "blog", "about", "contact"] as const).map((key) => {
               const item = nav.navLinks[key];
               const isActive = key === activeKey;
               return (
@@ -360,6 +364,9 @@ export default function Header() {
               );
             })}
 
+          </nav>
+
+          <div className="hidden md:flex items-center gap-3">
             <Link
               href={cartHref}
               className={[
@@ -376,44 +383,37 @@ export default function Header() {
                 </span>
               ) : null}
             </Link>
-          </nav>
-
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              href={domainSearchHref}
-              className="min-h-[44px] px-4 rounded-full bg-brand-cta text-white text-sm font-semibold inline-flex items-center justify-center hover:bg-brand-cta-hover focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
-            >
-              {locale === "tr" ? "Domain Ara" : "Search Domain"}
-            </Link>
-            <div className="flex items-center rounded-full border border-white/0">
-              <button
-                type="button"
-                onClick={() => toggleLocale("tr")}
-                className={[
-                  "min-h-[44px] px-3 rounded-full text-sm font-semibold transition-colors",
-                  langToggle.tr ? "text-brand-primary" : useLightHeader ? "text-neutral-600" : "text-white/90",
-                  "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
-                ].join(" ")}
-                aria-label="Türkçe"
-              >
-                TR
-              </button>
-              <span className={useLightHeader ? "text-neutral-300 px-1" : "text-white/30 px-1"} aria-hidden="true">
-                /
-              </span>
-              <button
-                type="button"
-                onClick={() => toggleLocale("en")}
-                className={[
-                  "min-h-[44px] px-3 rounded-full text-sm font-semibold transition-colors",
-                  langToggle.en ? "text-brand-primary" : useLightHeader ? "text-neutral-600" : "text-white/90",
-                  "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
-                ].join(" ")}
-                aria-label="English"
-              >
-                EN
-              </button>
-            </div>
+            {!isPanelRoute ? (
+              <div className="flex items-center rounded-full border border-white/0">
+                <button
+                  type="button"
+                  onClick={() => toggleLocale("tr")}
+                  className={[
+                    "min-h-[44px] px-3 rounded-full text-sm font-semibold transition-colors",
+                    langToggle.tr ? "text-brand-primary" : useLightHeader ? "text-neutral-600" : "text-white/90",
+                    "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
+                  ].join(" ")}
+                  aria-label="Türkçe"
+                >
+                  TR
+                </button>
+                <span className={useLightHeader ? "text-neutral-300 px-1" : "text-white/30 px-1"} aria-hidden="true">
+                  /
+                </span>
+                <button
+                  type="button"
+                  onClick={() => toggleLocale("en")}
+                  className={[
+                    "min-h-[44px] px-3 rounded-full text-sm font-semibold transition-colors",
+                    langToggle.en ? "text-brand-primary" : useLightHeader ? "text-neutral-600" : "text-white/90",
+                    "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
+                  ].join(" ")}
+                  aria-label="English"
+                >
+                  EN
+                </button>
+              </div>
+            ) : null}
 
             {user ? (
               <>
@@ -512,7 +512,7 @@ export default function Header() {
             ))}
 
             <div className="text-xs font-semibold text-neutral-500 px-3 mt-4">Diğer</div>
-            {(["ssl", "blog", "contact"] as const).map((key) => {
+            {(["ssl", "blog", "about", "contact"] as const).map((key) => {
               const item = nav.navLinks[key];
               return (
                 <Link
@@ -527,30 +527,32 @@ export default function Header() {
             })}
           </div>
 
-          <div className="mt-5 flex items-center justify-between">
-            <button
-              type="button"
-              onClick={() => toggleLocale("tr")}
-              className={[
-                "min-h-[44px] px-3 rounded-full text-sm font-semibold",
-                langToggle.tr ? "text-brand-primary" : "text-neutral-600",
-                "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
-              ].join(" ")}
-            >
-              TR
-            </button>
-            <button
-              type="button"
-              onClick={() => toggleLocale("en")}
-              className={[
-                "min-h-[44px] px-3 rounded-full text-sm font-semibold",
-                langToggle.en ? "text-brand-primary" : "text-neutral-600",
-                "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
-              ].join(" ")}
-            >
-              EN
-            </button>
-          </div>
+          {!isPanelRoute ? (
+            <div className="mt-5 flex items-center justify-between">
+              <button
+                type="button"
+                onClick={() => toggleLocale("tr")}
+                className={[
+                  "min-h-[44px] px-3 rounded-full text-sm font-semibold",
+                  langToggle.tr ? "text-brand-primary" : "text-neutral-600",
+                  "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
+                ].join(" ")}
+              >
+                TR
+              </button>
+              <button
+                type="button"
+                onClick={() => toggleLocale("en")}
+                className={[
+                  "min-h-[44px] px-3 rounded-full text-sm font-semibold",
+                  langToggle.en ? "text-brand-primary" : "text-neutral-600",
+                  "focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded",
+                ].join(" ")}
+              >
+                EN
+              </button>
+            </div>
+          ) : null}
 
           <div className="mt-5 flex flex-col gap-3">
             {user ? (

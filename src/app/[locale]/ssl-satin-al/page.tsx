@@ -68,7 +68,9 @@ export default async function SSLPage({
                 item: {
                   "@type": "Product",
                   name: "Positive SSL (DV)",
-                  description: "Domain Validated SSL. $350,000 warranty. 15-day refund on DV.",
+                  description: isTr
+                    ? "Domain doğrulamalı SSL. $350,000 garanti. DV tipinde 15 gun iade."
+                    : "Domain Validated SSL. $350,000 warranty. 15-day refund on DV.",
                   brand: { "@type": "Brand", name: "Sectigo" },
                   offers: {
                     "@type": "Offer",
@@ -86,7 +88,9 @@ export default async function SSLPage({
                 item: {
                   "@type": "Product",
                   name: "Positive SSL Wildcard (DV)",
-                  description: "Wildcard DV SSL. $350,000 warranty.",
+                  description: isTr
+                    ? "Wildcard DV SSL. $350,000 garanti."
+                    : "Wildcard DV SSL. $350,000 warranty.",
                   brand: { "@type": "Brand", name: "Sectigo" },
                   offers: {
                     "@type": "Offer",
@@ -104,7 +108,9 @@ export default async function SSLPage({
                 item: {
                   "@type": "Product",
                   name: "Instant SSL Pro (OV)",
-                  description: "Organization Validated SSL. $3,500,000 warranty.",
+                  description: isTr
+                    ? "Kurumsal dogrulamali SSL. $3,500,000 garanti."
+                    : "Organization Validated SSL. $3,500,000 warranty.",
                   brand: { "@type": "Brand", name: "Sectigo" },
                   offers: {
                     "@type": "Offer",

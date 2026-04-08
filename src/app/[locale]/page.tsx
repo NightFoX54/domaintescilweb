@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import HeroSection from "@/components/home/HeroSection";
-import StatsBar from "@/components/home/StatsBar";
-import BentoGrid from "@/components/home/BentoGrid";
-import TLDCards from "@/components/home/TLDCards";
-import HostingPricing from "@/components/home/HostingPricing";
-import SSLPricing from "@/components/home/SSLPricing";
+import TrustBarSimple from "@/components/home/TrustBarSimple";
+import ProductCategories from "@/components/home/ProductCategories";
+import WhyDomaintescil from "@/components/home/WhyDomaintescil";
 import Testimonials from "@/components/home/Testimonials";
-import TrustBand from "@/components/home/TrustBand";
+import HowItWorks from "@/components/home/HowItWorks";
 import FAQSection from "@/components/home/FAQSection";
 import CTABand from "@/components/home/CTABand";
 
@@ -21,8 +19,8 @@ function buildMetadata(locale: Locale): Metadata {
     : "Fast Domain Registration, Hosting and SSL | Domaintescil";
 
   const description = isTr
-    ? "Domain tescil ve SSL sertifikalarıyla 200+ uzantıda hızlı sorgulama yapın. ICANN ve NIC.TR akredite güvencenizle 20 yıldır destek sunuyoruz."
-    : "Register domains and buy SSL certificates with instant checks across 200+ TLDs. With ICANN and NIC.TR accredited trust, we support you for 20 years.";
+    ? "Domain tescil ve SSL sertifikalarıyla 200+ uzantıda hızlı sorgulama yapın. ICANN Akredite Kayıt Kuruluşu güvencesiyle 20 yılı aşkın tecrübeyle hizmet sunuyoruz."
+    : "Register domains and buy SSL certificates with instant checks across 200+ TLDs. As an ICANN-accredited registrar, we provide trusted service backed by 20+ years of experience.";
 
   const canonical = `${SITE_URL}${isTr ? "/" : "/en/"}`;
   const ogLocale = isTr ? "tr_TR" : "en_US";
@@ -78,13 +76,11 @@ export default function Home() {
   return (
     <main id="main-content" className="flex flex-col">
       <HeroSection />
-      <StatsBar />
-      <BentoGrid />
-      <TLDCards />
-      <HostingPricing />
-      <SSLPricing />
+      <TrustBarSimple />
+      <ProductCategories />
+      <WhyDomaintescil />
       <Testimonials />
-      <TrustBand />
+      <HowItWorks />
       <FAQSection />
       <CTABand />
     </main>

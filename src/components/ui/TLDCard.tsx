@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Info } from "lucide-react";
 
 export default function TLDCard({
   tld,
@@ -30,8 +30,15 @@ export default function TLDCard({
       aria-label={`TLD: ${tld}`}
     >
       {isSpecial && specialBadge ? (
-        <div className="absolute mt-2 mr-2 right-4 top-4 inline-flex items-center rounded-full bg-success px-3 py-1 text-xs font-semibold text-white">
-          {specialBadge}
+        <div className="absolute mt-2 mr-2 right-4 top-4 inline-flex items-center gap-1 rounded-full bg-success px-3 py-1 text-xs font-semibold text-white">
+          <span>{specialBadge}</span>
+          <span
+            className="inline-flex items-center"
+            title="Bu uzantı için belge yüklemeniz gerekmez; kayıt anında tamamlanır."
+            aria-label="Belge gerekmiyor bilgisi"
+          >
+            <Info size={12} aria-hidden="true" />
+          </span>
         </div>
       ) : null}
 

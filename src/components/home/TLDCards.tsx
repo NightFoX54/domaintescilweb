@@ -18,7 +18,7 @@ const TLD_LIST: TLD[] = [
     description: "Türk şirketleri için güvenli seçim",
     audience: "Türkiye",
     special: true,
-    badge: "Belge Yok ✓",
+    badge: "Belge gerekmiyor",
   },
   { tld: ".net", description: "Teknoloji ve altyapı", audience: "BT ekipleri" },
   { tld: ".net.tr", description: "Yerel altyapı için .tr uzantısı", audience: "Kurumsal" },

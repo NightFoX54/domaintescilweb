@@ -10,8 +10,6 @@ import { useMemo } from "react";
 export default function HeroSection() {
   const trust = useMemo(
     () => [
-      { icon: <ShieldCheck size={16} />, label: "ICANN Akredite" },
-      { icon: <Globe size={16} />, label: "NIC.TR Yetkili" },
       { icon: <Zap size={16} />, label: "20+ Yıl" },
       { icon: <Lock size={16} />, label: "Anında Aktivasyon" },
       { icon: <Mail size={16} />, label: "200+ TLD" },
@@ -57,16 +55,10 @@ export default function HeroSection() {
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid grid-cols-12 gap-8 pt-24 pb-14 lg:pt-28 lg:pb-20">
           <div className="col-span-12 lg:col-span-7 flex flex-col gap-5">
-            <Badge
-              className="border border-brand-accent text-brand-accent bg-transparent px-3 py-1"
-              icon={<ShieldCheck size={16} className="text-brand-accent" />}
-            >
-              Türkiye&apos;nin ICANN + NIC.TR Çift Akredite Operatörü
-            </Badge>
 
             <h1
               id="hero-heading"
-              className="font-display font-semibold text-white text-[48px] sm:text-[72px] leading-[1.02] tracking-tight"
+              className="font-display font-semibold text-white text-[48px] sm:text-[66px] leading-[1.02] tracking-tight"
             >
               Hayalinizdeki{" "}
               <span className="bg-gradient-to-r from-brand-accent to-brand-primary bg-clip-text text-transparent">
@@ -77,13 +69,12 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-neutral-400 text-[18px] leading-relaxed max-w-[46ch]">
-              200&apos;den fazla uzantıda anında tescil. 20 yıllık deneyim, ICANN &amp;
-              NIC.TR akredite güvence.
+              200&apos;den fazla uzantıda anında tescil. 20 yıllık deneyim.
             </p>
 
             <DomainSearchBox />
 
-            <div className="border-t border-white/10 pt-6 mt-4">
+            <div className="border-t border-white/10 mt-4">
               <div className="flex flex-wrap gap-6">
                 {trust.map((t) => (
                   <TrustBadge key={t.label} icon={t.icon} label={t.label} />

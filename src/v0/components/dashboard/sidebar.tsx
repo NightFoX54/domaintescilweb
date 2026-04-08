@@ -88,7 +88,7 @@ export function Sidebar() {
               key={item.href}
               href={href}
               className={cn(
-                "group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150",
+                "group flex items-center gap-3 rounded-lg px-3 py-2.5 min-h-[44px] text-sm font-medium transition-all duration-150",
                 "focus-visible:outline-none focus-visible:ring-2",
                 isActive
                   ? "bg-[var(--brand-primary)] text-white"
@@ -117,7 +117,7 @@ export function Sidebar() {
           }}
         >
           <p className="font-semibold text-white mb-0.5">ICANN Akredite</p>
-          <p style={{ color: "var(--sidebar-muted)" }}>NIC.TR Yetkili Kayıt Kuruluşu</p>
+          <p style={{ color: "var(--sidebar-muted)" }}>BTK Yetkili Kayıt Kuruluşu</p>
         </div>
       </div>
     </aside>

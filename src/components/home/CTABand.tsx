@@ -17,9 +17,7 @@ export default function CTABand() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="flex flex-col items-start gap-4">
-          <div className="text-sm text-white font-semibold">
-            50.000+ işletme Domaintescil&apos;e güveniyor ★★★★★
-          </div>
+          <div className="text-sm text-white font-semibold">ICANN Akredite Kayıt Kuruluşu ★★★★★</div>
           <h2 className="font-display font-semibold text-[28px] sm:text-[40px] leading-tight max-w-[26ch]">
             Domain&apos;inizi Bugün Tescil Edin
           </h2>
@@ -32,7 +30,7 @@ export default function CTABand() {
               href={domainHref}
               className="min-h-[44px] inline-flex items-center justify-center rounded-full bg-white text-brand-primary px-6 font-bold focus-visible:ring-2 focus-visible:ring-brand-primary"
             >
-              Hemen Başla
+              Domain Ara
             </Link>
             <Link
               href={hostingHref}

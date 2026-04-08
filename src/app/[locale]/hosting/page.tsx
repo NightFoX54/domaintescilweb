@@ -95,8 +95,8 @@ export default async function HostingOverviewPage({
             </h2>
             <p className="mt-3 text-neutral-600 leading-relaxed">
               {isTr
-                ? "Domaintescil, Türkiye pazarına odaklı web hosting altyapısını 2003'ten bu yana yerel destek ve çift akreditasyon güvencesiyle sunar. Linux, WordPress ve Joomla planlarında aynı panel deneyimiyle hızlı kurulum ve sürdürülebilir büyüme sağlar."
-                : "Domaintescil delivers Turkey-focused hosting since 2003 with local support and dual accreditation trust. Linux, WordPress and Joomla plans share one consistent panel for faster setup and scalable growth."}
+                ? "Domaintescil, Türkiye pazarına odaklı web hosting altyapısını 2003'ten bu yana yerel destek ve ICANN akreditasyon güvencesiyle sunar. Linux, WordPress ve Joomla planlarında aynı panel deneyimiyle hızlı kurulum ve sürdürülebilir büyüme sağlar."
+                : "Domaintescil delivers Turkey-focused hosting since 2003 with local support and ICANN-accredited trust. Linux, WordPress and Joomla plans share one consistent panel for faster setup and scalable growth."}
             </p>
           </div>
         </div>

@@ -128,7 +128,7 @@ export default async function handler({
           }}
         >
           <div style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", fontWeight: 700 }}>
-            ICANN + NIC.TR akredite
+            ICANN Akredite Kayıt Kuruluşu
           </div>
           <div style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", fontWeight: 700 }}>
             20 yıl deneyim

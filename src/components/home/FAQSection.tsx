@@ -23,7 +23,7 @@ const FAQS: Array<{ q: string; a: string }> = [
   },
   {
     q: "Neden Domaintescil'i tercih etmeliyim?",
-    a: "Türkiye'de ICANN ve NIC.TR akreditasyonunu birlikte taşıyan ender platformlardan biriyiz. 20 yıldır kesintiz hizmet veriyoruz.",
+    a: "ICANN Akredite Kayıt Kuruluşu olarak 20 yılı aşkın tecrübeyle güvenilir domain ve hosting hizmeti sunuyoruz.",
   },
   {
     q: "Positive SSL iadesi var mı?",

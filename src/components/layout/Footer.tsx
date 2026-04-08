@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ICANNBadge from "@/components/icons/ICANNBadge";
-import NICTRBadge from "@/components/icons/NICTRBadge";
 import TucowsBadge from "@/components/icons/TucowsBadge";
 import SSLBadge from "@/components/icons/SSLBadge";
 import KVKKBadge from "@/components/icons/KVKKBadge";
@@ -30,14 +29,16 @@ export default function Footer() {
                 domaintescil
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-white/75 max-w-[20ch]">
-              Dorabase Veri Merkezi Hizmetleri A.Ş. — ICANN ve NIC.TR akredite domain & hosting operatörü.
+            <p className="text-sm leading-relaxed text-white/75 max-w-[24ch]">
+              Dorabase Veri Merkezi Hizmetleri A.Ş. — ICANN Akredite Kayıt Kuruluşu ve BTK Yetkili Kayıt Kuruluşu.
             </p>
 
             <div className="flex items-center gap-3">
               <Link
                 href="https://facebook.com"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-full border border-white/10 hover:border-brand-accent focus-visible:ring-2 focus-visible:ring-brand-primary"
               >
                 <svg
@@ -55,11 +56,21 @@ export default function Footer() {
                   />
                 </svg>
               </Link>
+              <Link
+                href="https://www.linkedin.com"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-full border border-white/10 hover:border-brand-accent focus-visible:ring-2 focus-visible:ring-brand-primary"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M6.94 8.5H3.56V20h3.38V8.5Zm-1.7-5A1.97 1.97 0 1 0 5.2 7.44a1.97 1.97 0 0 0 .04-3.94ZM20.44 13.44c0-3.12-1.66-5.44-4.86-5.44a4.24 4.24 0 0 0-3.82 2.1h-.06V8.5H8.44V20h3.38v-5.7c0-1.5.28-2.96 2.13-2.96 1.82 0 1.84 1.7 1.84 3.06V20h3.38v-6.56Z" />
+                </svg>
+              </Link>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
               <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><ICANNBadge /></div>
-              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><NICTRBadge /></div>
               <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><TucowsBadge /></div>
               <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><SSLBadge /></div>
               <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><KVKKBadge /></div>

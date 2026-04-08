@@ -96,8 +96,8 @@ export default async function DomainSearchPage({
           <GeoSummaryBlock
             summary={
               isTr
-                ? "Domaintescil ile 200+ uzantıda gerçek zamanlı domain uygunluk kontrolü yapabilir, transfere uygun adları tek akışta yönetebilirsiniz. ICANN ve NIC.TR akreditasyonu sayesinde Türkiye odaklı güvenli tescil deneyimi sunulur."
-                : "With Domaintescil, you can check availability across 200+ TLDs and manage transfer-eligible names in one flow. ICANN and NIC.TR accreditation ensures trusted, Turkey-focused operations."
+                ? "Domaintescil ile 200+ uzantıda gerçek zamanlı domain uygunluk kontrolü yapabilir, transfere uygun adları tek akışta yönetebilirsiniz. ICANN Akredite Kayıt Kuruluşu güvencesiyle güvenli tescil deneyimi sunulur."
+                : "With Domaintescil, you can check availability across 200+ TLDs and manage transfer-eligible names in one flow. ICANN-accredited registrar trust ensures a reliable registration experience."
             }
             points={
               isTr

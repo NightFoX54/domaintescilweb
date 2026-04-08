@@ -62,7 +62,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     quote:
       "Kurumsal tarafta en kritik beklentimiz güven ve erişilebilir destekti; hem satış öncesi hem operasyon sırasında hızlı geri dönüş aldık.",
-    highlight: "ICANN + NIC.TR akredite operatör güvencesi",
+    highlight: "ICANN akredite kayıt kuruluşu güvencesi",
     author: "Alp Arslan",
     title: "Marka Yöneticisi",
     city: "İstanbul",
@@ -120,7 +120,16 @@ export default function Testimonials() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="mb-8">
           <div className="text-sm font-semibold text-neutral-600">
-            ★★★★★ 4.8/5 · 3.900+ değerlendirme
+            ★★★★★ 4.8/5 · 3.900+ değerlendirme (
+            <a
+              href="https://www.google.com/maps"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-dotted underline-offset-2 hover:text-neutral-900"
+            >
+              Google Reviews
+            </a>
+            )
           </div>
           <h2 className="mt-3 font-display font-semibold text-[28px] sm:text-[36px] leading-tight max-w-[20ch]">
             Müşterilerimiz Ne Diyor?

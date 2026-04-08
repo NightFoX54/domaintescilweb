@@ -41,7 +41,7 @@ export default function BentoGrid() {
         </div>
 
         <motion.div
-          className="grid grid-cols-12 gap-4"
+          className="grid grid-cols-12 gap-4 auto-rows-fr"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
@@ -116,7 +116,7 @@ export default function BentoGrid() {
 
           <motion.div
             variants={itemVariants}
-            className="col-span-12 md:col-span-1 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl p-4 text-white transition duration-200 hover:scale-[1.02] hover:shadow-lg"
+            className="col-span-12 md:col-span-6 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl p-5 text-white transition duration-200 hover:scale-[1.02] hover:shadow-lg min-h-[150px]"
           >
             <div className="font-semibold">Park Sayfası</div>
             <div className="mt-1 text-sm text-white">
@@ -125,7 +125,7 @@ export default function BentoGrid() {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="col-span-12 md:col-span-1 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl p-4 text-white transition duration-200 hover:scale-[1.02] hover:shadow-lg"
+            className="col-span-12 md:col-span-6 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl p-5 text-white transition duration-200 hover:scale-[1.02] hover:shadow-lg min-h-[150px]"
           >
             <div className="font-semibold">Tek Tık Yönlendirme</div>
             <div className="mt-1 text-sm text-white">
@@ -134,7 +134,7 @@ export default function BentoGrid() {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="col-span-12 md:col-span-1 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl p-4 text-white transition duration-200 hover:scale-[1.02] hover:shadow-lg"
+            className="col-span-12 md:col-span-6 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl p-5 text-white transition duration-200 hover:scale-[1.02] hover:shadow-lg min-h-[150px]"
           >
             <div className="font-semibold">SMS Hatırlatma</div>
             <div className="mt-1 text-sm text-white">
@@ -143,7 +143,7 @@ export default function BentoGrid() {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="col-span-12 md:col-span-1 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl p-4 text-white transition duration-200 hover:scale-[1.02] hover:shadow-lg"
+            className="col-span-12 md:col-span-6 lg:col-span-3 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl p-5 text-white transition duration-200 hover:scale-[1.02] hover:shadow-lg min-h-[150px]"
           >
             <div className="font-semibold">WHOIS Gizleme</div>
             <div className="mt-1 text-sm text-white">
