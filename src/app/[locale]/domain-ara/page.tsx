@@ -9,6 +9,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
 import StepCards from "@/components/ui/StepCards";
+import ContactPromptSection from "@/components/ui/ContactPromptSection";
 import { Search, MousePointerClick, BadgeCheck } from "lucide-react";
 import DomainSearchResultsMock from "@/components/ui/DomainSearchResultsMock";
 import GeoSummaryBlock from "@/components/ui/GeoSummaryBlock";
@@ -243,6 +244,8 @@ export default async function DomainSearchPage({
           </div>
         </div>
       </ContentSection>
+
+      <ContactPromptSection />
 
       <ContentSection background="light">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">

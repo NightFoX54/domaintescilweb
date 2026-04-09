@@ -6,6 +6,7 @@ import ContentSection from "@/components/ui/ContentSection";
 import HostingPricing from "@/components/home/HostingPricing";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
+import ContactPromptSection from "@/components/ui/ContactPromptSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import HostingComparison from "@/components/ui/HostingComparison";
 import { Building2, Globe2, Languages, Puzzle, Layers3, Users, ShieldCheck } from "lucide-react";
@@ -196,6 +197,8 @@ export default async function JoomlaHostingPage({
           </div>
         </div>
       </ContentSection>
+
+      <ContactPromptSection />
 
       <ContentSection background="light" ariaLabel="Sık sorulan sorular">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">

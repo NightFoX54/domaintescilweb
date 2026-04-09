@@ -8,6 +8,7 @@ import HostingComparison from "@/components/ui/HostingComparison";
 import HostingTechnicalSection from "@/components/ui/HostingTechnicalSection";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
+import ContactPromptSection from "@/components/ui/ContactPromptSection";
 import { Cpu, TerminalSquare, Workflow, ShieldCheck } from "lucide-react";
 
 const SITE_URL = "https://domaintescil.com";
@@ -199,6 +200,8 @@ php artisan migrate --force`}
           <HostingTechnicalSection />
         </div>
       </ContentSection>
+
+      <ContactPromptSection />
 
       <ContentSection background="light" ariaLabel="Sık sorulan sorular">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">

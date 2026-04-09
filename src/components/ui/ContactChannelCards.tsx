@@ -43,7 +43,7 @@ const channels: Channel[] = [
 
 export default function ContactChannelCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
       {channels.map((c) => (
         <div
           key={c.title}
@@ -74,8 +74,11 @@ export default function ContactChannelCards() {
               <div
                 className={[
                   "mt-1 text-neutral-600 leading-snug",
-                  c.title.includes("E-posta") ? "text-[13px] break-all" : "text-sm break-words",
+                  c.title.includes("E-posta")
+                    ? "text-[12px] whitespace-nowrap overflow-hidden text-ellipsis"
+                    : "text-sm break-words",
                 ].join(" ")}
+                title={c.detail}
               >
                 {c.detail}
               </div>

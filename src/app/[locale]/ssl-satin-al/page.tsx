@@ -11,6 +11,7 @@ import SSLUseCases from "@/components/ui/SSLUseCases";
 import SSLRefundPolicy from "@/components/ui/SSLRefundPolicy";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
+import ContactPromptSection from "@/components/ui/ContactPromptSection";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -242,6 +243,8 @@ export default async function SSLPage({
           <SSLRefundPolicy />
         </div>
       </ContentSection>
+
+      <ContactPromptSection />
 
       <ContentSection background="light" ariaLabel="Sık sorulan sorular">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">

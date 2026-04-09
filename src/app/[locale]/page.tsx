@@ -8,6 +8,7 @@ import Testimonials from "@/components/home/Testimonials";
 import HowItWorks from "@/components/home/HowItWorks";
 import FAQSection from "@/components/home/FAQSection";
 import CTABand from "@/components/home/CTABand";
+import ContactPromptSection from "@/components/ui/ContactPromptSection";
 
 const SITE_URL = "https://domaintescil.com";
 
@@ -78,6 +79,7 @@ export default function Home() {
       <HeroSection />
       <TrustBarSimple />
       <ProductCategories />
+      <ContactPromptSection />
       <WhyDomaintescil />
       <Testimonials />
       <HowItWorks />

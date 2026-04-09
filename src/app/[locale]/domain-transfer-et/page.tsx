@@ -11,6 +11,7 @@ import NumberedStepper from "@/components/ui/NumberedStepper";
 import NoteCard from "@/components/ui/NoteCard";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
+import ContactPromptSection from "@/components/ui/ContactPromptSection";
 import GeoSummaryBlock from "@/components/ui/GeoSummaryBlock";
 import { FileKey, MailCheck, ShieldCheck, Timer, Globe } from "lucide-react";
 
@@ -244,6 +245,8 @@ export default async function DomainTransferPage({
           </div>
         </div>
       </ContentSection>
+
+      <ContactPromptSection />
 
       <ContentSection background="light">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
