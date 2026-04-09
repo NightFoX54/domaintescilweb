@@ -107,12 +107,12 @@ export default async function DomainSearchPage({
           />
         }
       >
-        <div className="mt-4 max-w-5xl">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 items-stretch">
-            <div className="lg:col-span-3">
+        <div className="mt-4 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+            <div className="lg:col-span-7">
               <DomainSearchBox id="search-box" defaultValue={q} />
             </div>
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-5">
               <GeoSummaryBlock
                 compact
                 summary={
