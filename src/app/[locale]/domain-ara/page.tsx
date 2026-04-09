@@ -135,7 +135,7 @@ export default async function DomainSearchPage({
               />
             </div>
             <div className="lg:col-span-7">
-              <DomainSearchBox id="search-box" defaultValue={q} />
+              <DomainSearchBox id="search-box" defaultValue={q} maxWidthClass="max-w-none" />
             </div>
           </div>
           {q ? <DomainSearchResultsMock query={q} /> : null}

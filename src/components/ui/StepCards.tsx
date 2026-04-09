@@ -12,11 +12,11 @@ export default function StepCards({
   cards: StepCard[];
 }>) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 w-full items-stretch">
       {cards.map((c) => (
         <div
           key={c.title}
-          className="bg-white border border-neutral-200 rounded-2xl shadow-sm p-6"
+          className="bg-white border border-neutral-200 rounded-2xl shadow-sm p-6 h-full"
         >
           <div className="flex items-start gap-3">
             <div className="min-h-[44px] min-w-[44px] rounded-xl bg-brand-primary-light text-brand-primary inline-flex items-center justify-center">

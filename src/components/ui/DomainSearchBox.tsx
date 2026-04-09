@@ -16,6 +16,7 @@ export default function DomainSearchBox({
   placeholder = "hayalindekidomain.com",
   helperText = "Ücretsiz sorgulama · Bağlayıcı değil · Anında sonuç",
   inputAriaLabel = "Domain adı ara",
+  maxWidthClass = "max-w-xl",
 }: Readonly<{
   defaultValue?: string;
   id?: string;
@@ -23,6 +24,7 @@ export default function DomainSearchBox({
   placeholder?: string;
   helperText?: string;
   inputAriaLabel?: string;
+  maxWidthClass?: string;
 }>) {
   const pathname = usePathname();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
@@ -39,7 +41,7 @@ export default function DomainSearchBox({
   };
 
   return (
-    <div id={id} className="w-full max-w-xl">
+    <div id={id} className={["w-full", maxWidthClass].join(" ")}>
       <form
         onSubmit={onSubmit}
         className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-4"
