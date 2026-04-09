@@ -48,13 +48,13 @@ export default function ContactChannelCards() {
         <div
           key={c.title}
           className={[
-            "bg-white border rounded-2xl shadow-sm p-6",
+            "bg-white border rounded-2xl shadow-sm p-5 h-full flex flex-col",
             c.title.includes("WhatsApp")
               ? "border-success/40 ring-1 ring-success/20"
               : "border-neutral-200",
           ].join(" ")}
         >
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-3 min-w-0">
             <div
               className={[
                 "min-h-[48px] min-w-[48px] rounded-full inline-flex items-center justify-center",
@@ -69,20 +69,20 @@ export default function ContactChannelCards() {
             >
               {c.icon}
             </div>
-            <div className="flex-1">
-              <div className="font-semibold text-neutral-950">{c.title}</div>
-              <div className="mt-1 text-sm text-neutral-600">{c.detail}</div>
-              <div className="mt-4">
-                <a
-                  href={c.href}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="min-h-[44px] inline-flex items-center justify-center rounded-full px-5 border border-brand-primary text-brand-primary font-bold hover:bg-brand-primary-light focus-visible:ring-2 focus-visible:ring-brand-primary"
-                >
-                  {c.cta}
-                </a>
-              </div>
+            <div className="flex-1 min-w-0">
+              <div className="font-semibold text-neutral-950 leading-tight break-words">{c.title}</div>
+              <div className="mt-1 text-sm text-neutral-600 leading-snug break-words">{c.detail}</div>
             </div>
+          </div>
+          <div className="mt-4 pt-1">
+            <a
+              href={c.href}
+              target={c.href.startsWith("http") ? "_blank" : undefined}
+              rel={c.href.startsWith("http") ? "noreferrer" : undefined}
+              className="min-h-[44px] w-full inline-flex items-center justify-center rounded-full px-4 border border-brand-primary text-brand-primary font-bold text-sm text-center hover:bg-brand-primary-light focus-visible:ring-2 focus-visible:ring-brand-primary"
+            >
+              {c.cta}
+            </a>
           </div>
         </div>
       ))}
