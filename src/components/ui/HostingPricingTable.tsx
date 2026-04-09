@@ -154,51 +154,70 @@ export default function HostingPricingTable({
       </AnimatePresence>
 
       <div id={tableId} className="overflow-x-auto rounded-2xl border border-neutral-200 bg-white shadow-sm">
-        <table className="min-w-[900px] w-full text-sm table-fixed border-separate border-spacing-0">
+        <table className="min-w-[920px] w-full text-sm table-fixed border-collapse">
           <colgroup>
-            <col className="w-[28%]" />
-            <col className="w-[24%]" />
-            <col className="w-[24%]" />
-            <col className="w-[24%]" />
+            <col className="w-[26%]" />
+            <col className="w-[24.67%]" />
+            <col className="w-[24.67%]" />
+            <col className="w-[24.66%]" />
           </colgroup>
           <thead>
-            <tr>
-              <th className="text-left p-4 border-b border-neutral-200 bg-white">
-                {isTr ? "Özellikler" : "Features"}
+            <tr className="bg-neutral-50">
+              <th className="p-5 text-left align-bottom border-b border-neutral-200">
+                <span className="text-xs font-semibold tracking-wide uppercase text-neutral-500">
+                  {isTr ? "Özellikler" : "Features"}
+                </span>
               </th>
               {plans.map((p) => (
-                <th key={p.key} className="text-left p-4 border-b border-neutral-200 bg-white">
-                  <div className="flex flex-col gap-3">
-                    <div>
-                      <div className="font-semibold text-neutral-950">{p.title}</div>
-                      <div className="text-neutral-600">{p.price}</div>
-                    </div>
-                    <div className="flex items-center justify-between gap-3">
-                      <Link
-                        href={`${base}/hosting/konfigurasyon?product=${tab}&plan=${p.key}`}
-                        className="min-h-[40px] inline-flex items-center justify-center rounded-lg bg-brand-cta px-4 text-xs font-bold text-white hover:bg-brand-cta-hover focus-visible:ring-2 focus-visible:ring-brand-primary"
-                      >
-                        {isTr ? "Satın Al" : "Buy Now"}
-                      </Link>
-                      {p.popular ? (
-                      <span className="inline-flex items-center rounded-full bg-brand-cta text-white px-3 py-1 text-xs font-semibold">
+                <th key={p.key} className="p-4 border-b border-neutral-200 align-top">
+                  <div
+                    className={[
+                      "h-full rounded-xl border p-4 text-center",
+                      p.popular
+                        ? "border-brand-primary/30 bg-brand-primary/5"
+                        : "border-neutral-200 bg-white",
+                    ].join(" ")}
+                  >
+                    {p.popular ? (
+                      <span className="mb-2 inline-flex items-center rounded-full bg-brand-primary text-white px-3 py-1 text-[11px] font-semibold">
                         {isTr ? "En Popüler" : "Most Popular"}
                       </span>
-                      ) : null}
-                    </div>
+                    ) : (
+                      <span className="mb-2 block h-[24px]" aria-hidden="true" />
+                    )}
+                    <div className="font-semibold text-neutral-950">{p.title}</div>
+                    <div className="mt-1 text-neutral-600">{p.price}</div>
+                    <Link
+                      href={`${base}/hosting/konfigurasyon?product=${tab}&plan=${p.key}`}
+                      className={[
+                        "mt-4 min-h-[40px] inline-flex w-full items-center justify-center rounded-lg px-4 text-xs font-bold",
+                        "focus-visible:ring-2 focus-visible:ring-brand-primary",
+                        p.popular
+                          ? "bg-brand-primary text-white hover:opacity-90"
+                          : "border border-neutral-300 text-neutral-800 hover:bg-neutral-100",
+                      ].join(" ")}
+                    >
+                      {isTr ? "Satın Al" : "Buy Now"}
+                    </Link>
                   </div>
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {rows.map((r) => (
-              <tr key={r.labelTr}>
-                <td className="p-4 border-b border-neutral-200 bg-white font-semibold text-neutral-950">
+            {rows.map((r, idx) => (
+              <tr key={r.labelTr} className={idx % 2 ? "bg-white" : "bg-neutral-50/40"}>
+                <td className="px-5 py-3 border-b border-neutral-200 font-semibold text-neutral-900">
                   {isTr ? r.labelTr : r.labelEn}
                 </td>
                 {plans.map((p) => (
-                  <td key={`${r.labelTr}-${p.key}`} className="p-4 border-b border-neutral-200 text-neutral-600 align-middle">
+                  <td
+                    key={`${r.labelTr}-${p.key}`}
+                    className={[
+                      "px-4 py-3 border-b border-neutral-200 text-center text-neutral-700",
+                      p.popular ? "bg-brand-primary/[0.03]" : "",
+                    ].join(" ")}
+                  >
                     {r.values[p.key]}
                   </td>
                 ))}
