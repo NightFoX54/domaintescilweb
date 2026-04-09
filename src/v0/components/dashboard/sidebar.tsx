@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import {
   LayoutDashboard,
@@ -55,23 +56,16 @@ export function Sidebar() {
     <aside className="fixed top-16 bottom-0 left-0 z-30 flex w-64 flex-col" style={{ background: "var(--sidebar)" }}>
       {/* Logo */}
       <div className="flex h-16 items-center gap-3 border-b px-6" style={{ borderColor: "var(--sidebar-border)" }}>
-        <div
-          className="flex h-8 w-8 items-center justify-center rounded-lg text-white font-bold text-sm font-mono"
-          style={{ background: "var(--brand-primary)" }}
-        >
-          DT
-        </div>
-        <div className="flex flex-col">
-          <span
-            className="text-sm font-semibold leading-none tracking-tight"
-            style={{ color: "var(--sidebar-foreground)", fontFamily: "var(--font-space-grotesk)" }}
-          >
-            domaintescil
-          </span>
-          <span className="text-xs mt-0.5" style={{ color: "var(--sidebar-muted)" }}>
-            .com
-          </span>
-        </div>
+        <Link href={base} className="inline-flex items-center min-h-[44px]">
+          <Image
+            src="/brand/domaintescil-logo-light.png"
+            alt="Domaintescil"
+            width={576}
+            height={198}
+            className="h-8 w-auto"
+            priority
+          />
+        </Link>
       </div>
 
       {/* Nav */}

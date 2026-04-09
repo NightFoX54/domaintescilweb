@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import ICANNBadge from "@/components/icons/ICANNBadge";
 import TucowsBadge from "@/components/icons/TucowsBadge";
@@ -21,14 +22,15 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-3">
-              <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-brand-accent to-brand-primary inline-flex items-center justify-center shadow-soft">
-                <span className="font-display text-white text-sm font-bold">d</span>
-              </div>
-              <div className="text-xl font-display font-semibold tracking-tight text-white">
-                domaintescil
-              </div>
-            </div>
+            <Link href={locale === "tr" ? "/" : "/en/"} className="inline-flex items-center min-h-[44px]">
+              <Image
+                src="/brand/domaintescil-logo-light.png"
+                alt="Domaintescil"
+                width={576}
+                height={198}
+                className="h-9 w-auto"
+              />
+            </Link>
             <p className="text-sm leading-relaxed text-white/75 max-w-[24ch]">
               Dorabase Veri Merkezi Hizmetleri A.Ş. — ICANN Akredite Kayıt Kuruluşu ve BTK Yetkili Kayıt Kuruluşu.
             </p>
