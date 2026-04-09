@@ -28,14 +28,16 @@ export default function HowItWorks() {
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
           {steps.map((step, index) => (
             <article key={step.title} className="rounded-2xl border border-neutral-200 bg-white p-6 relative">
-              <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-primary text-white text-sm font-bold">
-                {index + 1}
+              <div className="flex items-center gap-3">
+                <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white text-sm font-bold">
+                  {index + 1}
+                </div>
+                <div className="inline-flex items-center gap-2.5 text-brand-primary font-semibold leading-none">
+                  <span className="inline-flex items-center justify-center">{step.icon}</span>
+                  <span className="leading-none">{step.title}</span>
+                </div>
               </div>
-              <div className="mt-4 inline-flex items-center gap-2 text-brand-primary font-semibold">
-                {step.icon}
-                <span>{step.title}</span>
-              </div>
-              <p className="mt-2 text-sm text-neutral-600 leading-relaxed">{step.text}</p>
+              <p className="mt-3 text-sm text-neutral-600 leading-relaxed">{step.text}</p>
               {index < steps.length - 1 ? (
                 <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-neutral-300" aria-hidden="true">
                   <ArrowRight size={16} />
