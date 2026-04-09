@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, Menu, ShoppingCart } from "lucide-react";
 import MobileDrawer from "./MobileDrawer";
@@ -201,14 +202,14 @@ export default function Header() {
             className="flex items-center gap-3 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-primary rounded"
             aria-label="Domaintescil"
           >
-            <span
-              className={[
-                "font-display text-xl font-semibold tracking-tight",
-                useLightHeader ? "text-neutral-950" : "text-white",
-              ].join(" ")}
-            >
-              domaintescil
-            </span>
+            <Image
+              src={useLightHeader ? "/brand/domaintescil-logo-dark.png" : "/brand/domaintescil-logo-light.png"}
+              alt="Domaintescil"
+              width={576}
+              height={198}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           <nav aria-label="Ana Navigasyon" className="hidden md:flex items-center gap-6">
@@ -480,9 +481,13 @@ export default function Header() {
       <MobileDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} ariaLabel="Mobil menü">
         <div className="flex h-16 items-center justify-between px-5">
           <Link href={locale === "tr" ? "/" : "/en/"} className="flex items-center min-h-[44px]">
-            <span className="font-display text-xl font-semibold tracking-tight text-neutral-950">
-              domaintescil
-            </span>
+            <Image
+              src="/brand/domaintescil-logo-dark.png"
+              alt="Domaintescil"
+              width={576}
+              height={198}
+              className="h-8 w-auto"
+            />
           </Link>
         </div>
         <div className="px-5 pb-6">
