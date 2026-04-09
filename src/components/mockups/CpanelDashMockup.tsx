@@ -2,6 +2,7 @@
 
 import { BarChart3, Gauge, HardDrive, Mail, ShieldCheck, Users } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
+import type { ReactNode } from "react";
 
 const tile =
   "rounded-xl border border-neutral-200 bg-white p-3.5 flex items-center gap-3 transition-colors hover:bg-neutral-50";
@@ -20,7 +21,7 @@ const dashboardByTab: Record<
       topEn: string;
       valueTr: string;
       valueEn: string;
-      icon: JSX.Element;
+      icon: ReactNode;
     }>;
     footerTagsTr: [string, string, string];
     footerTagsEn: [string, string, string];
