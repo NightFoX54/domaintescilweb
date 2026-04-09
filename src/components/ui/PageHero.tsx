@@ -18,6 +18,7 @@ export default function PageHero({
   return (
     <section className="relative bg-neutral-950 text-white overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(22,34,68,0.18)] to-[rgba(44,66,118,0.36)]" />
         <div className="ambient-blob-a absolute -top-24 -right-24 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,rgb(var(--brand-accent)),transparent_65%)] opacity-35" />
         <div className="ambient-blob-b absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,rgb(var(--brand-primary)),transparent_65%)] opacity-22" />
         <div className="noise-overlay" />
