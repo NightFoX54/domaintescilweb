@@ -107,8 +107,11 @@ export default async function DomainSearchPage({
           />
         }
       >
-        <div className="mt-4">
-          <GeoSummaryBlock
+        <div className="mt-4 max-w-3xl">
+          <DomainSearchBox id="search-box" defaultValue={q} />
+          <div className="mt-4">
+            <GeoSummaryBlock
+              compact
             summary={
               isTr
                 ? "Domaintescil ile 200+ uzantıda gerçek zamanlı domain uygunluk kontrolü yapabilir, transfere uygun adları tek akışta yönetebilirsiniz. ICANN Akredite Kayıt Kuruluşu güvencesiyle güvenli tescil deneyimi sunulur."
@@ -129,8 +132,8 @@ export default async function DomainSearchPage({
                     "Accredited operator trust",
                   ]
             }
-          />
-          <DomainSearchBox id="search-box" defaultValue={q} />
+            />
+          </div>
           {q ? <DomainSearchResultsMock query={q} /> : null}
           <div className="mt-6">
             <TrustStrip />
