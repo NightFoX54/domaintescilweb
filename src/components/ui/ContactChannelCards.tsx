@@ -71,7 +71,14 @@ export default function ContactChannelCards() {
             </div>
             <div className="flex-1 min-w-0">
               <div className="font-semibold text-neutral-950 leading-tight break-words">{c.title}</div>
-              <div className="mt-1 text-sm text-neutral-600 leading-snug break-words">{c.detail}</div>
+              <div
+                className={[
+                  "mt-1 text-neutral-600 leading-snug",
+                  c.title.includes("E-posta") ? "text-[13px] break-all" : "text-sm break-words",
+                ].join(" ")}
+              >
+                {c.detail}
+              </div>
             </div>
           </div>
           <div className="mt-4 pt-1">
