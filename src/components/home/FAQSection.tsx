@@ -95,8 +95,8 @@ export default function FAQSection() {
     <section className="bg-neutral-50 text-neutral-950" aria-label="Sıkça Sorulan Sorular">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          <div>
+        <div className="flex flex-col gap-10">
+          <div className="max-w-3xl">
             <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
               {locale === "tr" ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions"}
             </h2>
@@ -115,7 +115,7 @@ export default function FAQSection() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="mx-auto w-full max-w-3xl space-y-4">
             {faqs.map((item) => (
               <AccordionItem key={item.q} question={item.q} answer={item.a} />
             ))}
