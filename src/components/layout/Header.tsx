@@ -88,7 +88,6 @@ export default function Header() {
           hosting: "Hosting",
           ssl: "SSL",
           blog: "Blog",
-          about: "Hakkımızda",
           contact: "İletişim",
         }
       : {
@@ -96,7 +95,6 @@ export default function Header() {
           hosting: "Hosting",
           ssl: "SSL",
           blog: "Blog",
-          about: "About",
           contact: "Contact",
         };
 
@@ -126,7 +124,6 @@ export default function Header() {
         },
         ssl: { label: labels.ssl, href: getNavHref(locale, "/ssl-satin-al", "/en/ssl-certificates") },
         blog: { label: labels.blog, href: getNavHref(locale, "/blog", "/en/blog") },
-        about: { label: labels.about, href: getNavHref(locale, "/hakkimizda", "/en/about") },
         contact: { label: labels.contact, href: getNavHref(locale, "/iletisim", "/en/contact") },
       },
       auth: {
@@ -142,7 +139,6 @@ export default function Header() {
     if (p.includes("hosting")) return "hosting";
     if (p.includes("ssl")) return "ssl";
     if (p.includes("blog")) return "blog";
-    if (p.includes("hakkimizda") || p.includes("about")) return "about";
     if (p.includes("iletisim") || p.includes("contact")) return "contact";
     if (p.includes("domain-ara") || p.includes("domain-transfer-et")) return "domain";
     return "domain";
@@ -346,7 +342,7 @@ export default function Header() {
               </div>
             </div>
 
-            {(["ssl", "blog", "about", "contact"] as const).map((key) => {
+            {(["ssl", "blog", "contact"] as const).map((key) => {
               const item = nav.navLinks[key];
               const isActive = key === activeKey;
               return (
@@ -517,7 +513,7 @@ export default function Header() {
             ))}
 
             <div className="text-xs font-semibold text-neutral-500 px-3 mt-4">Diğer</div>
-            {(["ssl", "blog", "about", "contact"] as const).map((key) => {
+            {(["ssl", "blog", "contact"] as const).map((key) => {
               const item = nav.navLinks[key];
               return (
                 <Link
