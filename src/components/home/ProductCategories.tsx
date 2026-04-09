@@ -43,7 +43,7 @@ export default function ProductCategories() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="mb-8">
           <div className="inline-flex items-center rounded-full bg-brand-primary-light text-brand-primary px-4 py-2 text-sm font-semibold">
-            {isTr ? "Urun Kategorileri" : "Product Categories"}
+            {isTr ? "Ürün Kategorileri" : "Product Categories"}
           </div>
           <h2 className="mt-4 font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
             {isTr ? "İhtiyaciniza Uygun Ürünü Seçin" : "Choose the Right Product for Your Needs"}
