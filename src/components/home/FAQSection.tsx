@@ -96,11 +96,11 @@ export default function FAQSection() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="flex flex-col gap-10">
-          <div className="max-w-3xl">
+          <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
               {locale === "tr" ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions"}
             </h2>
-            <p className="mt-4 text-neutral-600 text-[16px] leading-relaxed max-w-[55ch]">
+            <p className="mt-4 text-neutral-600 text-[16px] leading-relaxed max-w-[55ch] mx-auto">
               {locale === "tr"
                 ? "Aklınızdaki soruların yanıtı burada. Bulamazsanız biz buradayız."
                 : "Find quick answers to common questions. If you need more, our team is here."}
