@@ -107,32 +107,36 @@ export default async function DomainSearchPage({
           />
         }
       >
-        <div className="mt-4 max-w-3xl">
-          <DomainSearchBox id="search-box" defaultValue={q} />
-          <div className="mt-4">
-            <GeoSummaryBlock
-              compact
-            summary={
-              isTr
-                ? "Domaintescil ile 200+ uzantıda gerçek zamanlı domain uygunluk kontrolü yapabilir, transfere uygun adları tek akışta yönetebilirsiniz. ICANN Akredite Kayıt Kuruluşu güvencesiyle güvenli tescil deneyimi sunulur."
-                : "With Domaintescil, you can check availability across 200+ TLDs and manage transfer-eligible names in one flow. ICANN-accredited registrar trust ensures a reliable registration experience."
-            }
-            points={
-              isTr
-                ? [
-                    ".com, .com.tr, .net ve daha fazlası",
-                    "Anında sorgu ve öneri",
-                    "Tescil + transfer tek deneyim",
-                    "Akredite operatör güvencesi",
-                  ]
-                : [
-                    ".com, .com.tr, .net and more",
-                    "Instant lookup and suggestions",
-                    "Registration + transfer in one flow",
-                    "Accredited operator trust",
-                  ]
-            }
-            />
+        <div className="mt-4 max-w-5xl">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 items-stretch">
+            <div className="lg:col-span-3">
+              <DomainSearchBox id="search-box" defaultValue={q} />
+            </div>
+            <div className="lg:col-span-2">
+              <GeoSummaryBlock
+                compact
+                summary={
+                  isTr
+                    ? "Domaintescil ile 200+ uzantıda gerçek zamanlı domain uygunluk kontrolü yapabilir, transfere uygun adları tek akışta yönetebilirsiniz. ICANN Akredite Kayıt Kuruluşu güvencesiyle güvenli tescil deneyimi sunulur."
+                    : "With Domaintescil, you can check availability across 200+ TLDs and manage transfer-eligible names in one flow. ICANN-accredited registrar trust ensures a reliable registration experience."
+                }
+                points={
+                  isTr
+                    ? [
+                        ".com, .com.tr, .net ve daha fazlası",
+                        "Anında sorgu ve öneri",
+                        "Tescil + transfer tek deneyim",
+                        "Akredite operatör güvencesi",
+                      ]
+                    : [
+                        ".com, .com.tr, .net and more",
+                        "Instant lookup and suggestions",
+                        "Registration + transfer in one flow",
+                        "Accredited operator trust",
+                      ]
+                }
+              />
+            </div>
           </div>
           {q ? <DomainSearchResultsMock query={q} /> : null}
           <div className="mt-6">
