@@ -32,27 +32,27 @@ export default function FAQSectionVariant({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div>
-        <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
-          {title}
-        </h2>
-        <p className="mt-4 text-neutral-600 text-[16px] leading-relaxed max-w-[55ch]">
-          {lead}
-        </p>
-        {asideLinkHref && asideLinkLabel ? (
-          <div className="mt-5">
-            <Link
-              href={asideLinkHref}
-              className="inline-flex min-h-[44px] items-center px-4 py-2 rounded-full border border-neutral-200 bg-white hover:border-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
-            >
-              {asideLinkLabel}
-            </Link>
-          </div>
-        ) : null}
+      <div className="flex flex-col gap-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
+            {title}
+          </h2>
+          <p className="mt-4 text-neutral-600 text-[16px] leading-relaxed max-w-[55ch] mx-auto">
+            {lead}
+          </p>
+          {asideLinkHref && asideLinkLabel ? (
+            <div className="mt-5">
+              <Link
+                href={asideLinkHref}
+                className="inline-flex min-h-[44px] items-center px-4 py-2 rounded-full border border-neutral-200 bg-white hover:border-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:rounded"
+              >
+                {asideLinkLabel}
+              </Link>
+            </div>
+          ) : null}
         </div>
 
-        <div className="space-y-4">
+        <div className="mx-auto w-full max-w-3xl space-y-4">
           {items.map((item) => (
             <AccordionItem key={item.q} question={item.q} answer={item.a} />
           ))}
