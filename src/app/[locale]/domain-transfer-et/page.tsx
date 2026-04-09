@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { locales, type Locale } from "@/lib/i18n";
-import { WHMCS_URLS } from "@/lib/whmcs";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import DomainSearchBox from "@/components/ui/DomainSearchBox";
@@ -14,7 +12,7 @@ import NoteCard from "@/components/ui/NoteCard";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
 import CTABand from "@/components/home/CTABand";
 import GeoSummaryBlock from "@/components/ui/GeoSummaryBlock";
-import { ArrowRight, FileKey, MailCheck, ShieldCheck, Timer, Globe } from "lucide-react";
+import { FileKey, MailCheck, ShieldCheck, Timer, Globe } from "lucide-react";
 
 const SITE_URL = "https://domaintescil.com";
 

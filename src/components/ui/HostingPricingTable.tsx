@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 type TabKey = "linux" | "wordpress" | "joomla";
@@ -30,32 +31,59 @@ async function fetchHosting(type: TabKey): Promise<HostingPayload> {
 }
 
 type PlanKey = "baslangic" | "standart" | "profesyonel";
+type Plan = { key: PlanKey; title: string; price: string; popular?: boolean };
+type Row = { labelTr: string; labelEn: string; values: Record<PlanKey, string> };
 
-const plans: Array<{
-  key: PlanKey;
-  title: string;
-  price: string;
-  popular?: boolean;
-}> = [
-  { key: "baslangic", title: "Başlangıç", price: "$899/year" },
-  { key: "standart", title: "Standart Web", price: "$1,899/year", popular: true },
-  { key: "profesyonel", title: "Profesyonel", price: "$2,899/year" },
-];
+const plansByTab: Record<TabKey, Plan[]> = {
+  linux: [
+    { key: "baslangic", title: "Başlangıç", price: "$899/year" },
+    { key: "standart", title: "Standart Web", price: "$1,899/year", popular: true },
+    { key: "profesyonel", title: "Profesyonel", price: "$2,899/year" },
+  ],
+  wordpress: [
+    { key: "baslangic", title: "WP Başlangıç", price: "$899/year" },
+    { key: "standart", title: "WP Standart", price: "$1,899/year", popular: true },
+    { key: "profesyonel", title: "WP Profesyonel", price: "$2,899/year" },
+  ],
+  joomla: [
+    { key: "baslangic", title: "Joomla Başlangıç", price: "$899/year" },
+    { key: "standart", title: "Joomla Standart", price: "$1,899/year", popular: true },
+    { key: "profesyonel", title: "Joomla Profesyonel", price: "$2,899/year" },
+  ],
+};
 
-const rows: Array<{
-  label: string;
-  values: Record<PlanKey, string>;
-}> = [
-  { label: "Site", values: { baslangic: "1", standart: "5", profesyonel: "10" } },
-  { label: "Disk", values: { baslangic: "1 GB", standart: "5 GB", profesyonel: "25 GB" } },
-  { label: "E-posta", values: { baslangic: "25", standart: "50", profesyonel: "100" } },
-  { label: "MySQL", values: { baslangic: "1", standart: "10", profesyonel: "Limitsiz" } },
-  { label: "Trafik", values: { baslangic: "Limitsiz", standart: "Limitsiz", profesyonel: "Limitsiz" } },
-  { label: "cPanel", values: { baslangic: "Türkçe", standart: "Türkçe", profesyonel: "Türkçe" } },
-  { label: "PHP", values: { baslangic: "7.X", standart: "PHP", profesyonel: "PHP" } },
-  { label: "Anti‑Spam", values: { baslangic: "Var", standart: "Var", profesyonel: "Var" } },
-  { label: "Web FTP", values: { baslangic: "Var", standart: "Var", profesyonel: "Var" } },
-];
+const rowsByTab: Record<TabKey, Row[]> = {
+  linux: [
+    { labelTr: "Site", labelEn: "Websites", values: { baslangic: "1", standart: "5", profesyonel: "10" } },
+    { labelTr: "Disk", labelEn: "Disk", values: { baslangic: "1 GB", standart: "5 GB", profesyonel: "25 GB" } },
+    { labelTr: "E-posta", labelEn: "Email", values: { baslangic: "25", standart: "50", profesyonel: "100" } },
+    { labelTr: "MySQL", labelEn: "MySQL", values: { baslangic: "1", standart: "10", profesyonel: "Unlimited" } },
+    { labelTr: "Trafik", labelEn: "Traffic", values: { baslangic: "Limitsiz", standart: "Limitsiz", profesyonel: "Limitsiz" } },
+    { labelTr: "cPanel", labelEn: "cPanel", values: { baslangic: "Türkçe", standart: "Türkçe", profesyonel: "Türkçe" } },
+    { labelTr: "PHP", labelEn: "PHP", values: { baslangic: "7.x", standart: "8.x", profesyonel: "8.x" } },
+    { labelTr: "Anti-Spam", labelEn: "Anti-Spam", values: { baslangic: "Var", standart: "Var", profesyonel: "Var" } },
+  ],
+  wordpress: [
+    { labelTr: "Site", labelEn: "Websites", values: { baslangic: "1", standart: "5", profesyonel: "10" } },
+    { labelTr: "Disk", labelEn: "Disk", values: { baslangic: "1 GB", standart: "5 GB", profesyonel: "25 GB" } },
+    { labelTr: "WordPress", labelEn: "WordPress", values: { baslangic: "Tek tık kurulum", standart: "Optimize", profesyonel: "Optimize +" } },
+    { labelTr: "WooCommerce", labelEn: "WooCommerce", values: { baslangic: "Uyumlu", standart: "Hazır", profesyonel: "Yüksek trafik" } },
+    { labelTr: "E-posta", labelEn: "Email", values: { baslangic: "25", standart: "50", profesyonel: "100" } },
+    { labelTr: "Trafik", labelEn: "Traffic", values: { baslangic: "Limitsiz", standart: "Limitsiz", profesyonel: "Limitsiz" } },
+    { labelTr: "PHP", labelEn: "PHP", values: { baslangic: "8.x", standart: "8.x", profesyonel: "8.x" } },
+    { labelTr: "Cache Uyumu", labelEn: "Cache support", values: { baslangic: "Temel", standart: "Gelişmiş", profesyonel: "Gelişmiş +" } },
+  ],
+  joomla: [
+    { labelTr: "Site", labelEn: "Websites", values: { baslangic: "1", standart: "5", profesyonel: "10" } },
+    { labelTr: "Disk", labelEn: "Disk", values: { baslangic: "1 GB", standart: "5 GB", profesyonel: "25 GB" } },
+    { labelTr: "Joomla", labelEn: "Joomla", values: { baslangic: "Tek tık kurulum", standart: "Optimize", profesyonel: "Optimize +" } },
+    { labelTr: "Çoklu Dil", labelEn: "Multilingual", values: { baslangic: "Temel", standart: "Gelişmiş", profesyonel: "Gelişmiş +" } },
+    { labelTr: "Rol Yönetimi", labelEn: "Role management", values: { baslangic: "Temel", standart: "Gelişmiş", profesyonel: "Kurumsal" } },
+    { labelTr: "E-posta", labelEn: "Email", values: { baslangic: "25", standart: "50", profesyonel: "100" } },
+    { labelTr: "Trafik", labelEn: "Traffic", values: { baslangic: "Limitsiz", standart: "Limitsiz", profesyonel: "Limitsiz" } },
+    { labelTr: "PHP", labelEn: "PHP", values: { baslangic: "8.x", standart: "8.x", profesyonel: "8.x" } },
+  ],
+};
 
 export default function HostingPricingTable({
   initialTab = "linux",
@@ -63,6 +91,8 @@ export default function HostingPricingTable({
   const reduced = useReducedMotion();
   const pathname = usePathname();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
+  const base = locale === "tr" ? "" : "/en";
+  const isTr = locale === "tr";
   const [tab, setTab] = useState<TabKey>(initialTab);
   const [payload, setPayload] = useState<HostingPayload>({
     tabDescription: "Linux tabanlı projeler için ideal.",
@@ -83,6 +113,8 @@ export default function HostingPricingTable({
   };
 
   const tableId = useMemo(() => `hosting-pricing-${tab}`, [tab]);
+  const plans = plansByTab[tab];
+  const rows = rowsByTab[tab];
 
   return (
     <div>
@@ -122,24 +154,38 @@ export default function HostingPricingTable({
       </AnimatePresence>
 
       <div id={tableId} className="overflow-x-auto rounded-2xl border border-neutral-200 bg-white shadow-sm">
-        <table className="min-w-[860px] w-full text-sm border-separate border-spacing-0">
+        <table className="min-w-[900px] w-full text-sm table-fixed border-separate border-spacing-0">
+          <colgroup>
+            <col className="w-[28%]" />
+            <col className="w-[24%]" />
+            <col className="w-[24%]" />
+            <col className="w-[24%]" />
+          </colgroup>
           <thead>
             <tr>
-              <th className="text-left p-4 border-b border-neutral-200 bg-white sticky left-0 z-10">
-                Özellikler
+              <th className="text-left p-4 border-b border-neutral-200 bg-white">
+                {isTr ? "Özellikler" : "Features"}
               </th>
               {plans.map((p) => (
                 <th key={p.key} className="text-left p-4 border-b border-neutral-200 bg-white">
-                  <div className="flex items-center justify-between gap-3">
+                  <div className="flex flex-col gap-3">
                     <div>
                       <div className="font-semibold text-neutral-950">{p.title}</div>
                       <div className="text-neutral-600">{p.price}</div>
                     </div>
-                    {p.popular ? (
+                    <div className="flex items-center justify-between gap-3">
+                      <Link
+                        href={`${base}/hosting/konfigurasyon?product=${tab}&plan=${p.key}`}
+                        className="min-h-[40px] inline-flex items-center justify-center rounded-lg bg-brand-cta px-4 text-xs font-bold text-white hover:bg-brand-cta-hover focus-visible:ring-2 focus-visible:ring-brand-primary"
+                      >
+                        {isTr ? "Satın Al" : "Buy Now"}
+                      </Link>
+                      {p.popular ? (
                       <span className="inline-flex items-center rounded-full bg-brand-cta text-white px-3 py-1 text-xs font-semibold">
-                        En Popüler
+                        {isTr ? "En Popüler" : "Most Popular"}
                       </span>
-                    ) : null}
+                      ) : null}
+                    </div>
                   </div>
                 </th>
               ))}
@@ -147,12 +193,12 @@ export default function HostingPricingTable({
           </thead>
           <tbody>
             {rows.map((r) => (
-              <tr key={r.label}>
-                <td className="p-4 border-b border-neutral-200 bg-white sticky left-0 z-10 font-semibold text-neutral-950">
-                  {r.label}
+              <tr key={r.labelTr}>
+                <td className="p-4 border-b border-neutral-200 bg-white font-semibold text-neutral-950">
+                  {isTr ? r.labelTr : r.labelEn}
                 </td>
                 {plans.map((p) => (
-                  <td key={`${r.label}-${p.key}`} className="p-4 border-b border-neutral-200 text-neutral-600">
+                  <td key={`${r.labelTr}-${p.key}`} className="p-4 border-b border-neutral-200 text-neutral-600 align-middle">
                     {r.values[p.key]}
                   </td>
                 ))}
