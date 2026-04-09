@@ -17,6 +17,7 @@ export default function DomainSearchBox({
   helperText = "Ücretsiz sorgulama · Bağlayıcı değil · Anında sonuç",
   inputAriaLabel = "Domain adı ara",
   maxWidthClass = "max-w-xl",
+  actionOverride,
 }: Readonly<{
   defaultValue?: string;
   id?: string;
@@ -25,12 +26,13 @@ export default function DomainSearchBox({
   helperText?: string;
   inputAriaLabel?: string;
   maxWidthClass?: string;
+  actionOverride?: string;
 }>) {
   const pathname = usePathname();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
   const router = useRouter();
 
-  const action = useMemo(() => getDomainSearchAction(locale), [locale]);
+  const action = useMemo(() => actionOverride ?? getDomainSearchAction(locale), [actionOverride, locale]);
   const [value, setValue] = useState(defaultValue ?? "");
 
   const onSubmit = (e: React.FormEvent) => {

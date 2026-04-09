@@ -4,6 +4,8 @@ import { locales, type Locale } from "@/lib/i18n";
 import { WHMCS_URLS } from "@/lib/whmcs";
 import PageHero from "@/components/ui/PageHero";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import DomainSearchBox from "@/components/ui/DomainSearchBox";
+import DomainSearchResultsMock from "@/components/ui/DomainSearchResultsMock";
 import TrustStrip from "@/components/ui/TrustStrip";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -64,11 +66,15 @@ export async function generateMetadata({
 
 export default async function DomainTransferPage({
   params,
+  searchParams,
 }: Readonly<{
   params: Promise<{ locale: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }>) {
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) return null;
+  const sp = (await searchParams) ?? {};
+  const q = typeof sp.q === "string" ? sp.q : "";
 
   const isTr = locale === "tr";
   const base = isTr ? "" : "/en";
@@ -90,40 +96,55 @@ export default async function DomainTransferPage({
             ]}
           />
         }
-        primary={
-          <Link
-            href={WHMCS_URLS.domainTransfer}
-            className="min-h-[44px] inline-flex items-center justify-center rounded-xl px-6 bg-brand-cta text-white font-bold hover:bg-brand-cta-hover focus-visible:ring-2 focus-visible:ring-brand-primary"
-          >
-            Hemen Başla
-            <ArrowRight size={18} className="ml-2" aria-hidden="true" />
-          </Link>
-        }
       >
-        <div className="mt-6">
-          <GeoSummaryBlock
-            summary={
-              isTr
-                ? "Domain transfer sürecinde Domaintescil, EPP doğrulama, onay e-postası ve taşıma sonrası yönetim adımlarını uçtan uca takip eder. Mevcut yayındaki siteniz kesintiye uğramadan transfer tamamlandığında panel kontrolü size geçer."
-                : "During transfer, Domaintescil guides EPP verification, approval email and post-transfer control end-to-end. Your live site stays online and full management moves to your panel when transfer completes."
-            }
-            points={
-              isTr
-                ? [
-                    "5 adımda net transfer akışı",
-                    "No-downtime yaklaşımı",
-                    "Uzantıya göre +1 yıl avantajı",
-                    "7/24 yerel destek",
-                  ]
-                : [
-                    "Clear 5-step transfer flow",
-                    "No-downtime approach",
-                    "+1 year benefit for many TLDs",
-                    "24/7 local support",
-                  ]
-            }
-          />
-          <TrustStrip />
+        <div className="mt-4 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch">
+            <div className="lg:col-span-5">
+              <GeoSummaryBlock
+                compact
+                summary={
+                  isTr
+                    ? "Domain transfer sürecinde Domaintescil, EPP doğrulama, onay e-postası ve taşıma sonrası yönetim adımlarını uçtan uca takip eder. Mevcut yayındaki siteniz kesintiye uğramadan transfer tamamlandığında panel kontrolü size geçer."
+                    : "During transfer, Domaintescil guides EPP verification, approval email and post-transfer control end-to-end. Your live site stays online and full management moves to your panel when transfer completes."
+                }
+                points={
+                  isTr
+                    ? [
+                        "5 adımda net transfer akışı",
+                        "No-downtime yaklaşımı",
+                        "Uzantıya göre +1 yıl avantajı",
+                        "7/24 yerel destek",
+                      ]
+                    : [
+                        "Clear 5-step transfer flow",
+                        "No-downtime approach",
+                        "+1 year benefit for many TLDs",
+                        "24/7 local support",
+                      ]
+                }
+              />
+            </div>
+            <div className="lg:col-span-7">
+              <DomainSearchBox
+                id="transfer-search-box"
+                defaultValue={q}
+                maxWidthClass="max-w-none"
+                actionOverride={isTr ? "/domain-transfer-et" : "/en/domain-transfer"}
+                submitLabel={isTr ? "Transfer Ara" : "Search Transfer"}
+                placeholder={isTr ? "transfer-edilecek-domain.com" : "domain-to-transfer.com"}
+                helperText={
+                  isTr
+                    ? "Domain sorgula · Uygunluk durumunu gör · Transferi başlat"
+                    : "Search domain · Check availability · Start transfer"
+                }
+                inputAriaLabel={isTr ? "Transfer için alan adı sorgula" : "Search domain for transfer"}
+              />
+            </div>
+          </div>
+          {q ? <DomainSearchResultsMock query={q} /> : null}
+          <div className="mt-6">
+            <TrustStrip fillRow />
+          </div>
         </div>
       </PageHero>
 
