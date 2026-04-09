@@ -15,13 +15,13 @@ export default function CTABand() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="flex flex-col items-start gap-4">
-          <div className="text-sm text-white font-semibold">
+          <div className="text-sm text-white/90 font-semibold">
             {isTr ? "ICANN Akredite Kayıt Kuruluşu" : "ICANN Accredited Registrar"}
           </div>
           <h2 className="font-display font-semibold text-[28px] sm:text-[40px] leading-tight max-w-[26ch]">
             {isTr ? "Markanızın alan adı hala müsait mi?" : "Is your brand domain still available?"}
           </h2>
-          <p className="text-[16px] text-white leading-relaxed max-w-[70ch]">
+          <p className="text-[16px] text-white/90 leading-relaxed max-w-[70ch]">
             {isTr ? "Şimdi sorgula, saniyeler içinde öğren." : "Search now and learn in seconds."}
           </p>
 

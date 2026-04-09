@@ -57,7 +57,7 @@ export default function DomainSearchBox({
           />
           <button
             type="submit"
-            className="min-h-[44px] sm:w-[160px] px-5 rounded-xl bg-brand-cta text-white font-bold transition-colors hover:bg-brand-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+            className="min-h-[44px] sm:w-[176px] px-5 rounded-xl bg-brand-cta text-white font-bold whitespace-nowrap transition-colors hover:bg-brand-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           >
             {submitLabel}
           </button>
@@ -87,7 +87,7 @@ export default function DomainSearchBox({
           ))}
         </div>
 
-        <div className="mt-3 text-sm text-neutral-500">
+        <div className="mt-3 text-sm text-white/75">
           {helperText}
         </div>
       </form>
