@@ -109,9 +109,6 @@ export default async function DomainSearchPage({
       >
         <div className="mt-4 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-            <div className="lg:col-span-7">
-              <DomainSearchBox id="search-box" defaultValue={q} />
-            </div>
             <div className="lg:col-span-5">
               <GeoSummaryBlock
                 compact
@@ -136,6 +133,9 @@ export default async function DomainSearchPage({
                       ]
                 }
               />
+            </div>
+            <div className="lg:col-span-7">
+              <DomainSearchBox id="search-box" defaultValue={q} />
             </div>
           </div>
           {q ? <DomainSearchResultsMock query={q} /> : null}
