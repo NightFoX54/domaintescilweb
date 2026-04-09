@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type TabKey = "linux" | "wordpress" | "joomla";
 
@@ -90,6 +90,8 @@ export default function HostingPricingTable({
 }: Readonly<{ initialTab?: TabKey }>) {
   const reduced = useReducedMotion();
   const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const locale = pathname?.startsWith("/en") ? "en" : "tr";
   const base = locale === "tr" ? "" : "/en";
   const isTr = locale === "tr";
@@ -101,6 +103,13 @@ export default function HostingPricingTable({
   useEffect(() => {
     setTab(initialTab);
   }, [initialTab]);
+
+  useEffect(() => {
+    const qp = searchParams.get("htab");
+    if (qp === "linux" || qp === "wordpress" || qp === "joomla") {
+      setTab(qp);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     fetchHosting(tab).then(setPayload);
@@ -125,7 +134,12 @@ export default function HostingPricingTable({
             <button
               key={t.key}
               type="button"
-              onClick={() => setTab(t.key)}
+              onClick={() => {
+                setTab(t.key);
+                const next = new URLSearchParams(searchParams.toString());
+                next.set("htab", t.key);
+                router.replace(`${pathname}?${next.toString()}`, { scroll: false });
+              }}
               aria-controls={tableId}
               aria-pressed={active}
               className={[
