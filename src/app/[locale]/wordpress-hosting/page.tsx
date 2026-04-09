@@ -83,7 +83,7 @@ export default async function WordPressHostingPage({
       </PageHero>
 
       <ContentSection background="light" ariaLabel="WordPress hosting paketleri">
-        <HostingPricing initialTab="wordpress" />
+        <HostingPricing initialTab="wordpress" showTabs={false} />
       </ContentSection>
 
       <ContentSection background="light" ariaLabel="WooCommerce bölümü">

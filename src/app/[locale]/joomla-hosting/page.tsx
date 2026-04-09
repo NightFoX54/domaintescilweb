@@ -103,7 +103,7 @@ export default async function JoomlaHostingPage({
       </ContentSection>
 
       <ContentSection background="light" ariaLabel="Joomla hosting paketleri">
-        <HostingPricing initialTab="joomla" />
+        <HostingPricing initialTab="joomla" showTabs={false} />
       </ContentSection>
 
       <ContentSection background="white" ariaLabel="Joomla ve WordPress karşılaştırma">

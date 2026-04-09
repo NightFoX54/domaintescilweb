@@ -36,9 +36,11 @@ async function fetchHosting(type: TabKey): Promise<HostingPayload> {
 export default function HostingPricing({
   initialTab = "linux",
   showHeading = true,
+  showTabs = true,
 }: Readonly<{
   initialTab?: "linux" | "wordpress" | "joomla";
   showHeading?: boolean;
+  showTabs?: boolean;
 }>) {
   const reduced = useReducedMotion();
   const pathname = usePathname();
@@ -154,24 +156,26 @@ export default function HostingPricing({
           </div>
         ) : null}
 
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          {TABS.map((t) => {
-            const active = t.key === tab;
-            return (
-              <button
-                key={t.key}
-                type="button"
-                onClick={() => setTab(t.key)}
-                className={[
-                  "min-h-[44px] px-5 rounded-full text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-primary",
-                  active ? "bg-brand-primary text-white" : "bg-white text-neutral-700 border border-neutral-200 hover:border-neutral-300",
-                ].join(" ")}
-              >
-                {tabLabel(t.key)}
-              </button>
-            );
-          })}
-        </div>
+        {showTabs ? (
+          <div className="flex flex-wrap items-center gap-3 mb-6">
+            {TABS.map((t) => {
+              const active = t.key === tab;
+              return (
+                <button
+                  key={t.key}
+                  type="button"
+                  onClick={() => setTab(t.key)}
+                  className={[
+                    "min-h-[44px] px-5 rounded-full text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-brand-primary",
+                    active ? "bg-brand-primary text-white" : "bg-white text-neutral-700 border border-neutral-200 hover:border-neutral-300",
+                  ].join(" ")}
+                >
+                  {tabLabel(t.key)}
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
 
         <AnimatePresence mode="wait">
           <motion.div

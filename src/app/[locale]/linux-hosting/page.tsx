@@ -87,7 +87,7 @@ export default async function LinuxHostingPage({
       </PageHero>
 
       <ContentSection background="light" ariaLabel="Linux hosting paketleri">
-        <HostingPricing initialTab="linux" />
+        <HostingPricing initialTab="linux" showTabs={false} />
       </ContentSection>
 
       <ContentSection background="white" ariaLabel="Linux ve WordPress karşılaştırma">
