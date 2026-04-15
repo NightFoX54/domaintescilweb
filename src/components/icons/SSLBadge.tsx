@@ -25,17 +25,6 @@ export default function SSLBadge() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <text
-        x="27"
-        y="31"
-        textAnchor="middle"
-        fontSize="10"
-        fontWeight="800"
-        fill="currentColor"
-        style={{ fontFamily: "JetBrains Mono, monospace" }}
-      >
-        SSL
-      </text>
     </svg>
   );
 }
