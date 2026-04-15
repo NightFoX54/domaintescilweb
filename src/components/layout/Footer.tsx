@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import ICANNBadge from "@/components/icons/ICANNBadge";
 import TucowsBadge from "@/components/icons/TucowsBadge";
 import SSLBadge from "@/components/icons/SSLBadge";
-import KVKKBadge from "@/components/icons/KVKKBadge";
 
 function getHref(locale: string, tr: string, en: string) {
   return locale === "tr" ? tr : en;
@@ -75,7 +74,6 @@ export default function Footer() {
               <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><ICANNBadge /></div>
               <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><TucowsBadge /></div>
               <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><SSLBadge /></div>
-              <div className="rounded-xl border border-white/10 bg-white/5 px-2 py-1"><KVKKBadge /></div>
             </div>
           </div>
 

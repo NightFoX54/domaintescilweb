@@ -6,19 +6,19 @@ export default function SSLBadge() {
       width="54"
       height="54"
       viewBox="0 0 54 54"
-      className="text-brand-primary"
+      className="text-brand-accent"
     >
       <title>SSL Güven Mührü</title>
-      <circle cx="27" cy="27" r="22" fill="rgba(0,71,255,0.08)" stroke="currentColor" strokeWidth="2" />
+      <circle cx="27" cy="27" r="22" fill="rgba(0,212,255,0.08)" stroke="currentColor" strokeWidth="2" />
       <path
-        d="M19 20c0 10 8 15 8 15s8-5 8-15v-3l-8-3-8 3v3Z"
+        d="M27 16l10 4v7c0 8-6.5 13-10 14-3.5-1-10-6-10-14v-7l10-4Z"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinejoin="round"
       />
       <path
-        d="M23 27l2.2 2.2L31.5 22.9"
+        d="M22 29l3 3 7-8"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
