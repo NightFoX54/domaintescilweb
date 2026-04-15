@@ -106,11 +106,11 @@ export default function HeroSection() {
           <div className="col-span-12 lg:col-span-5 hidden lg:block">
             <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
               <img
-                src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&fm=webp&w=1200&h=900&dpr=1"
+                src="/images/home/hero-operator.png"
                 alt={
                   isTr
-                    ? "Laptop başında çalışan küçük işletme sahibi girişimci"
-                    : "Small business owner working on a laptop"
+                    ? "Ofiste laptop başında alan adı araması yapan uzman"
+                    : "Professional searching domain names on laptop in office"
                 }
                 className="h-full w-full object-cover"
                 loading="eager"
