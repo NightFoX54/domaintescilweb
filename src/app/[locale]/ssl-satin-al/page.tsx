@@ -203,7 +203,7 @@ export default async function SSLPage({
       </ContentSection>
 
       <ContentSection background="white" ariaLabel="SSL türleri ve fiyatlar">
-        <div id="ssl-pricing" className="mt-14">
+        <div id="ssl-pricing" className="mt-4 lg:mt-6">
             <SSLPricing />
         </div>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
