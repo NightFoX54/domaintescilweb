@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactChannelCards from "@/components/ui/ContactChannelCards";
@@ -65,7 +64,6 @@ export default async function ContactPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -96,14 +94,6 @@ export default async function ContactPage({
           isTr
             ? "Teknik destek veya satış için aşağıdaki kanallardan ulaşın."
             : "Reach us via the channels below for support or sales."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "İletişim" : "Contact" },
-            ]}
-          />
         }
       />
 

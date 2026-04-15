@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import KBSearchBar from "@/components/ui/KBSearchBar";
@@ -47,7 +46,6 @@ export default async function KnowledgebasePage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -57,14 +55,6 @@ export default async function KnowledgebasePage({
           isTr
             ? "Domain, hosting ve SSL konularında hızlı yanıtlar."
             : "Quick answers about domain, hosting and SSL."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Bilgi Bankası" : "Knowledgebase" },
-            ]}
-          />
         }
       >
         <KBSearchBar />

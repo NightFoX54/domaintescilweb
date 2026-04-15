@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import DomainSearchBox from "@/components/ui/DomainSearchBox";
 import DomainSearchResultsMock from "@/components/ui/DomainSearchResultsMock";
 import TrustStrip from "@/components/ui/TrustStrip";
@@ -76,7 +75,6 @@ export default async function DomainTransferPage({
   const q = typeof sp.q === "string" ? sp.q : "";
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -86,14 +84,6 @@ export default async function DomainTransferPage({
           isTr
             ? "Transfer işlemi basit ve güvenlidir. ICANN akredite altyapı, tam kontrol sizdedir."
             : "A simple and secure transfer with full control."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Domain Transfer" : "Domain Transfer" },
-            ]}
-          />
         }
       >
         <div className="mt-4 w-full">

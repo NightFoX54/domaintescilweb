@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Prose from "@/components/ui/Prose";
@@ -45,7 +44,6 @@ export default async function PrivacyPolicyPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -55,14 +53,6 @@ export default async function PrivacyPolicyPage({
           isTr
             ? "Kişisel verileriniz 6698 sayılı KVKK kapsamında işlenmektedir."
             : "Your personal data is processed under applicable data protection laws."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Gizlilik Politikası" : "Privacy Policy" },
-            ]}
-          />
         }
         primary={
           <div id="kvkk" className="inline-flex items-center rounded-full bg-white/10 border border-white/15 text-white px-4 py-2 text-sm font-semibold backdrop-blur">

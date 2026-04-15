@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CartClient from "./ui/CartClient";
@@ -42,7 +41,6 @@ export default async function CartPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -52,14 +50,6 @@ export default async function CartPage({
           isTr ? "Seçimlerinizi hızlıca düzenleyin." : "Quickly review and edit your selections."
         }
         compact
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Sepet" : "Cart" },
-            ]}
-          />
-        }
       />
 
       <ContentSection background="light" ariaLabel="Sepet içeriği">

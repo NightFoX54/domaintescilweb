@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SSLConfigClient from "./ui/SSLConfigClient";
 
@@ -43,7 +42,6 @@ export default async function SSLConfigPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -55,15 +53,6 @@ export default async function SSLConfigPage({
             : "Enter your domain and add the certificate to cart."
         }
         compact
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: "SSL", href: `${base}/ssl-satin-al` },
-              { label: isTr ? "Konfigürasyon" : "Configuration" },
-            ]}
-          />
-        }
       />
 
       <ContentSection background="light" ariaLabel="SSL konfigürasyon formu">

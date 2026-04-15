@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import AuthFormCard from "@/components/ui/AuthFormCard";
 
@@ -44,7 +43,6 @@ export default async function SignInPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -56,14 +54,6 @@ export default async function SignInPage({
             : "Access your panel and manage your services."
         }
         compact
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Giriş Yap" : "Sign in" },
-            ]}
-          />
-        }
       />
 
       <ContentSection background="light" ariaLabel="Giriş formu">

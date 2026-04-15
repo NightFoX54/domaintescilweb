@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import HostingPricing from "@/components/home/HostingPricing";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
@@ -53,7 +52,6 @@ export default async function WordPressHostingPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -63,15 +61,6 @@ export default async function WordPressHostingPage({
           isTr
             ? "Tek tıkla kurulum, WooCommerce hazır altyapı. $899/year'dan başlıyor."
             : "One-click install, WooCommerce-ready stack. Starting from $899/year."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Hosting" : "Hosting", href: `${base}/hosting` },
-              { label: isTr ? "WordPress Hosting" : "WordPress Hosting" },
-            ]}
-          />
         }
       >
         <StatBadgesRow

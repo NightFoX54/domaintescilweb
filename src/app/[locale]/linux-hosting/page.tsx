@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import HostingPricing from "@/components/home/HostingPricing";
 import HostingComparison from "@/components/ui/HostingComparison";
@@ -52,7 +51,6 @@ export default async function LinuxHostingPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -62,15 +60,6 @@ export default async function LinuxHostingPage({
           isTr
             ? "Kararlı, esnek ve uygun fiyatlı. PHP, MySQL, cPanel dahil."
             : "Stable, flexible and affordable. PHP, MySQL and cPanel included."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Hosting" : "Hosting", href: `${base}/hosting` },
-              { label: isTr ? "Linux Hosting" : "Linux Hosting" },
-            ]}
-          />
         }
       >
         <div className="flex flex-wrap gap-3">

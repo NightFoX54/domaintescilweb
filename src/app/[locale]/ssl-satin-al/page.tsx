@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SSLBrowserMockup from "@/components/mockups/SSLBrowserMockup";
@@ -67,7 +66,6 @@ export default async function SSLPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -166,14 +164,6 @@ export default async function SSLPage({
           isTr
             ? "Comodo/Sectigo altyapısı. Tarayıcıda yeşil kilit, ziyaretçide güven."
             : "Powered by Comodo/Sectigo. Browser trust, visitor confidence."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "SSL" : "SSL" },
-            ]}
-          />
         }
         primary={
           <div className="flex flex-wrap gap-3">

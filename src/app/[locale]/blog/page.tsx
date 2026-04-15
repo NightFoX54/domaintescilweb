@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import BlogPostCards from "@/components/ui/BlogPostCards";
@@ -49,7 +48,6 @@ export default async function BlogPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
   const siteLocale = isTr ? "tr" : "en";
 
   return (
@@ -66,14 +64,6 @@ export default async function BlogPage({
           isTr
             ? "Domain, hosting ve SSL hakkında pratik içerikler."
             : "Practical content about domain, hosting and SSL."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: "Blog" },
-            ]}
-          />
         }
       />
 

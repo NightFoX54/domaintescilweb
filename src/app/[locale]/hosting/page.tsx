@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import HostingTypeCards from "@/components/ui/HostingTypeCards";
@@ -65,7 +64,6 @@ export default async function HostingOverviewPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -92,14 +90,6 @@ export default async function HostingOverviewPage({
           isTr
             ? "Linux, WordPress ve Joomla hosting seçenekleri. $899/year'dan başlıyor."
             : "Linux, WordPress and Joomla hosting options. Starting from $899/year."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Hosting" : "Hosting" },
-            ]}
-          />
         }
       />
 

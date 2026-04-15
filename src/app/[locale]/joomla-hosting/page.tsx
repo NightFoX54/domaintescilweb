@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContentSection from "@/components/ui/ContentSection";
 import HostingPricing from "@/components/home/HostingPricing";
 import FAQSectionVariant from "@/components/ui/FAQSectionVariant";
@@ -50,7 +49,6 @@ export default async function JoomlaHostingPage({
   if (!locales.includes(locale as Locale)) return null;
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -60,15 +58,6 @@ export default async function JoomlaHostingPage({
           isTr
             ? "Joomla için optimize altyapı. Tek tıkla kurulum, tam kontrol."
             : "Infrastructure optimized for Joomla. One-click install, full control."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Hosting" : "Hosting", href: `${base}/hosting` },
-              { label: isTr ? "Joomla Hosting" : "Joomla Hosting" },
-            ]}
-          />
         }
       />
 

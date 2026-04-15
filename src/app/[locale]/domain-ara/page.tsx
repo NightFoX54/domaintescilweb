@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import DomainSearchBox from "@/components/ui/DomainSearchBox";
 import TrustStrip from "@/components/ui/TrustStrip";
 import ContentSection from "@/components/ui/ContentSection";
@@ -73,7 +72,6 @@ export default async function DomainSearchPage({
   const q = typeof sp.q === "string" ? sp.q : "";
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
 
   return (
     <main id="main-content" className="flex flex-col">
@@ -98,14 +96,6 @@ export default async function DomainSearchPage({
           isTr
             ? "200'den fazla uzantıda anında sorgulama. Sonuç garanti, ücret yok."
             : "Instant search across 200+ TLDs. Guaranteed results, no fees."
-        }
-        breadcrumb={
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: isTr ? "Domain Ara" : "Domain Search" },
-            ]}
-          />
         }
       >
         <div className="mt-4 w-full">

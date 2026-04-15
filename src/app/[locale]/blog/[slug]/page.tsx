@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { locales, type Locale } from "@/lib/i18n";
-import Breadcrumb from "@/components/ui/Breadcrumb";
 import { blogPosts, getBlogPostBySlug } from "@/lib/blogPosts";
 import { getBlogPostingSchemaJsonLd } from "@/lib/schema";
 
@@ -60,7 +59,6 @@ export default async function BlogDetailPage({
   if (!post) notFound();
 
   const isTr = locale === "tr";
-  const base = isTr ? "" : "/en";
   const siteLocale = isTr ? "tr" : "en";
 
   return (
@@ -71,15 +69,7 @@ export default async function BlogDetailPage({
       />
       <section className="bg-white">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 pt-28 pb-16">
-          <Breadcrumb
-            items={[
-              { label: isTr ? "Ana Sayfa" : "Home", href: `${base}/` || "/" },
-              { label: "Blog", href: `${base}/blog` },
-              { label: post.title[isTr ? "tr" : "en"] },
-            ]}
-          />
-
-          <article className="mt-8">
+          <article>
             <div className="text-sm text-neutral-500">
               {post.date} · {post.readingTime} · {post.author}
             </div>
