@@ -203,7 +203,7 @@ export default function Header() {
               alt="Domaintescil"
               width={576}
               height={198}
-              className="h-10 w-auto"
+              className="h-12 w-auto"
               priority
             />
           </Link>
@@ -482,7 +482,7 @@ export default function Header() {
               alt="Domaintescil"
               width={576}
               height={198}
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
         </div>
