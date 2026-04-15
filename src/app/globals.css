@@ -97,7 +97,7 @@ body {
 
 /* Keep search placeholders softer than input text */
 input[data-search-input="true"]::placeholder {
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.199);
 }
 
 @media (prefers-reduced-motion: reduce) {
