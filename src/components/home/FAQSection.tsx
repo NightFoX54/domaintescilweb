@@ -43,6 +43,10 @@ export default function FAQSection() {
             q: "ICANN akreditasyonu ne anlama gelir?",
             a: "ICANN, küresel domain yönetiminden sorumlu uluslararası otoritedir. Akredite operatör olmak standartlara uygunluğun resmi onayıdır.",
           },
+          {
+            q: "Aldığım domain adını nasıl web siteme bağlarım?",
+            a: "Alan adı bağlantısı için destek ekibimiz adım adım yönlendirme sağlar.",
+          },
         ]
       : [
           {

@@ -32,7 +32,7 @@ export default function CTABand() {
               placeholder={isTr ? "markaniz.com" : "yourbrand.com"}
               helperText={
                 isTr
-                  ? "Ücretsiz sorgulama · Bağlayıcı değil · Anında sonuç"
+                  ? "30 saniye — sonra karar verirsin"
                   : "Free search · Non-binding · Instant results"
               }
               inputAriaLabel={isTr ? "Alan adı sorgula" : "Search domain name"}

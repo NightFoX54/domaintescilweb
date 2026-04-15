@@ -10,7 +10,7 @@ export default function HowItWorks() {
   const steps = isTr
     ? [
         { icon: <Search size={18} aria-hidden="true" />, title: "Alan adını sorgula", text: "İstediğin domain adını yaz, müsait olup olmadığını anında gör." },
-        { icon: <ShoppingCart size={18} aria-hidden="true" />, title: "Sepete ekle", text: "Uygun uzantıyı seç, hesabını oluştur ve siparişi tamamla." },
+        { icon: <ShoppingCart size={18} aria-hidden="true" />, title: "Sepete ekle", text: "Uygun uzantıyı seç, hesabını oluştur ve siparişi tamamla. Hesap oluşturma 1 dakika sürer." },
         { icon: <CheckCircle2 size={18} aria-hidden="true" />, title: "Hemen kullan", text: "Domain aktif olur; DNS yönetimi ve yönlendirmeler hazırdır." },
       ]
     : [

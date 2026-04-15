@@ -53,13 +53,21 @@ export default async function JoomlaHostingPage({
   return (
     <main id="main-content" className="flex flex-col">
       <PageHero
-        title={isTr ? "Joomla Siteniz Güçlü Ellerde" : "Your Joomla Site in Good Hands"}
+        title={isTr ? "Joomla siteniz için hazır hosting altyapısı" : "Your Joomla Site in Good Hands"}
         subtitle={
           isTr
-            ? "Joomla için optimize altyapı. Tek tıkla kurulum, tam kontrol."
+            ? "Kurumsal içerik yönetimi, çok dilli yapı veya rol bazlı ekip çalışması gerektiren projeler için. Joomla kurulumu tek tıkla tamamlanır."
             : "Infrastructure optimized for Joomla. One-click install, full control."
         }
-      />
+      >
+        <div className="flex flex-wrap gap-3">
+          {["Joomla uyumlu", "Tek tık kurulum", "cPanel dahil", "7/24 destek"].map((t) => (
+            <div key={t} className="inline-flex items-center rounded-full bg-white/10 border border-white/15 text-white px-4 py-2 text-sm font-semibold backdrop-blur">
+              {t}
+            </div>
+          ))}
+        </div>
+      </PageHero>
 
       <ContentSection background="light" ariaLabel="Joomla nedir">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
@@ -84,7 +92,15 @@ export default async function JoomlaHostingPage({
                 </div>
                 <div className="mt-4 font-semibold text-neutral-950">{c.title}</div>
                 <p className="mt-2 text-sm text-neutral-600 leading-relaxed">
-                  {isTr ? "Daha kontrollü, daha yönetilebilir bir yapı." : "A more controlled, manageable setup."}
+                  {isTr
+                    ? c.title === "Açık kaynak"
+                      ? "Ücretsiz ve açık kaynaklıdır. Herhangi bir lisans ücreti ödemezsiniz."
+                      : c.title === "Güçlü eklenti ekosistemi"
+                        ? "Binlerce extension ile sitenizi ihtiyacınıza göre genişletebilirsiniz."
+                        : c.title === "Çok dilli destek"
+                          ? "Ek eklenti gerektirmeden birden fazla dilde içerik yayınlayabilirsiniz."
+                          : "Farklı yetki seviyelerinde ekiplerin çalıştığı kurumsal projeler için idealdir."
+                    : "A more controlled, manageable setup."}
                 </p>
               </div>
             ))}
@@ -103,13 +119,21 @@ export default async function JoomlaHostingPage({
             leftTitle="Joomla"
             leftPoints={
               isTr
-                ? ["Esneklik", "Kurumsal kullanım", "Çok dil odaklı"]
+                ? [
+                    "Birden fazla dilde içerik yayınlayacaksanız",
+                    "Ekibinizde farklı yetki seviyeleri varsa",
+                    "Karmaşık sayfa ve kategori yapınız varsa",
+                  ]
                 : ["Flexibility", "Enterprise usage", "Multilingual focus"]
             }
             rightTitle="WordPress"
             rightPoints={
               isTr
-                ? ["Kullanım kolaylığı", "Geniş tema/eklenti", "Hızlı başlangıç"]
+                ? [
+                    "Hızlı başlamak ve kolay yönetmek istiyorsanız",
+                    "Geniş tema ve eklenti seçeneği önemliyse",
+                    "Blog veya içerik sitesi kuruyorsanız",
+                  ]
                 : ["Ease of use", "Large theme/plugin ecosystem", "Fast start"]
             }
           />
@@ -201,9 +225,11 @@ export default async function JoomlaHostingPage({
             items={
               isTr
                 ? [
-                    { q: "Joomla için hangi paket uygun?", a: "Trafik ve proje sayınıza göre paket seçebilirsiniz." },
-                    { q: "Tek tık kurulum var mı?", a: "Evet, panel üzerinden kurulum başlatılabilir." },
-                    { q: "Çok dilli site kurabilir miyim?", a: "Evet, Joomla'nın çok dilli yapısı desteklenir." },
+                    { q: "Joomla nedir, WordPress'ten farkı ne?", a: "Joomla ve WordPress ikisi de web sitesi kurmak için kullanılan platformlardır. Joomla çok dilli yapı, gelişmiş kullanıcı yetkilendirmesi ve karmaşık içerik mimarisinde daha güçlüdür; WordPress ise daha kolay başlangıç ve geniş eklenti ekosistemi sunar." },
+                    { q: "Joomla'yı kendim kurmak zorunda mıyım?", a: "Hayır. Tüm paketlerimizde Joomla tek tıkla kurulur, teknik bilgi gerekmez. Sorun yaşarsanız 7/24 destek ekibimiz yardımcı olur." },
+                    { q: "Mevcut Joomla sitemi taşıyabilir miyim?", a: "Evet. Mevcut Joomla sitenizi Domaintescil'e taşımak için destek ekibimizle iletişime geçin; taşıma sırasında siteniz erişilebilir kalmaya devam eder." },
+                    { q: "Çok dilli site kurabilir miyim?", a: "Evet, Joomla ek eklenti gerektirmeden birden fazla dili destekler." },
+                    { q: "Sonradan paketi yükseltebilir miyim?", a: "Evet, istediğiniz zaman veri kaybı olmadan üst pakete geçebilirsiniz." },
                   ]
                 : [
                     { q: "Which plan fits Joomla?", a: "Choose based on traffic and number of projects." },

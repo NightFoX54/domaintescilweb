@@ -56,17 +56,17 @@ export default async function WordPressHostingPage({
   return (
     <main id="main-content" className="flex flex-col">
       <PageHero
-        title={isTr ? "WordPress Siteniz İçin En Uygun Hosting" : "Best Hosting for Your WordPress Site"}
+        title={isTr ? "WordPress siteniz için hazır altyapı" : "Best Hosting for Your WordPress Site"}
         subtitle={
           isTr
-            ? "Tek tıkla kurulum, WooCommerce hazır altyapı. $899/year'dan başlıyor."
+            ? "Kurulum tek tık, siteniz dakikalar içinde yayında. Blog, kurumsal site veya online mağaza — hepsi için."
             : "One-click install, WooCommerce-ready stack. Starting from $899/year."
         }
       >
         <StatBadgesRow
           items={
             isTr
-              ? ["WordPress'in interneti güçlendirir %43+", "Tek tıkla kurulum", "WooCommerce hazır"]
+              ? ["Tek tıkla kurulum", "WooCommerce hazır"]
               : ["WordPress powers 43%+", "One-click install", "WooCommerce-ready"]
           }
         />
@@ -95,7 +95,13 @@ export default async function WordPressHostingPage({
               <div key={t} className="bg-white border border-neutral-200 rounded-2xl shadow-sm p-6">
                 <div className="font-semibold text-neutral-950">{t}</div>
                 <p className="mt-2 text-sm text-neutral-600 leading-relaxed">
-                  {isTr ? "Daha hızlı yayın alın, daha az uğraşın." : "Ship faster with less hassle."}
+                  {isTr
+                    ? t === "WooCommerce desteği"
+                      ? "Ek kurulum gerekmez, WooCommerce doğrudan çalışmaya hazırdır."
+                      : t === "Ödeme entegrasyonu"
+                        ? "iyzico, PayTR gibi Türk ödeme sistemleriyle sorunsuz entegrasyon."
+                        : "Yüzlerce ürünü yavaşlamadan yönetebileceğiniz optimize kaynak profili."
+                    : "Ship faster with less hassle."}
                 </p>
               </div>
             ))}
@@ -120,7 +126,7 @@ export default async function WordPressHostingPage({
                   ? [
                       { icon: <ShoppingCart size={18} />, title: "Paketi seç", description: "İhtiyacınıza uygun planı seçin." },
                       { icon: <Wrench size={18} />, title: "Kurulumu başlat", description: "Tek tıkla WordPress kurulumunu başlatın." },
-                      { icon: <Rocket size={18} />, title: "Siteniz hazır", description: "Panelden yönetmeye başlayın." },
+                      { icon: <Rocket size={18} />, title: "Siteniz hazır", description: "Giriş yapın, içerik eklemeye başlayın." },
                     ]
                   : [
                       { icon: <ShoppingCart size={18} />, title: "Pick a plan", description: "Choose the right plan for your needs." },
@@ -174,22 +180,22 @@ export default async function WordPressHostingPage({
               {
                 icon: <Gauge size={18} />,
                 t: isTr ? "Cache Uyumlu" : "Cache-Friendly",
-                d: isTr ? "Popüler cache eklentileriyle stabil çalışma." : "Stable with popular cache plugins.",
+                d: isTr ? "Site hızı — Sayfalarınız daha hızlı açılır, ziyaretçi kaybetmezsiniz." : "Stable with popular cache plugins.",
               },
               {
                 icon: <RefreshCcw size={18} />,
                 t: isTr ? "Güncelleme Kolaylığı" : "Easy Updates",
-                d: isTr ? "Çekirdek ve eklenti güncellemelerinde düşük kesinti." : "Low-friction core/plugin updates.",
+                d: isTr ? "Güncellemeler — WordPress ve eklentilerinizi güncel tutmak daha kolay." : "Low-friction core/plugin updates.",
               },
               {
                 icon: <PlugZap size={18} />,
                 t: isTr ? "Eklenti Ekosistemi" : "Plugin Ecosystem",
-                d: isTr ? "SEO, güvenlik ve form eklentileriyle yüksek uyum." : "High compatibility with SEO/security/form plugins.",
+                d: isTr ? "Eklentiler çalışır — Yoast, Contact Form 7, Elementor gibi popüler eklentiler sorunsuz çalışır." : "High compatibility with SEO/security/form plugins.",
               },
               {
                 icon: <ShieldCheck size={18} />,
                 t: isTr ? "WooCommerce Hazır" : "WooCommerce Ready",
-                d: isTr ? "Sepet/ödeme trafiğinde tutarlı tepki süreleri." : "Consistent response times on cart/checkout traffic.",
+                d: isTr ? "Online mağaza — Sepet ve ödeme sayfaları yavaşlamadan çalışır." : "Consistent response times on cart/checkout traffic.",
               },
             ].map((item) => (
               <div key={item.t} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
@@ -221,6 +227,8 @@ export default async function WordPressHostingPage({
                     { q: "WooCommerce kullanabilir miyim?", a: "Evet, WooCommerce için uygun altyapı sunar." },
                     { q: "Tek tık kurulum nasıl çalışır?", a: "Paket seçimi sonrası panelden kurulum başlatılır." },
                     { q: "Mevcut sitemi taşıyabilir miyim?", a: "Evet, taşıma adımlarında destek alabilirsiniz." },
+                    { q: "WordPress ile e-ticaret sitesi kurmak istiyorum, nereden başlamalıyım?", a: "Standart Web veya Profesyonel paket alın, WooCommerce tek tıkla kurulur. Destek ekibimiz ilk adımda yardımcı olur." },
+                    { q: "Sonradan paketi yükseltebilir miyim?", a: "Evet, veri kaybı olmadan istediğiniz zaman üst pakete geçebilirsiniz." },
                   ]
                 : [
                     { q: "Can I use WooCommerce?", a: "Yes, the stack supports WooCommerce workloads." },

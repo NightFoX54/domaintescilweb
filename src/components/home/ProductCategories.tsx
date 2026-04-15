@@ -31,7 +31,7 @@ export default function ProductCategories() {
       icon: <ShieldCheck size={24} aria-hidden="true" />,
       title: isTr ? "SSL Sertifikası" : "SSL Certificates",
       description: isTr
-        ? "Sectigo tabanlı sertifikalarla güvenli bağlantıyı dakikalar içinde etkinleştirin."
+        ? "Ziyaretçileriniz güvende hissetsin. SSL kurulumu dakikalar içinde tamamlanır."
         : "Enable secure connections in minutes with Sectigo-based certificates.",
       cta: isTr ? "SSL İncele" : "Explore SSL",
       href: isTr ? "/ssl-satin-al" : "/en/ssl-certificates",
@@ -46,7 +46,7 @@ export default function ProductCategories() {
             {isTr ? "Ürün Kategorileri" : "Product Categories"}
           </div>
           <h2 className="mt-4 font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
-            {isTr ? "İhtiyacınıza Uygun Ürünü Seçin" : "Choose the Right Product for Your Needs"}
+            {isTr ? "Ne yapmak istiyorsunuz?" : "Choose the Right Product for Your Needs"}
           </h2>
         </div>
 

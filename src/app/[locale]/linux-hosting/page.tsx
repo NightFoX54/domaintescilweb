@@ -58,7 +58,7 @@ export default async function LinuxHostingPage({
         title={isTr ? "Güvenilir Linux Hosting" : "Reliable Linux Hosting"}
         subtitle={
           isTr
-            ? "Kararlı, esnek ve uygun fiyatlı. PHP, MySQL, cPanel dahil."
+            ? "Kişisel blog, kurumsal site veya ajans projesi — tek panelden yönet."
             : "Stable, flexible and affordable. PHP, MySQL and cPanel included."
         }
       >
@@ -87,12 +87,12 @@ export default async function LinuxHostingPage({
             leftTitle="Linux"
             leftPoints={
               isTr
-                ? ["Genel amaçlı", "Her CMS ile uyumlu", "Esnek kullanım"]
+                ? ["WordPress dışında bir sistem kullanıyorsanız, ya da ne kullandığınızdan emin değilseniz burası."]
                 : ["General purpose", "Works with any CMS", "Flexible usage"]
             }
             rightTitle="WordPress"
             rightPoints={
-              isTr ? ["WP optimize", "Tek tık kurulum", "WooCommerce hazır"] : ["WP-optimized", "One-click install", "WooCommerce-ready"]
+              isTr ? ["Sitenizi WordPress ile kurdunuzsa veya kuracaksanız, bu paket sizin için optimize edilmiş."] : ["WP-optimized", "One-click install", "WooCommerce-ready"]
             }
           />
         </div>
@@ -124,66 +124,6 @@ export default async function LinuxHostingPage({
         </div>
       </ContentSection>
 
-      <ContentSection background="white" ariaLabel="Linux teknik operasyon senaryoları">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="rounded-2xl border border-neutral-200 bg-neutral-950 text-white p-6 shadow-sm">
-              <div className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-300">
-                <TerminalSquare size={16} />
-                {isTr ? "Geliştirici Akışı" : "Developer Workflow"}
-              </div>
-              <pre className="mt-4 overflow-x-auto rounded-xl bg-black/40 p-4 text-xs leading-6 text-neutral-200">
-                <code>
-{`# örnek deploy akışı
-git pull origin main
-composer install --no-dev
-php artisan cache:clear
-php artisan migrate --force`}
-                </code>
-              </pre>
-              <p className="mt-3 text-sm text-neutral-300">
-                {isTr
-                  ? "Terminal ve cron odaklı projelerde Linux hosting, operasyonu sadeleştirir."
-                  : "For terminal and cron-based projects, Linux hosting keeps operations simple."}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                {
-                  icon: <Cpu size={18} />,
-                  t: isTr ? "Sürüm Kontrolü" : "Version Control",
-                  d: isTr ? "PHP ve runtime sürümlerini proje ihtiyacına göre yönetin." : "Tune PHP/runtime versions per project.",
-                },
-                {
-                  icon: <Workflow size={18} />,
-                  t: isTr ? "Cron ve Job Akışları" : "Cron & Job Flows",
-                  d: isTr ? "Planlı görevler ve otomasyon işlerini panelden yönetin." : "Run scheduled jobs and automations from panel.",
-                },
-                {
-                  icon: <ShieldCheck size={18} />,
-                  t: isTr ? "İzolasyon ve Güvenlik" : "Isolation & Security",
-                  d: isTr ? "Hesap bazlı kaynak izolasyonu ile daha güvenli altyapı." : "Per-account resource isolation for safer hosting.",
-                },
-                {
-                  icon: <TerminalSquare size={18} />,
-                  t: isTr ? "Ajans Çoklu Proje" : "Agency Multi-Project",
-                  d: isTr ? "Farklı müşteri sitelerini tek düzen içinde ölçekleyin." : "Scale multiple client sites in one flow.",
-                },
-              ].map((item) => (
-                <div key={item.t} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary-light text-brand-primary">
-                    {item.icon}
-                  </div>
-                  <div className="mt-3 font-semibold text-neutral-950">{item.t}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-600">{item.d}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </ContentSection>
-
       <ContentSection background="white" ariaLabel="Teknik özellikler">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
           <HostingTechnicalSection />
@@ -207,6 +147,9 @@ php artisan migrate --force`}
                     { q: "Linux hosting kimler için uygun?", a: "Genel amaçlı projeler ve farklı CMS kullananlar için uygundur." },
                     { q: "MySQL limitleri nedir?", a: "Seçtiğiniz pakete göre MySQL veritabanı sayısı değişir." },
                     { q: "FTP hesabı oluşturabilir miyim?", a: "Evet, cPanel üzerinden FTP hesabı ekleyebilirsiniz." },
+                    { q: "Linux hosting ile WordPress kullanabilir miyim?", a: "Evet, Linux hosting WordPress dahil tüm CMS platformlarını destekler." },
+                    { q: "Hosting alınca sitem hemen yayına girer mi?", a: "Hosting aktif olduktan sonra alan adı yönlendirmesini yapmanız gerekir, destek ekibimiz bu adımda yardımcı olur." },
+                    { q: "Sonradan paketi yükseltebilir miyim?", a: "Evet, istediğiniz zaman üst pakete geçebilirsiniz." },
                   ]
                 : [
                     { q: "Who is Linux hosting for?", a: "It fits general projects and users running different CMSs." },

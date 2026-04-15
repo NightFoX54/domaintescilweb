@@ -40,7 +40,7 @@ const fallbackItems: SSLItem[] = [
     plan: "Positive SSL",
     price: "$349/year",
     type: "DV",
-    features: ["Tek alan adı", "$350,000 garanti", "15 gün iade ✓"],
+    features: ["Kişisel site veya blog için"],
     note: "15 gün iade garantisi ✓",
     special: "En Uygun",
   },
@@ -48,21 +48,21 @@ const fallbackItems: SSLItem[] = [
     plan: "Positive SSL Wildcard",
     price: "$5,499/year",
     type: "DV",
-    features: ["Sınırsız alt alan adı", "$350,000 garanti"],
+    features: ["Alt alan adları olan siteler için", "Sitenizde blog.markaadı.com veya shop.markaadı.com gibi bölümler varsa bu seçenek."],
     note: "İade yok",
   },
   {
     plan: "Instant SSL Pro",
     price: "$4,799/year",
     type: "OV",
-    features: ["Tek alan adı", "$3,500,000 garanti"],
+    features: ["Müşteri formu veya kurumsal site için"],
     note: "Onaylandıktan sonra iade yapılmaz",
   },
   {
     plan: "EV SSL",
     price: "$5,999/year",
     type: "EV",
-    features: ["Tek domain"],
+    features: ["Ödeme alan veya finans sektörü için"],
     note: "Onaylandıktan sonra iade yapılmaz",
   },
 ];
@@ -86,6 +86,14 @@ export default function SSLPricing() {
     run();
   }, []);
 
+  const trFeaturesFor = (plan: string, fallback: string[]) => {
+    if (plan === "Positive SSL") return ["Kişisel site veya blog için"];
+    if (plan === "Positive SSL Wildcard") return ["Alt alan adları olan siteler için", "Sitenizde blog.markaadı.com veya shop.markaadı.com gibi bölümler varsa bu seçenek."];
+    if (plan === "Instant SSL Pro") return ["Müşteri formu veya kurumsal site için"];
+    if (plan === "EV SSL") return ["Ödeme alan veya finans sektörü için"];
+    return fallback;
+  };
+
   return (
     <section className="bg-white text-neutral-950">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
@@ -108,7 +116,7 @@ export default function SSLPricing() {
               plan={it.plan}
               price={it.price}
               benefit={undefined}
-              features={it.features}
+              features={trFeaturesFor(it.plan, it.features)}
               ctaLabel="Hemen Başla"
               ctaHref={`${base}/ssl/konfigurasyon?plan=${encodeURIComponent(it.plan)}&type=${it.type}`}
               isRecommended={false}
@@ -146,7 +154,7 @@ export default function SSLPricing() {
                   plan={it.plan}
                   price={it.price}
                   benefit={undefined}
-                  features={it.features}
+                  features={trFeaturesFor(it.plan, it.features)}
                   ctaLabel="Hemen Başla"
                   ctaHref={`${base}/ssl/konfigurasyon?plan=${encodeURIComponent(it.plan)}&type=${it.type}`}
                   isRecommended={false}

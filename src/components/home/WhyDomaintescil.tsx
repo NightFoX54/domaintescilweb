@@ -10,8 +10,8 @@ export default function WhyDomaintescil() {
   const points = isTr
     ? [
         { icon: <ShieldCheck size={18} aria-hidden="true" />, title: "20 yıl deneyim", text: "Uzun yıllara dayanan operasyon birikimi." },
-        { icon: <Building2 size={18} aria-hidden="true" />, title: "ICANN & BTK yetkili", text: "Uluslararası ve yerel uyumla güvenli süreç." },
-        { icon: <Wrench size={18} aria-hidden="true" />, title: "Tucows altyapısı", text: "Dünya standardında registrar altyapısı." },
+        { icon: <Building2 size={18} aria-hidden="true" />, title: "ICANN & BTK yetkili", text: "Devlet denetimli, resmi kayıt kuruluşuyuz." },
+        { icon: <Wrench size={18} aria-hidden="true" />, title: "Uluslararası altyapı", text: "Dünyanın en büyük domain sistemlerinden biri üzerinde çalışıyoruz." },
         { icon: <Headphones size={18} aria-hidden="true" />, title: "7/24 Türkçe destek", text: "Teknik ve satış ekiplerine hızlı erişim." },
       ]
     : [

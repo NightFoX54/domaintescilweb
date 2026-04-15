@@ -70,7 +70,12 @@ export default function HostingPricing({
       key: "baslangic",
       plan: "Başlangıç",
       price: "$899/year",
-      benefit: "Kişisel blogunuz veya ilk projeniz için yeterli.",
+      benefit:
+        tab === "wordpress"
+          ? "Tek bir WordPress sitesi kuracaksanız, ihtiyacınız olan her şey burada."
+          : tab === "joomla"
+            ? "Tek bir Joomla sitesi kuracaksanız, ihtiyacınız olan her şey burada."
+            : "Tek bir site kuracaksanız, ihtiyacınız olan her şey burada.",
       features: [
         "1 site",
         "1 GB disk",
@@ -90,7 +95,10 @@ export default function HostingPricing({
       key: "standart",
       plan: "Standart Web ★",
       price: "$1,899/year",
-      benefit: "KOBİ'lerin ve ajansların en çok tercih ettiği paket.",
+      benefit:
+        tab === "joomla"
+          ? "Birden fazla site veya büyümeyi planlıyorsanız bu paket."
+          : "Birden fazla site yönetiyorsanız veya ileride büyümeyi düşünüyorsanız bu paket.",
       features: [
         "5 site",
         "5 GB disk",
@@ -134,7 +142,7 @@ export default function HostingPricing({
         "Anti-Spam",
         "Web FTP",
       ],
-      ctaLabel: "Paketi İncele",
+      ctaLabel: "Hemen Başla",
       ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=profesyonel`,
     },
   ] as const;

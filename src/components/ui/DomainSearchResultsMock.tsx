@@ -215,7 +215,7 @@ export default function DomainSearchResultsMock({
                                 kind: "domain",
                                 title: it.domain,
                                 priceDisplay: undefined,
-                                config: { domain: it.domain, years },
+                                config: { domain: it.domain, years, action: "register" },
                               });
                               setToast(isEn ? "Added to cart." : "Sepete eklendi.");
                             }}

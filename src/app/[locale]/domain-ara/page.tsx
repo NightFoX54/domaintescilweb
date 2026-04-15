@@ -91,10 +91,10 @@ export default async function DomainSearchPage({
         }}
       />
       <PageHero
-        title={isTr ? "Hayalinizdeki Domaini Bulun" : "Find Your Perfect Domain"}
+        title={isTr ? "Alan adınızı arayın" : "Find Your Perfect Domain"}
         subtitle={
           isTr
-            ? "200'den fazla uzantıda anında sorgulama. Sonuç garanti, ücret yok."
+            ? "200+ uzantıda anında sonuç."
             : "Instant search across 200+ TLDs. Guaranteed results, no fees."
         }
       >
@@ -105,24 +105,10 @@ export default async function DomainSearchPage({
                 compact
                 summary={
                   isTr
-                    ? "Domaintescil ile 200+ uzantıda gerçek zamanlı domain uygunluk kontrolü yapabilir, transfere uygun adları tek akışta yönetebilirsiniz. ICANN Akredite Kayıt Kuruluşu güvencesiyle güvenli tescil deneyimi sunulur."
+                    ? ""
                     : "With Domaintescil, you can check availability across 200+ TLDs and manage transfer-eligible names in one flow. ICANN-accredited registrar trust ensures a reliable registration experience."
                 }
-                points={
-                  isTr
-                    ? [
-                        ".com, .com.tr, .net ve daha fazlası",
-                        "Anında sorgu ve öneri",
-                        "Tescil + transfer tek deneyim",
-                        "Akredite operatör güvencesi",
-                      ]
-                    : [
-                        ".com, .com.tr, .net and more",
-                        "Instant lookup and suggestions",
-                        "Registration + transfer in one flow",
-                        "Accredited operator trust",
-                      ]
-                }
+                points={isTr ? [] : [".com, .com.tr, .net and more", "Instant lookup and suggestions", "Registration + transfer in one flow", "Accredited operator trust"]}
               />
             </div>
             <div className="lg:col-span-7">
@@ -188,17 +174,17 @@ export default async function DomainSearchPage({
               {
                 tld: ".com",
                 who: "Küresel hedef kitle",
-                why: "En tanınan uzantı, güven verir.",
+                why: "Herkes tarafından tanınır. Emin olmak isteyenler için.",
               },
               {
                 tld: ".com.tr",
                 who: "Türk şirketleri",
-                why: "Yerel güven, belgesiz alım (2023'ten itibaren).",
+                why: "Türkiye'de faaliyet gösterenler için. Artık belge gerekmiyor.",
               },
               {
                 tld: ".net",
                 who: "Teknoloji & ağ",
-                why: "Teknik projeler için.",
+                why: "Yazılım, ajans veya blog için iyi bir seçim.",
               },
               {
                 tld: ".istanbul",
@@ -213,7 +199,7 @@ export default async function DomainSearchPage({
               {
                 tld: ".io",
                 who: "Startup & SaaS",
-                why: "Teknoloji şirketlerinde güçlü imaj.",
+                why: "Uygulama veya platform kuruyorsanız standart tercih.",
               },
             ].map((row) => (
               <div
@@ -270,6 +256,10 @@ export default async function DomainSearchPage({
               {
                 q: "ICANN akreditasyonu ne anlama gelir?",
                 a: "ICANN, küresel domain yönetiminden sorumlu uluslararası otoritedir. Akredite operatör olmak, standartlara uygunluğun resmi onayıdır.",
+              },
+              {
+                q: "Aldığım domain adını nasıl web siteme bağlarım?",
+                a: "Bağlantı adımlarında destek ekibimiz yönlendirme sağlar.",
               },
             ]}
           />

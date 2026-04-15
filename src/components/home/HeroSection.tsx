@@ -74,12 +74,12 @@ export default function HeroSection() {
               id="hero-heading"
               className="font-display font-semibold text-white text-[48px] sm:text-[66px] leading-[1.02] tracking-tight"
             >
-              {isTr ? "Markanın dijital adresi buradan başlar" : "Your brand's digital address starts here"}
+              {isTr ? "Web siteniz için alan adı almak hiç bu kadar kolay olmamıştı" : "Your brand's digital address starts here"}
             </h1>
 
             <p className="text-neutral-400 text-[18px] leading-relaxed max-w-[46ch]">
               {isTr
-                ? "200'den fazla uzantıda anında sorgulama yapın. Sıcak, hızlı ve güvenilir bir kayıt deneyimi."
+                ? "200'den fazla uzantıda anında sorgula, dakikalar içinde sahip ol."
                 : "Search instantly across 200+ extensions with a warm, fast and reliable registration flow."}
             </p>
 
@@ -88,7 +88,7 @@ export default function HeroSection() {
               placeholder={isTr ? "markaniz.com" : "yourbrand.com"}
               helperText={
                 isTr
-                  ? "Ücretsiz sorgulama · Bağlayıcı değil · Anında sonuç"
+                  ? "Kredi kartı girmeden sorgula · Hemen sahip olmak 5 dakika sürer"
                   : "Free search · Non-binding · Instant results"
               }
               inputAriaLabel={isTr ? "Alan adı sorgula" : "Search domain name"}

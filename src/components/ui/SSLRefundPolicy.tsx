@@ -20,7 +20,7 @@ export default function SSLRefundPolicy() {
             Diğer ürünler — İade yok
           </div>
           <p className="mt-3 text-sm text-neutral-600 leading-relaxed max-w-[60ch]">
-            Wildcard/OV/EV ürünlerinde doğrulama ve aktivasyon sonrası iade yapılmaz. Bu şeffaflık güven içindir.
+            Wildcard/OV/EV ürünlerinde doğrulama ve aktivasyon sonrası iade yapılmaz. Bu şeffaflık güven içindir. Bu nedenle seçimden önce satış ekibimize danışmanızı öneririz.
           </p>
           <div className="mt-4 text-sm text-neutral-600">
             Seçim konusunda yardım:{" "}

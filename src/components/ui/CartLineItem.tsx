@@ -25,6 +25,9 @@ export default function CartLineItem({
             {item.kind === "domain" ? (
               <span className="font-mono text-neutral-950">
                 {item.config.domain} · {item.config.years} yıl
+                {item.config.action
+                  ? ` · ${item.config.action === "transfer" ? "transfer" : "tescil"}`
+                  : ""}
               </span>
             ) : item.kind === "hosting" ? (
               <span className="font-mono text-neutral-950">

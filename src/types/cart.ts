@@ -2,7 +2,8 @@ export type CartItemKind = "domain" | "hosting" | "ssl";
 
 export type DomainCartConfig = {
   domain: string;
-  years: 1 | 2 | 3 | 5;
+  years: number;
+  action?: "register" | "transfer";
 };
 
 export type HostingCartConfig = {

@@ -79,10 +79,10 @@ export default async function DomainTransferPage({
   return (
     <main id="main-content" className="flex flex-col">
       <PageHero
-        title={isTr ? "Domaininizi Güvenle Taşıyın" : "Transfer Your Domain Safely"}
+        title={isTr ? "Domain adresinizi Domaintescil'e taşıyın" : "Transfer Your Domain Safely"}
         subtitle={
           isTr
-            ? "Transfer işlemi basit ve güvenlidir. ICANN akredite altyapı, tam kontrol sizdedir."
+            ? "Mevcut alan adınızı başka bir sağlayıcıdan buraya kolayca getirebilirsiniz. Siteniz bu süreçte kesintisiz çalışmaya devam eder."
             : "A simple and secure transfer with full control."
         }
       >
@@ -100,7 +100,7 @@ export default async function DomainTransferPage({
                   isTr
                     ? [
                         "5 adımda net transfer akışı",
-                        "No-downtime yaklaşımı",
+                        "Siteniz transfer süresince çalışmaya devam eder",
                         "Uzantıya göre +1 yıl avantajı",
                         "7/24 yerel destek",
                       ]
@@ -152,15 +152,15 @@ export default async function DomainTransferPage({
             <NumberedStepper
               items={[
                 {
-                  title: "EPP Kodunu Alın",
+                  title: "Kilit kodunu alın",
                   description:
-                    "Mevcut kayıt şirketinizden transfer kilidi kaldırılmış EPP/auth kodunu isteyin.",
+                    "Mevcut sağlayıcınıza \"domain transferi için EPP kodu istiyorum\" deyin. EPP kodu, domainin size ait olduğunu kanıtlayan bir şifredir — genellikle e-posta ile iletilir.",
                   icon: <FileKey size={18} />,
                 },
                 {
                   title: "Transfer Başlatın",
                   description:
-                    "Domaintescil paneline girerek transfer talebi oluşturun.",
+                    "Hesabınıza giriş yapın ve transfer formunu doldurun. Hesabınız yoksa açmanız 1 dakika sürer.",
                   icon: <Globe size={18} />,
                 },
                 {
@@ -172,7 +172,7 @@ export default async function DomainTransferPage({
                 {
                   title: "Süreç Başlar",
                   description:
-                    "ICANN altyapısı üzerinden 5-7 iş günü içinde transfer tamamlanır.",
+                    "Transfer 5-7 iş günü içinde tamamlanır.",
                   icon: <Timer size={18} />,
                 },
                 {
@@ -190,10 +190,10 @@ export default async function DomainTransferPage({
       <ContentSection background="white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
           <SectionHeading
-            title={isTr ? ".tr Uzantıları İçin Özel Süreç" : ".tr Special Process"}
+            title={isTr ? ".com.tr veya .org.tr gibi Türk uzantınız mı var?" : ".tr Special Process"}
             lead={
               isTr
-                ? "NIC.TR süreçleri uzantıya göre farklılık gösterebilir; yetkili operatör güvencesiyle ilerlersiniz."
+                ? "Bu domainlerin transferi biraz farklı işler — ama siz yine de aynı adımları takip edin, ekibimiz farkı sizin için yönetir."
                 : "NIC.TR processes may vary; proceed with accredited support."
             }
           />
@@ -201,8 +201,8 @@ export default async function DomainTransferPage({
           <div className="mt-10">
             <NoteCard
               icon={<ShieldCheck size={18} />}
-              title="NIC.TR Yetkili Operatör"
-              body=" .tr transferleri NIC.TR süreçlerine bağlıdır ve bazı uzantılarda ek süre gerekebilir. Domaintescil, NIC.TR yetkili operatörüdür. 2023 itibarıyla belge zorunluluğu kalktı."
+              title={isTr ? "Türk uzantıları için destek" : "TR extension support"}
+              body={isTr ? "Bu domainlerin transferi biraz farklı işler — ama siz yine de aynı adımları takip edin, ekibimiz farkı sizin için yönetir." : ".tr transfer processes may vary by extension."}
             />
           </div>
 
@@ -267,6 +267,10 @@ export default async function DomainTransferPage({
               {
                 q: "ICANN akreditasyonu ne sağlar?",
                 a: "ICANN, küresel domain yönetiminden sorumlu uluslararası otoritedir. Akredite operatör olmak, standartlara uygunluğun resmi onayıdır.",
+              },
+              {
+                q: "EPP kodunu nasıl alırım, sağlayıcım vermek istemezse ne yapmalıyım?",
+                a: "Sağlayıcılar yasal olarak bu kodu vermek zorundadır. Sorun yaşarsanız destek ekibimizle iletişime geçin.",
               },
             ]}
           />

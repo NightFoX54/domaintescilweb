@@ -4,11 +4,10 @@ export default function SSLUseCases() {
   return (
     <div>
       <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
-        SSL Kimler İçin Zorunlu?
+        Sitemin SSL'e ihtiyacı var mı?
       </h2>
       <p className="mt-4 text-neutral-600 text-[16px] leading-relaxed max-w-[70ch]">
-        SSL, siteniz ile ziyaretçi arasındaki veriyi şifreleyerek HTTPS’i etkinleştirir. Tarayıcı uyarılarını azaltır,
-        güveni artırır ve SEO’ya katkı sağlar.
+        Kısaca: evet. Ziyaretçileriniz SSL olmayan sitelerde tarayıcı uyarısı görür. Bu güvensizlik yaratır ve sitenizi terk etmelerine yol açar.
       </p>
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -85,28 +85,13 @@ export default async function HostingOverviewPage({
         }}
       />
       <PageHero
-        title={isTr ? "Sitenizi Güçlü Temelde Büyütün" : "Grow Your Site on Solid Ground"}
+        title={isTr ? "Web sitenizi yayına alın" : "Grow Your Site on Solid Ground"}
         subtitle={
           isTr
-            ? "Linux, WordPress ve Joomla hosting seçenekleri. $899/year'dan başlıyor."
+            ? "WordPress, Joomla veya özel bir site — hangi türde olursa olsun, dakikalar içinde kuruluma hazır."
             : "Linux, WordPress and Joomla hosting options. Starting from $899/year."
         }
       />
-
-      <ContentSection background="white" ariaLabel="Neden Domaintescil">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 lg:py-14">
-          <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6">
-            <h2 className="font-display font-semibold text-2xl text-neutral-950">
-              {isTr ? "Neden Domaintescil?" : "Why Domaintescil?"}
-            </h2>
-            <p className="mt-3 text-neutral-600 leading-relaxed">
-              {isTr
-                ? "Domaintescil, Türkiye pazarına odaklı web hosting altyapısını 2003'ten bu yana yerel destek ve ICANN akreditasyon güvencesiyle sunar. Linux, WordPress ve Joomla planlarında aynı panel deneyimiyle hızlı kurulum ve sürdürülebilir büyüme sağlar."
-                : "Domaintescil delivers Turkey-focused hosting since 2003 with local support and ICANN-accredited trust. Linux, WordPress and Joomla plans share one consistent panel for faster setup and scalable growth."}
-            </p>
-          </div>
-        </div>
-      </ContentSection>
 
       <ContentSection background="light" ariaLabel="Hosting türleri">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">

@@ -162,7 +162,7 @@ export default async function SSLPage({
         title={isTr ? "Sitenizi HTTPS ile Güvene Alın" : "Secure Your Site with HTTPS"}
         subtitle={
           isTr
-            ? "Comodo/Sectigo altyapısı. Tarayıcıda yeşil kilit, ziyaretçide güven."
+            ? "Tarayıcıda kilit simgesi, ziyaretçinizde güven. Kurulum dakikalar içinde tamamlanır."
             : "Powered by Comodo/Sectigo. Browser trust, visitor confidence."
         }
         primary={
@@ -187,25 +187,7 @@ export default async function SSLPage({
         </div>
       </PageHero>
 
-      <ContentSection background="white" ariaLabel="Neden Domaintescil SSL">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 lg:py-14">
-          <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6">
-            <h2 className="font-display font-semibold text-2xl text-neutral-950">
-              {isTr ? "Neden Domaintescil SSL?" : "Why Domaintescil SSL?"}
-            </h2>
-            <p className="mt-3 text-neutral-600 leading-relaxed">
-              {isTr
-                ? "Domaintescil, Comodo/Sectigo SSL ürünlerini Türkiye pazarına uygun destek modeliyle sunar. Doğru sertifika türünü seçmenize yardımcı olur, kurulum ve yenileme süreçlerinde kesintisiz rehberlik sağlar."
-                : "Domaintescil provides Comodo/Sectigo SSL with support tailored for Turkey. We help you choose the correct certificate type and guide installation and renewal without friction."}
-            </p>
-          </div>
-        </div>
-      </ContentSection>
-
       <ContentSection background="white" ariaLabel="SSL türleri ve fiyatlar">
-        <div id="ssl-pricing" className="mt-4 lg:mt-6">
-            <SSLPricing />
-        </div>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
           <SectionHeading
             title={isTr ? "SSL Türünüzü Seçin" : "Choose Your SSL Type"}
@@ -218,8 +200,9 @@ export default async function SSLPage({
           <div id="ssl-types" className="mt-10">
             <SSLTypeCards />
           </div>
-
-          
+          <div id="ssl-pricing" className="mt-10">
+            <SSLPricing />
+          </div>
         </div>
       </ContentSection>
 
@@ -252,6 +235,9 @@ export default async function SSLPage({
                     { q: "SSL kurulumu zor mu?", a: "Kurulum adımlarında destek alabilir, panel üzerinden yönlendirmeleri takip edebilirsiniz." },
                     { q: "DV ile OV farkı nedir?", a: "DV alan adı doğrular; OV ek olarak kurum doğrulaması içerir." },
                     { q: "EV SSL ne zaman gerekir?", a: "Marka güveninin kritik olduğu işlemlerde ve yüksek güven beklentisinde tercih edilir." },
+                    { q: "SSL almazsam ne olur?", a: "Tarayıcılar sitenizi \"Güvenli değil\" olarak işaretler, bu ziyaretçi kaybına ve SEO sıralamalarının düşmesine neden olur." },
+                    { q: "Hosting alırsam SSL otomatik geliyor mu?", a: "Hayır, SSL ayrı bir üründür. Hosting ile birlikte SSL almanızı öneririz." },
+                    { q: "SSL'i kendim mi kuruyorum?", a: "Kurulum süreci basittir; destek ekibimiz adım adım yönlendirir." },
                   ]
                 : [
                     { q: "Is SSL installation difficult?", a: "You can get help during setup and follow panel guidance." },

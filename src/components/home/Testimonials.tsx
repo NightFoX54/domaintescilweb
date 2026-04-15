@@ -18,7 +18,7 @@ const TESTIMONIALS_TR: Testimonial[] = [
   {
     quote:
       ".io domain transferimizi öğleden önce başlattık, panelde tüm DNS adımlarını tek ekranda tamamladık ve akşama canlıya çıktık.",
-    highlight: "Anında aktivasyon ve kesintisiz geçiş",
+    highlight: "Akşama canlıya çıktık, hiçbir sorun olmadı",
     author: "Mert Yılmaz",
     title: "Yazılım Geliştirici",
     city: "İstanbul",
@@ -36,7 +36,7 @@ const TESTIMONIALS_TR: Testimonial[] = [
   {
     quote:
       "SSL yenileme tarihinde otomatik bildirim aldık, doğru sertifika tipini hızlıca seçtik ve ilk kurulumda destek ekibinden anında yönlendirme aldık.",
-    highlight: "15 gün iade güvencesiyle güvenli satın alma",
+    highlight: "İlk kurulumda destek ekibinden anında yönlendirme aldık",
     author: "Deniz Şahin",
     title: "E-ticaret Yöneticisi",
     city: "İzmir",

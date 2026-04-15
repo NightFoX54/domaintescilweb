@@ -15,21 +15,21 @@ type Item = {
 const items: Item[] = [
   {
     title: "Linux Hosting",
-    description: "Genel amaçlı, esnek ve uygun fiyatlı.",
+    description: "Genel web sitesi — Sıradan bir kurumsal site veya portföy için. Joomla, Drupal ve diğer CMS platformlarıyla tam uyumludur.",
     hrefTr: "/linux-hosting",
     hrefEn: "/en/linux-hosting",
     icon: <Globe size={18} />,
   },
   {
     title: "WordPress Hosting",
-    description: "WP için optimize, tek tık kurulum.",
+    description: "WordPress sitesi — Blog, haber sitesi veya WordPress tabanlı her şey için.",
     hrefTr: "/wordpress-hosting",
     hrefEn: "/en/wordpress-hosting",
     icon: <LayoutGrid size={18} />,
   },
   {
     title: "Joomla Hosting",
-    description: "Kurumsal projeler için uyumlu altyapı.",
+    description: "Joomla sitesi — Çok dilli veya kurumsal yapı gerektiren projeler için.",
     hrefTr: "/joomla-hosting",
     hrefEn: "/en/joomla-hosting",
     icon: <Database size={18} />,
