@@ -53,11 +53,12 @@ export default function DomainSearchBox({
             id={`${id || "domain-search"}-input`}
             aria-label={inputAriaLabel}
             name="q"
+            data-search-input="true"
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder={placeholder}
             autoComplete="off"
-            className="flex-1 min-h-[44px] px-4 py-3 rounded-xl bg-transparent text-white placeholder:text-white/60 border border-white/20 hover:border-white/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+            className="flex-1 min-h-[44px] px-4 py-3 rounded-xl bg-transparent text-white border border-white/20 hover:border-white/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
           />
           <button
             type="submit"

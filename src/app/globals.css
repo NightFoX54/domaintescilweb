@@ -95,6 +95,11 @@ body {
   background-size: 3px 3px;
 }
 
+/* Keep search placeholders softer than input text */
+input[data-search-input="true"]::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ambient-blob-a,
   .ambient-blob-b {

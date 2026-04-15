@@ -17,8 +17,9 @@ export default function KBSearchBar({
         <input
           id="kb-search"
           type="search"
+          data-search-input="true"
           placeholder={placeholder}
-          className="w-full bg-transparent text-white placeholder:text-white/50 outline-none"
+          className="w-full bg-transparent text-white outline-none"
         />
       </div>
       <div className="mt-2 text-xs text-white/60">Frontend placeholder — filtreleme yakında.</div>
