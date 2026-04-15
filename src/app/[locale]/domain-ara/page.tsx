@@ -10,7 +10,7 @@ import CTABand from "@/components/home/CTABand";
 import StepCards from "@/components/ui/StepCards";
 import ContactPromptSection from "@/components/ui/ContactPromptSection";
 import { Search, MousePointerClick, BadgeCheck } from "lucide-react";
-import DomainSearchResultsMock from "@/components/ui/DomainSearchResultsMock";
+import DomainSearchResultsLive from "@/components/ui/DomainSearchResultsLive";
 import GeoSummaryBlock from "@/components/ui/GeoSummaryBlock";
 
 const SITE_URL = "https://domaintescil.com";
@@ -129,7 +129,7 @@ export default async function DomainSearchPage({
               <DomainSearchBox id="search-box" defaultValue={q} maxWidthClass="max-w-none" />
             </div>
           </div>
-          {q ? <DomainSearchResultsMock query={q} /> : null}
+          {q ? <DomainSearchResultsLive query={q} /> : null}
           <div className="mt-6">
             <TrustStrip fillRow />
           </div>

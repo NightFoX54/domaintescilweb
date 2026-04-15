@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/ui/PageHero";
 import DomainSearchBox from "@/components/ui/DomainSearchBox";
-import DomainSearchResultsMock from "@/components/ui/DomainSearchResultsMock";
+import DomainSearchResultsLive from "@/components/ui/DomainSearchResultsLive";
 import TrustStrip from "@/components/ui/TrustStrip";
 import ContentSection from "@/components/ui/ContentSection";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -130,7 +130,7 @@ export default async function DomainTransferPage({
               />
             </div>
           </div>
-          {q ? <DomainSearchResultsMock query={q} /> : null}
+          {q ? <DomainSearchResultsLive query={q} /> : null}
           <div className="mt-6">
             <TrustStrip fillRow />
           </div>
