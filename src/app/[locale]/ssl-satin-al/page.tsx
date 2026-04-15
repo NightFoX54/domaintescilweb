@@ -203,6 +203,9 @@ export default async function SSLPage({
       </ContentSection>
 
       <ContentSection background="white" ariaLabel="SSL türleri ve fiyatlar">
+        <div id="ssl-pricing" className="mt-14">
+            <SSLPricing />
+        </div>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
           <SectionHeading
             title={isTr ? "SSL Türünüzü Seçin" : "Choose Your SSL Type"}
@@ -216,9 +219,7 @@ export default async function SSLPage({
             <SSLTypeCards />
           </div>
 
-          <div id="ssl-pricing" className="mt-14">
-            <SSLPricing />
-          </div>
+          
         </div>
       </ContentSection>
 
