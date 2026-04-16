@@ -91,6 +91,8 @@ export default async function HostingOverviewPage({
             ? "WordPress, Joomla veya özel bir site — hangi türde olursa olsun, dakikalar içinde kuruluma hazır."
             : "Whether it is WordPress, Joomla, or a custom site, your setup is ready in minutes."
         }
+        imageSrc="/images/page-heroes/hosting-hero.png"
+        imageAlt={isTr ? "Hosting paketleri için hero görseli" : "Hero visual for hosting packages"}
       />
 
       <ContentSection background="light" ariaLabel="Hosting türleri">

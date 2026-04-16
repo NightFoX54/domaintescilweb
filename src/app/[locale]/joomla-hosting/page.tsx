@@ -59,6 +59,8 @@ export default async function JoomlaHostingPage({
             ? "Kurumsal içerik yönetimi, çok dilli yapı veya rol bazlı ekip çalışması gerektiren projeler için. Joomla kurulumu tek tıkla tamamlanır."
             : "Built for projects that need multilingual content, role-based team workflows, and corporate-level content management. Joomla setup is completed in one click."
         }
+        imageSrc="/images/page-heroes/joomla-hosting-hero.png"
+        imageAlt={isTr ? "Joomla hosting için hero görseli" : "Hero visual for Joomla hosting"}
       >
         <div className="flex flex-wrap gap-3">
           {(isTr ? ["Joomla uyumlu", "Tek tık kurulum", "cPanel dahil", "7/24 destek"] : ["Joomla compatible", "One-click setup", "cPanel included", "24/7 support"]).map((t) => (

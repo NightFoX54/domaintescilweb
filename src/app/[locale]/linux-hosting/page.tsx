@@ -61,6 +61,8 @@ export default async function LinuxHostingPage({
             ? "Kişisel blog, kurumsal site veya ajans projesi — tek panelden yönet."
             : "Personal blog, business site, or agency project — manage everything from one panel."
         }
+        imageSrc="/images/page-heroes/linux-hosting-hero.png"
+        imageAlt={isTr ? "Linux hosting için hero görseli" : "Hero visual for Linux hosting"}
       >
         <div className="flex flex-wrap gap-3">
           {(isTr ? ["Kişisel Blog", "Kurumsal Site", "Portföy"] : ["Personal Blog", "Business Site", "Portfolio"]).map(

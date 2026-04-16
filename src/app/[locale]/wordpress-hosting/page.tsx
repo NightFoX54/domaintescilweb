@@ -62,6 +62,8 @@ export default async function WordPressHostingPage({
             ? "Kurulum tek tık, siteniz dakikalar içinde yayında. Blog, kurumsal site veya online mağaza — hepsi için."
             : "One-click setup gets your site live in minutes — perfect for blogs, business websites, and online stores."
         }
+        imageSrc="/images/page-heroes/wordpress-hosting-hero.png"
+        imageAlt={isTr ? "WordPress hosting için hero görseli" : "Hero visual for WordPress hosting"}
       >
         <StatBadgesRow
           items={

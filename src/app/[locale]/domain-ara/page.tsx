@@ -96,6 +96,8 @@ export default async function DomainSearchPage({
             ? "200+ uzantıda anında sonuç."
             : "Instant results across 200+ extensions."
         }
+        imageSrc="/images/page-heroes/domain-search-hero.png"
+        imageAlt={isTr ? "Alan adı arama sayfası için hero görseli" : "Hero visual for the domain search page"}
       >
         <div className="mt-4 w-full">
           <div className="grid grid-cols-1 items-stretch">

@@ -165,6 +165,8 @@ export default async function SSLPage({
             ? "Tarayıcıda kilit simgesi, ziyaretçinizde güven. Kurulum dakikalar içinde tamamlanır."
             : "Lock icon in the browser, trust from your visitors. Setup is completed in minutes."
         }
+        imageSrc="/images/page-heroes/ssl-hero.png"
+        imageAlt={isTr ? "SSL sayfası için hero görseli" : "Hero visual for the SSL page"}
         primary={
           <div className="flex flex-wrap gap-3">
             <a

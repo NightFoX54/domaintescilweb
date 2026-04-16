@@ -95,6 +95,8 @@ export default async function ContactPage({
             ? "Teknik destek veya satış için aşağıdaki kanallardan ulaşın."
             : "Reach us via the channels below for support or sales."
         }
+        imageSrc="/images/page-heroes/contact-hero.png"
+        imageAlt={isTr ? "İletişim ve destek ekibini temsil eden hero görseli" : "Hero visual representing the contact and support team"}
       />
 
       <ContentSection background="light" ariaLabel="İletişim kanalları">

@@ -65,6 +65,8 @@ export default async function BlogPage({
             ? "Domain, hosting ve SSL hakkında pratik içerikler."
             : "Practical content about domain, hosting and SSL."
         }
+        imageSrc="/images/page-heroes/blog-hero.png"
+        imageAlt={isTr ? "Blog içerikleri için hazırlanan hero görseli" : "Hero visual for blog content"}
       />
 
       <ContentSection background="light" ariaLabel="Blog yazıları">

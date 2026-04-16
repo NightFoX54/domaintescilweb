@@ -85,6 +85,8 @@ export default async function DomainTransferPage({
             ? "Mevcut alan adınızı başka bir sağlayıcıdan buraya kolayca getirebilirsiniz. Siteniz bu süreçte kesintisiz çalışmaya devam eder."
             : "Move your existing domain from another provider with ease. Your website stays online during the process."
         }
+        imageSrc="/images/page-heroes/domain-transfer-hero.png"
+        imageAlt={isTr ? "Domain transfer sayfası için hero görseli" : "Hero visual for the domain transfer page"}
       >
         <div className="mt-4 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch">

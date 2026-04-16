@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 export default function PageHero({
@@ -7,6 +8,8 @@ export default function PageHero({
   primary,
   children,
   compact = false,
+  imageSrc,
+  imageAlt,
 }: Readonly<{
   title: string;
   subtitle: string;
@@ -14,6 +17,8 @@ export default function PageHero({
   primary?: ReactNode;
   children?: ReactNode;
   compact?: boolean;
+  imageSrc?: string;
+  imageAlt?: string;
 }>) {
   return (
     <section className="relative bg-neutral-950 text-white overflow-hidden">
@@ -45,14 +50,32 @@ export default function PageHero({
         ].join(" ")}
       >
         {breadcrumb ? <div>{breadcrumb}</div> : null}
-        <div className="max-w-3xl">
-          <h1 className="font-display font-semibold text-[34px] sm:text-[56px] leading-[1.05] tracking-tight">
-            {title}
-          </h1>
-          <p className="mt-4 text-[16px] sm:text-[18px] text-neutral-400 leading-relaxed max-w-[60ch]">
-            {subtitle}
-          </p>
-          {primary ? <div className="mt-6">{primary}</div> : null}
+        <div className={imageSrc ? "grid items-center gap-8 lg:grid-cols-12 lg:gap-10" : undefined}>
+          <div className={imageSrc ? "max-w-3xl lg:col-span-6" : "max-w-3xl"}>
+            <h1 className="font-display font-semibold text-[34px] sm:text-[56px] leading-[1.05] tracking-tight">
+              {title}
+            </h1>
+            <p className="mt-4 text-[16px] sm:text-[18px] text-neutral-400 leading-relaxed max-w-[60ch]">
+              {subtitle}
+            </p>
+            {primary ? <div className="mt-6">{primary}</div> : null}
+          </div>
+          {imageSrc ? (
+            <div className="lg:col-span-6">
+              <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+                <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-tr from-[rgba(11,18,32,0.26)] via-transparent to-[rgba(34,176,148,0.14)]" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-[rgba(11,18,32,0.24)] to-transparent" />
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt ?? title}
+                  width={720}
+                  height={430}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          ) : null}
         </div>
         {children ? <div className="mt-2">{children}</div> : null}
       </div>
