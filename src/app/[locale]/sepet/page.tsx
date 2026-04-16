@@ -54,10 +54,6 @@ export default async function CartPage({
 
       <ContentSection background="light" ariaLabel="Sepet içeriği">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
-          <SectionHeading
-            title={isTr ? "Sepetiniz" : "Your cart"}
-            lead={isTr ? "Ürünleri kaldırın veya düzenleyin." : "Remove or edit items."}
-          />
           <div className="mt-10">
             <CartClient />
           </div>
