@@ -72,7 +72,7 @@ export default function HeroSection() {
 
             <h1
               id="hero-heading"
-              className="font-display font-semibold text-white text-[48px] sm:text-[66px] leading-[1.02] tracking-tight"
+              className="font-display font-semibold text-white text-[48px] sm:text-[61px] leading-[1.02] tracking-tight"
             >
               {isTr ? "Web siteniz için alan adı almak hiç bu kadar kolay olmamıştı" : "Your brand's digital address starts here"}
             </h1>
