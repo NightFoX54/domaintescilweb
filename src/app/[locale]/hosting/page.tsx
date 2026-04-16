@@ -85,11 +85,11 @@ export default async function HostingOverviewPage({
         }}
       />
       <PageHero
-        title={isTr ? "Web sitenizi yayına alın" : "Grow Your Site on Solid Ground"}
+        title={isTr ? "Web sitenizi yayına alın" : "Launch your website"}
         subtitle={
           isTr
             ? "WordPress, Joomla veya özel bir site — hangi türde olursa olsun, dakikalar içinde kuruluma hazır."
-            : "Linux, WordPress and Joomla hosting options. Starting from $899/year."
+            : "Whether it is WordPress, Joomla, or a custom site, your setup is ready in minutes."
         }
       />
 
@@ -150,9 +150,9 @@ export default async function HostingOverviewPage({
                     { q: "Kaç e-posta açabilirim?", a: "E-posta hesap sayısı seçtiğiniz pakete göre değişir." },
                   ]
                 : [
-                    { q: "What is cPanel?", a: "It is the control panel used to manage your hosting account." },
-                    { q: "Can I change PHP version?", a: "Yes, you can select PHP version via cPanel." },
-                    { q: "How many emails can I create?", a: "Email account count depends on the plan you choose." },
+                    { q: "What is cPanel?", a: "It is the control panel where you manage your hosting account." },
+                    { q: "Can I change PHP version?", a: "Yes, you can choose PHP versions directly from cPanel." },
+                    { q: "How many email accounts can I create?", a: "The number of email accounts depends on your selected plan." },
                   ]
             }
           />

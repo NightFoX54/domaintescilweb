@@ -53,15 +53,15 @@ export default async function JoomlaHostingPage({
   return (
     <main id="main-content" className="flex flex-col">
       <PageHero
-        title={isTr ? "Joomla siteniz için hazır hosting altyapısı" : "Your Joomla Site in Good Hands"}
+        title={isTr ? "Joomla siteniz için hazır hosting altyapısı" : "Ready hosting infrastructure for your Joomla site"}
         subtitle={
           isTr
             ? "Kurumsal içerik yönetimi, çok dilli yapı veya rol bazlı ekip çalışması gerektiren projeler için. Joomla kurulumu tek tıkla tamamlanır."
-            : "Infrastructure optimized for Joomla. One-click install, full control."
+            : "Built for projects that need multilingual content, role-based team workflows, and corporate-level content management. Joomla setup is completed in one click."
         }
       >
         <div className="flex flex-wrap gap-3">
-          {["Joomla uyumlu", "Tek tık kurulum", "cPanel dahil", "7/24 destek"].map((t) => (
+          {(isTr ? ["Joomla uyumlu", "Tek tık kurulum", "cPanel dahil", "7/24 destek"] : ["Joomla compatible", "One-click setup", "cPanel included", "24/7 support"]).map((t) => (
             <div key={t} className="inline-flex items-center rounded-full bg-white/10 border border-white/15 text-white px-4 py-2 text-sm font-semibold backdrop-blur">
               {t}
             </div>
@@ -100,7 +100,13 @@ export default async function JoomlaHostingPage({
                         : c.title === "Çok dilli destek"
                           ? "Ek eklenti gerektirmeden birden fazla dilde içerik yayınlayabilirsiniz."
                           : "Farklı yetki seviyelerinde ekiplerin çalıştığı kurumsal projeler için idealdir."
-                    : "A more controlled, manageable setup."}
+                    : c.title === "Open source"
+                      ? "It is free and open-source. You do not pay license fees."
+                      : c.title === "Plugin ecosystem"
+                        ? "You can extend your site with thousands of extensions."
+                        : c.title === "Multilingual"
+                          ? "Publish content in multiple languages without extra plugins."
+                          : "Ideal for corporate projects where teams work with different permission levels."}
                 </p>
               </div>
             ))}
@@ -124,7 +130,11 @@ export default async function JoomlaHostingPage({
                     "Ekibinizde farklı yetki seviyeleri varsa",
                     "Karmaşık sayfa ve kategori yapınız varsa",
                   ]
-                : ["Flexibility", "Enterprise usage", "Multilingual focus"]
+                : [
+                    "If you need to publish content in multiple languages",
+                    "If your team has different permission levels",
+                    "If your site has a complex page and category structure",
+                  ]
             }
             rightTitle="WordPress"
             rightPoints={
@@ -134,7 +144,11 @@ export default async function JoomlaHostingPage({
                     "Geniş tema ve eklenti seçeneği önemliyse",
                     "Blog veya içerik sitesi kuruyorsanız",
                   ]
-                : ["Ease of use", "Large theme/plugin ecosystem", "Fast start"]
+                : [
+                    "If you want to start quickly and manage easily",
+                    "If having a wide theme/plugin ecosystem is important",
+                    "If you are building a blog or content-focused site",
+                  ]
             }
           />
         </div>
@@ -232,9 +246,11 @@ export default async function JoomlaHostingPage({
                     { q: "Sonradan paketi yükseltebilir miyim?", a: "Evet, istediğiniz zaman veri kaybı olmadan üst pakete geçebilirsiniz." },
                   ]
                 : [
-                    { q: "Which plan fits Joomla?", a: "Choose based on traffic and number of projects." },
-                    { q: "Is there one-click install?", a: "Yes, you can start install from the panel." },
-                    { q: "Can I build multilingual sites?", a: "Yes, Joomla's multilingual setup is supported." },
+                    { q: "What is Joomla, and how is it different from WordPress?", a: "Both are website platforms. Joomla is stronger for multilingual structures, advanced user permissions, and complex content architecture. WordPress is easier to start with and has a wider plugin ecosystem." },
+                    { q: "Do I have to install Joomla myself?", a: "No. Joomla is installed in one click on all our plans. No technical setup is required, and our support team is available 24/7." },
+                    { q: "Can I migrate my existing Joomla website?", a: "Yes. Contact our support team and we will guide your migration while keeping your site accessible during the process." },
+                    { q: "Can I run a multilingual site?", a: "Yes. Joomla supports multilingual publishing without requiring extra plugins." },
+                    { q: "Can I upgrade my plan later?", a: "Yes, you can upgrade anytime without data loss." },
                   ]
             }
           />

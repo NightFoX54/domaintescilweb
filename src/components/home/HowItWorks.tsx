@@ -15,7 +15,7 @@ export default function HowItWorks() {
       ]
     : [
         { icon: <Search size={18} aria-hidden="true" />, title: "Search your domain", text: "Type your preferred domain and instantly see availability." },
-        { icon: <ShoppingCart size={18} aria-hidden="true" />, title: "Add to cart", text: "Pick the best extension, create your account and checkout." },
+        { icon: <ShoppingCart size={18} aria-hidden="true" />, title: "Add to cart", text: "Pick the best extension, create your account and checkout. Account setup takes 1 minute." },
         { icon: <CheckCircle2 size={18} aria-hidden="true" />, title: "Use it instantly", text: "Your domain becomes active, with DNS controls ready." },
       ];
 

@@ -46,7 +46,7 @@ export default function ProductCategories() {
             {isTr ? "Ürün Kategorileri" : "Product Categories"}
           </div>
           <h2 className="mt-4 font-display font-semibold text-[28px] sm:text-[36px] leading-tight">
-            {isTr ? "Ne yapmak istiyorsunuz?" : "Choose the Right Product for Your Needs"}
+            {isTr ? "Ne yapmak istiyorsunuz?" : "What would you like to do?"}
           </h2>
         </div>
 

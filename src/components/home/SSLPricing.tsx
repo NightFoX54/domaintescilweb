@@ -86,11 +86,18 @@ export default function SSLPricing() {
     run();
   }, []);
 
-  const trFeaturesFor = (plan: string, fallback: string[]) => {
-    if (plan === "Positive SSL") return ["Kişisel site veya blog için"];
-    if (plan === "Positive SSL Wildcard") return ["Alt alan adları olan siteler için", "Sitenizde blog.markaadı.com veya shop.markaadı.com gibi bölümler varsa bu seçenek."];
-    if (plan === "Instant SSL Pro") return ["Müşteri formu veya kurumsal site için"];
-    if (plan === "EV SSL") return ["Ödeme alan veya finans sektörü için"];
+  const localizedFeaturesFor = (plan: string, fallback: string[]) => {
+    if (!base) {
+      if (plan === "Positive SSL") return ["Kişisel site veya blog için"];
+      if (plan === "Positive SSL Wildcard") return ["Alt alan adları olan siteler için", "Sitenizde blog.markaadı.com veya shop.markaadı.com gibi bölümler varsa bu seçenek."];
+      if (plan === "Instant SSL Pro") return ["Müşteri formu veya kurumsal site için"];
+      if (plan === "EV SSL") return ["Ödeme alan veya finans sektörü için"];
+      return fallback;
+    }
+    if (plan === "Positive SSL") return ["For personal websites or blogs"];
+    if (plan === "Positive SSL Wildcard") return ["For websites with subdomains", "Choose this if your site uses sections like blog.yourbrand.com or shop.yourbrand.com."];
+    if (plan === "Instant SSL Pro") return ["For websites with customer forms or corporate presence"];
+    if (plan === "EV SSL") return ["For payment flows or finance industry websites"];
     return fallback;
   };
 
@@ -99,13 +106,13 @@ export default function SSLPricing() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="mb-8">
           <div className="inline-flex items-center rounded-full bg-brand-primary-light text-brand-primary px-4 py-2 text-sm font-semibold">
-            SSL Sertifikaları
+            {base ? "SSL Certificates" : "SSL Sertifikaları"}
           </div>
           <h2 className="mt-4 font-display font-semibold text-[28px] sm:text-[40px] leading-tight">
-            Sitenizi Güvene Alın
+            {base ? "Secure Your Website" : "Sitenizi Güvene Alın"}
           </h2>
           <p className="mt-3 text-[16px] text-neutral-600 max-w-[60ch] leading-relaxed">
-            Comodo/Sectigo altyapısı. Tarayıcıda yeşil kilit, ziyaretçide güven.
+            {base ? "Lock icon in the browser, trust from your visitors. Setup is completed in minutes." : "Tarayıcıda kilit simgesi, ziyaretçinizde güven. Kurulum dakikalar içinde tamamlanır."}
           </p>
         </div>
 
@@ -116,8 +123,8 @@ export default function SSLPricing() {
               plan={it.plan}
               price={it.price}
               benefit={undefined}
-              features={trFeaturesFor(it.plan, it.features)}
-              ctaLabel="Hemen Başla"
+              features={localizedFeaturesFor(it.plan, it.features)}
+              ctaLabel={base ? "Get Started" : "Hemen Başla"}
               ctaHref={`${base}/ssl/konfigurasyon?plan=${encodeURIComponent(it.plan)}&type=${it.type}`}
               isRecommended={false}
               topBadges={
@@ -154,8 +161,8 @@ export default function SSLPricing() {
                   plan={it.plan}
                   price={it.price}
                   benefit={undefined}
-                  features={trFeaturesFor(it.plan, it.features)}
-                  ctaLabel="Hemen Başla"
+                  features={localizedFeaturesFor(it.plan, it.features)}
+                  ctaLabel={base ? "Get Started" : "Hemen Başla"}
                   ctaHref={`${base}/ssl/konfigurasyon?plan=${encodeURIComponent(it.plan)}&type=${it.type}`}
                   isRecommended={false}
                   topBadges={

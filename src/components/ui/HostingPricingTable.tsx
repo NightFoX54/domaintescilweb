@@ -124,6 +124,18 @@ export default function HostingPricingTable({
   const tableId = useMemo(() => `hosting-pricing-${tab}`, [tab]);
   const plans = plansByTab[tab];
   const rows = rowsByTab[tab];
+  const localizedTabDescription =
+    tab === "linux"
+      ? isTr
+        ? "Genel web sitesi — Sıradan bir kurumsal site veya portföy için. Joomla, Drupal ve diğer CMS platformlarıyla tam uyumludur."
+        : "General website use — ideal for business websites and portfolios, with compatibility for Joomla, Drupal and other CMS platforms."
+      : tab === "wordpress"
+        ? isTr
+          ? "WordPress sitesi — Blog, haber sitesi veya WordPress tabanlı her şey için."
+          : "WordPress websites — perfect for blogs, news sites, and everything built on WordPress."
+        : isTr
+          ? "Joomla sitesi — Çok dilli veya kurumsal yapı gerektiren projeler için."
+          : "Joomla websites — best for multilingual projects and corporate structures.";
 
   return (
     <div>
@@ -163,7 +175,7 @@ export default function HostingPricingTable({
           exit={{ opacity: 0, y: -8, transition: { duration: reduced ? 0.00001 : 0.15 } }}
           className="mb-6"
         >
-          <p className="text-neutral-600 text-sm leading-relaxed">{payload.tabDescription}</p>
+          <p className="text-neutral-600 text-sm leading-relaxed">{localizedTabDescription}</p>
         </motion.div>
       </AnimatePresence>
 

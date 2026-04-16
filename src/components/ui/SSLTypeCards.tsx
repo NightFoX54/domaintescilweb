@@ -1,6 +1,7 @@
 "use client";
 
 import { Building2, Globe, ShieldCheck } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 type Item = {
   type: "DV" | "OV" | "EV";
@@ -39,9 +40,35 @@ const items: Item[] = [
 ];
 
 export default function SSLTypeCards() {
+  const pathname = usePathname();
+  const isTr = !pathname?.startsWith("/en");
+
+  const localized = items.map((it) => {
+    if (isTr) return it;
+    if (it.type === "DV") {
+      return {
+        ...it,
+        description: "Active in minutes. Enough for personal websites and blogs.",
+        forWho: "For personal websites and blogs",
+      };
+    }
+    if (it.type === "OV") {
+      return {
+        ...it,
+        description: "Your company name appears in the certificate. Ideal for websites with customer forms.",
+        forWho: "For customer forms or corporate websites",
+      };
+    }
+    return {
+      ...it,
+      description: "Company identity is shown in the browser. Best for payment and finance use cases.",
+      forWho: "For payment and finance websites",
+    };
+  });
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {items.map((it) => (
+      {localized.map((it) => (
         <div key={it.type} className="bg-white border border-neutral-200 rounded-2xl shadow-sm p-6">
           <div className="flex items-start justify-between gap-3">
             <div className="min-h-[44px] min-w-[44px] rounded-xl bg-brand-primary-light text-brand-primary inline-flex items-center justify-center">

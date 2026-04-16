@@ -33,7 +33,7 @@ export default function CTABand() {
               helperText={
                 isTr
                   ? "30 saniye — sonra karar verirsin"
-                  : "Free search · Non-binding · Instant results"
+                  : "30 seconds — then decide"
               }
               inputAriaLabel={isTr ? "Alan adı sorgula" : "Search domain name"}
             />

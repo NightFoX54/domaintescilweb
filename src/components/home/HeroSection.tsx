@@ -80,7 +80,7 @@ export default function HeroSection() {
             <p className="text-neutral-400 text-[18px] leading-relaxed max-w-[46ch]">
               {isTr
                 ? "200'den fazla uzantıda anında sorgula, dakikalar içinde sahip ol."
-                : "Search instantly across 200+ extensions with a warm, fast and reliable registration flow."}
+                : "Search instantly across 200+ extensions and secure yours in minutes."}
             </p>
 
             <DomainSearchBox
@@ -89,7 +89,7 @@ export default function HeroSection() {
               helperText={
                 isTr
                   ? "Kredi kartı girmeden sorgula · Hemen sahip olmak 5 dakika sürer"
-                  : "Free search · Non-binding · Instant results"
+                  : "Search without a credit card · Own it in 5 minutes"
               }
               inputAriaLabel={isTr ? "Alan adı sorgula" : "Search domain name"}
             />

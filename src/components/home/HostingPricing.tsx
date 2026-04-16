@@ -68,7 +68,7 @@ export default function HostingPricing({
   const plans = [
     {
       key: "baslangic",
-      plan: "Başlangıç",
+      plan: locale === "tr" ? "Başlangıç" : "Starter",
       price: "$899/year",
       benefit:
         tab === "wordpress"
@@ -88,12 +88,12 @@ export default function HostingPricing({
         "Anti-Spam",
         "Web FTP",
       ],
-      ctaLabel: "Hemen Başla",
+      ctaLabel: locale === "tr" ? "Hemen Başla" : "Get Started",
       ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=baslangic`,
     },
     {
       key: "standart",
-      plan: "Standart Web ★",
+      plan: locale === "tr" ? "Standart Web ★" : "Standard Web ★",
       price: "$1,899/year",
       benefit:
         tab === "joomla"
@@ -111,23 +111,23 @@ export default function HostingPricing({
         "Anti-Spam",
         "Web FTP",
       ],
-      ctaLabel: "Hemen Başla",
+      ctaLabel: locale === "tr" ? "Hemen Başla" : "Get Started",
       ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=standart`,
       isRecommended: true,
       topBadges: (
         <div className="flex flex-wrap gap-2">
           <span className="inline-flex items-center rounded-full bg-brand-cta text-white px-3 py-1 text-xs font-semibold">
-            En Popüler
+            {locale === "tr" ? "En Popüler" : "Most Popular"}
           </span>
           <span className="inline-flex items-center rounded-full bg-brand-primary-light text-brand-primary px-3 py-1 text-xs font-semibold">
-            KOBİ'lerin tercihi
+            {locale === "tr" ? "KOBİ'lerin tercihi" : "Preferred by SMEs"}
           </span>
         </div>
       ),
     },
     {
       key: "profesyonel",
-      plan: "Profesyonel",
+      plan: locale === "tr" ? "Profesyonel" : "Professional",
       price: "$2,899/year",
       benefit: "Yüksek trafikli siteler ve çoklu proje yönetimi için.",
       features: [
@@ -142,7 +142,7 @@ export default function HostingPricing({
         "Anti-Spam",
         "Web FTP",
       ],
-      ctaLabel: "Hemen Başla",
+      ctaLabel: locale === "tr" ? "Hemen Başla" : "Get Started",
       ctaHref: `${base}/hosting/konfigurasyon?product=${tab}&plan=profesyonel`,
     },
   ] as const;
@@ -153,13 +153,13 @@ export default function HostingPricing({
         {showHeading ? (
           <div className="mb-8">
             <div className="inline-flex items-center rounded-full bg-brand-primary-light text-brand-primary px-4 py-2 text-sm font-semibold">
-              Hosting Paketleri
+              {locale === "tr" ? "Hosting Paketleri" : "Hosting Packages"}
             </div>
             <h2 className="mt-4 font-display font-semibold text-[28px] sm:text-[40px] leading-tight">
-              Sitenizi Büyütecek Plan
+              {locale === "tr" ? "Sitenizi Büyütecek Plan" : "Plans That Scale Your Website"}
             </h2>
             <p className="mt-3 text-[16px] text-neutral-600 max-w-[55ch] leading-relaxed">
-              Her bütçeye, her ölçeğe uygun. İptal garantisi.
+              {locale === "tr" ? "Her bütçeye, her ölçeğe uygun. İptal garantisi." : "Suitable for every budget and scale. Cancellation assurance."}
             </p>
           </div>
         ) : null}
@@ -193,7 +193,19 @@ export default function HostingPricing({
             exit={{ opacity: 0, y: -8, transition: { duration: reduced ? 0.00001 : 0.15 } }}
             className="mb-8"
           >
-            <p className="text-neutral-600 text-sm leading-relaxed">{payload.tabDescription}</p>
+            <p className="text-neutral-600 text-sm leading-relaxed">
+              {locale === "tr"
+                ? tab === "linux"
+                  ? "Genel web sitesi — Sıradan bir kurumsal site veya portföy için. Joomla, Drupal ve diğer CMS platformlarıyla tam uyumludur."
+                  : tab === "wordpress"
+                    ? "WordPress sitesi — Blog, haber sitesi veya WordPress tabanlı her şey için."
+                    : "Joomla sitesi — Çok dilli veya kurumsal yapı gerektiren projeler için."
+                : tab === "linux"
+                  ? "General website use — ideal for business websites and portfolios, with compatibility for Joomla, Drupal and other CMS platforms."
+                  : tab === "wordpress"
+                    ? "WordPress websites — perfect for blogs, news sites, and everything built on WordPress."
+                    : "Joomla websites — best for multilingual projects and corporate structures."}
+            </p>
           </motion.div>
         </AnimatePresence>
 
@@ -233,7 +245,7 @@ export default function HostingPricing({
         </div>
 
         <div className="mt-5 text-neutral-500 text-sm text-center">
-          İptal için: destek@domaintescil.com
+          {locale === "tr" ? "İptal için: destek@domaintescil.com" : "For cancellations: destek@domaintescil.com"}
         </div>
       </div>
     </section>

@@ -163,7 +163,7 @@ export default async function SSLPage({
         subtitle={
           isTr
             ? "Tarayıcıda kilit simgesi, ziyaretçinizde güven. Kurulum dakikalar içinde tamamlanır."
-            : "Powered by Comodo/Sectigo. Browser trust, visitor confidence."
+            : "Lock icon in the browser, trust from your visitors. Setup is completed in minutes."
         }
         primary={
           <div className="flex flex-wrap gap-3">
@@ -243,6 +243,9 @@ export default async function SSLPage({
                     { q: "Is SSL installation difficult?", a: "You can get help during setup and follow panel guidance." },
                     { q: "What's the difference between DV and OV?", a: "DV validates domain; OV also validates organization." },
                     { q: "When do I need EV SSL?", a: "Choose EV when trust level is critical for your business." },
+                    { q: "What happens if I do not buy SSL?", a: "Browsers mark your site as \"Not Secure\", which causes visitor loss and can hurt your SEO rankings." },
+                    { q: "If I buy hosting, is SSL included automatically?", a: "No. SSL is a separate product. We recommend buying SSL together with hosting." },
+                    { q: "Do I have to install SSL by myself?", a: "The setup is simple, and our support team guides you step by step." },
                   ]
             }
           />

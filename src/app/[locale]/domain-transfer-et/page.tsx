@@ -79,11 +79,11 @@ export default async function DomainTransferPage({
   return (
     <main id="main-content" className="flex flex-col">
       <PageHero
-        title={isTr ? "Domain adresinizi Domaintescil'e taşıyın" : "Transfer Your Domain Safely"}
+        title={isTr ? "Domain adresinizi Domaintescil'e taşıyın" : "Transfer your domain to Domaintescil"}
         subtitle={
           isTr
             ? "Mevcut alan adınızı başka bir sağlayıcıdan buraya kolayca getirebilirsiniz. Siteniz bu süreçte kesintisiz çalışmaya devam eder."
-            : "A simple and secure transfer with full control."
+            : "Move your existing domain from another provider with ease. Your website stays online during the process."
         }
       >
         <div className="mt-4 w-full">
@@ -94,7 +94,7 @@ export default async function DomainTransferPage({
                 summary={
                   isTr
                     ? "Domain transfer sürecinde Domaintescil, EPP doğrulama, onay e-postası ve taşıma sonrası yönetim adımlarını uçtan uca takip eder. Mevcut yayındaki siteniz kesintiye uğramadan transfer tamamlandığında panel kontrolü size geçer."
-                    : "During transfer, Domaintescil guides EPP verification, approval email and post-transfer control end-to-end. Your live site stays online and full management moves to your panel when transfer completes."
+                    : "In domain transfer, Domaintescil guides EPP verification, confirmation email, and post-transfer controls end to end. Your live website stays online while the transfer completes."
                 }
                 points={
                   isTr
@@ -152,33 +152,41 @@ export default async function DomainTransferPage({
             <NumberedStepper
               items={[
                 {
-                  title: "Kilit kodunu alın",
+                  title: isTr ? "Kilit kodunu alın" : "Get the transfer code",
                   description:
-                    "Mevcut sağlayıcınıza \"domain transferi için EPP kodu istiyorum\" deyin. EPP kodu, domainin size ait olduğunu kanıtlayan bir şifredir — genellikle e-posta ile iletilir.",
+                    isTr
+                      ? "Mevcut sağlayıcınıza \"domain transferi için EPP kodu istiyorum\" deyin. EPP kodu, domainin size ait olduğunu kanıtlayan bir şifredir — genellikle e-posta ile iletilir."
+                      : "Ask your current provider for the EPP code. This code proves ownership and is usually sent by email.",
                   icon: <FileKey size={18} />,
                 },
                 {
-                  title: "Transfer Başlatın",
+                  title: isTr ? "Transfer Başlatın" : "Start transfer",
                   description:
-                    "Hesabınıza giriş yapın ve transfer formunu doldurun. Hesabınız yoksa açmanız 1 dakika sürer.",
+                    isTr
+                      ? "Hesabınıza giriş yapın ve transfer formunu doldurun. Hesabınız yoksa açmanız 1 dakika sürer."
+                      : "Sign in and fill out the transfer form. If you do not have an account, creating one takes about a minute.",
                   icon: <Globe size={18} />,
                 },
                 {
-                  title: "E-posta Onayı",
+                  title: isTr ? "E-posta Onayı" : "Email confirmation",
                   description:
-                    "Domain sahibi e-postasına onay linki gönderilir, onaylayın.",
+                    isTr
+                      ? "Domain sahibi e-postasına onay linki gönderilir, onaylayın."
+                      : "A confirmation link is sent to the domain owner email. Approve it.",
                   icon: <MailCheck size={18} />,
                 },
                 {
-                  title: "Süreç Başlar",
+                  title: isTr ? "Süreç Başlar" : "Transfer in progress",
                   description:
-                    "Transfer 5-7 iş günü içinde tamamlanır.",
+                    isTr ? "Transfer 5-7 iş günü içinde tamamlanır." : "Transfer is completed within 5-7 business days.",
                   icon: <Timer size={18} />,
                 },
                 {
-                  title: "Yönetim Sizde",
+                  title: isTr ? "Yönetim Sizde" : "Control is yours",
                   description:
-                    "Domain Domaintescil panelinde tam kontrolünüzde olur.",
+                    isTr
+                      ? "Domain Domaintescil panelinde tam kontrolünüzde olur."
+                      : "Your domain appears in your Domaintescil panel and full management is yours.",
                   icon: <ShieldCheck size={18} />,
                 },
               ]}
@@ -194,7 +202,7 @@ export default async function DomainTransferPage({
             lead={
               isTr
                 ? "Bu domainlerin transferi biraz farklı işler — ama siz yine de aynı adımları takip edin, ekibimiz farkı sizin için yönetir."
-                : "NIC.TR processes may vary; proceed with accredited support."
+                : "Transfers for these domains work slightly differently, but you still follow the same steps and our team manages the differences for you."
             }
           />
 
@@ -212,13 +220,13 @@ export default async function DomainTransferPage({
                 title: isTr ? "Transferde +1 Yıl Avantaj" : "+1 Year on Transfer",
                 desc: isTr
                   ? "Birçok uzantıda transfer tamamlandığında kullanım süresine 1 yıl eklenir."
-                  : "For many TLDs, one year is added after a successful transfer.",
+                  : "For many extensions, one extra year is added when transfer is completed.",
               },
               {
                 title: isTr ? "Kesintisiz Geçiş" : "No-Downtime Transition",
                 desc: isTr
                   ? "Transfer süreci DNS'i anlık kapatmaz; aktif siteniz erişilebilir kalır."
-                  : "Transfer does not instantly interrupt DNS; your live site stays accessible.",
+                  : "Transfer does not instantly interrupt DNS; your site remains accessible.",
               },
               {
                 title: isTr ? "7/24 Yerel Destek" : "24/7 Local Support",
@@ -247,32 +255,61 @@ export default async function DomainTransferPage({
                 ? "Transfer sırasında kesinti, ücret ve süre gibi konularda hızlı yanıtlar."
                 : "Quick answers about downtime, fees and duration."
             }
-            items={[
-              {
-                q: "Transfer sırasında sitem kapanır mı?",
-                a: "Genellikle hayır. Transfer, DNS ve hosting’i otomatik kapatmaz; süreç boyunca mevcut hizmet çalışmaya devam eder.",
-              },
-              {
-                q: "Transfer ücreti var mı?",
-                a: "Uzantıya göre değişebilir. Transfer başlatırken sistem size ilgili ücreti net şekilde gösterir.",
-              },
-              {
-                q: ".tr transfer kaç gün sürer?",
-                a: ".tr transferleri NIC.TR süreçlerine bağlıdır ve uzantıya göre değişebilir. Geniş uzantılarda ise ortalama 5-7 iş günü sürer.",
-              },
-              {
-                q: "EPP/auth kodu nedir?",
-                a: "Transferi yetkilendiren güvenlik kodudur. Mevcut kayıt operatörünüzden talep ederek transfer adımında kullanırsınız.",
-              },
-              {
-                q: "ICANN akreditasyonu ne sağlar?",
-                a: "ICANN, küresel domain yönetiminden sorumlu uluslararası otoritedir. Akredite operatör olmak, standartlara uygunluğun resmi onayıdır.",
-              },
-              {
-                q: "EPP kodunu nasıl alırım, sağlayıcım vermek istemezse ne yapmalıyım?",
-                a: "Sağlayıcılar yasal olarak bu kodu vermek zorundadır. Sorun yaşarsanız destek ekibimizle iletişime geçin.",
-              },
-            ]}
+            items={
+              isTr
+                ? [
+                    {
+                      q: "Transfer sırasında sitem kapanır mı?",
+                      a: "Genellikle hayır. Transfer, DNS ve hosting’i otomatik kapatmaz; süreç boyunca mevcut hizmet çalışmaya devam eder.",
+                    },
+                    {
+                      q: "Transfer ücreti var mı?",
+                      a: "Uzantıya göre değişebilir. Transfer başlatırken sistem size ilgili ücreti net şekilde gösterir.",
+                    },
+                    {
+                      q: ".tr transfer kaç gün sürer?",
+                      a: ".tr transferleri NIC.TR süreçlerine bağlıdır ve uzantıya göre değişebilir. Geniş uzantılarda ise ortalama 5-7 iş günü sürer.",
+                    },
+                    {
+                      q: "EPP/auth kodu nedir?",
+                      a: "Transferi yetkilendiren güvenlik kodudur. Mevcut kayıt operatörünüzden talep ederek transfer adımında kullanırsınız.",
+                    },
+                    {
+                      q: "ICANN akreditasyonu ne sağlar?",
+                      a: "ICANN, küresel domain yönetiminden sorumlu uluslararası otoritedir. Akredite operatör olmak, standartlara uygunluğun resmi onayıdır.",
+                    },
+                    {
+                      q: "EPP kodunu nasıl alırım, sağlayıcım vermek istemezse ne yapmalıyım?",
+                      a: "Sağlayıcılar yasal olarak bu kodu vermek zorundadır. Sorun yaşarsanız destek ekibimizle iletişime geçin.",
+                    },
+                  ]
+                : [
+                    {
+                      q: "Will my website go offline during transfer?",
+                      a: "Usually no. Transfer does not automatically shut down DNS or hosting, so your current website keeps running.",
+                    },
+                    {
+                      q: "Is there a transfer fee?",
+                      a: "It depends on the extension. The system clearly shows the exact fee before you start transfer.",
+                    },
+                    {
+                      q: "How long does .tr transfer take?",
+                      a: ".tr transfers depend on NIC.TR rules and can vary by extension. Most global extensions complete in 5-7 business days.",
+                    },
+                    {
+                      q: "What is an EPP/Auth code?",
+                      a: "It is the security code used to authorize transfer. You request it from your current registrar and use it during transfer.",
+                    },
+                    {
+                      q: "What does ICANN accreditation provide?",
+                      a: "ICANN is the global authority for domain management. Accreditation is official proof of registrar compliance.",
+                    },
+                    {
+                      q: "How do I get the EPP code if my provider refuses?",
+                      a: "Providers are legally required to provide this code. If you face issues, contact our support team.",
+                    },
+                  ]
+            }
           />
         </div>
       </ContentSection>

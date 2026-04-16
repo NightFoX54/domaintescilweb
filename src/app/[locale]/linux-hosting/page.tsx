@@ -55,11 +55,11 @@ export default async function LinuxHostingPage({
   return (
     <main id="main-content" className="flex flex-col">
       <PageHero
-        title={isTr ? "Güvenilir Linux Hosting" : "Reliable Linux Hosting"}
+        title={isTr ? "Linux Hosting — her tür web sitesi için güvenilir altyapı" : "Linux Hosting — reliable infrastructure for any website"}
         subtitle={
           isTr
             ? "Kişisel blog, kurumsal site veya ajans projesi — tek panelden yönet."
-            : "Stable, flexible and affordable. PHP, MySQL and cPanel included."
+            : "Personal blog, business site, or agency project — manage everything from one panel."
         }
       >
         <div className="flex flex-wrap gap-3">
@@ -88,11 +88,11 @@ export default async function LinuxHostingPage({
             leftPoints={
               isTr
                 ? ["WordPress dışında bir sistem kullanıyorsanız, ya da ne kullandığınızdan emin değilseniz burası."]
-                : ["General purpose", "Works with any CMS", "Flexible usage"]
+                : ["If you are using something other than WordPress, or you are not sure what you need, this is the safest choice."]
             }
             rightTitle="WordPress"
             rightPoints={
-              isTr ? ["Sitenizi WordPress ile kurdunuzsa veya kuracaksanız, bu paket sizin için optimize edilmiş."] : ["WP-optimized", "One-click install", "WooCommerce-ready"]
+              isTr ? ["Sitenizi WordPress ile kurdunuzsa veya kuracaksanız, bu paket sizin için optimize edilmiş."] : ["If your site is built on WordPress (or you plan to build it), this package is optimized for you."]
             }
           />
         </div>
@@ -155,6 +155,9 @@ export default async function LinuxHostingPage({
                     { q: "Who is Linux hosting for?", a: "It fits general projects and users running different CMSs." },
                     { q: "What are MySQL limits?", a: "MySQL database count depends on your chosen plan." },
                     { q: "Can I create FTP accounts?", a: "Yes, you can add FTP accounts via cPanel." },
+                    { q: "Can I run WordPress on Linux hosting?", a: "Yes. Linux hosting supports WordPress and other major CMS platforms." },
+                    { q: "Will my site go live immediately after purchase?", a: "After hosting is active, you still need to point your domain. Our support team helps with this step." },
+                    { q: "Can I upgrade my plan later?", a: "Yes, you can upgrade to a higher plan whenever you want." },
                   ]
             }
           />

@@ -16,20 +16,21 @@ export default function WhyDomaintescil() {
       ]
     : [
         { icon: <ShieldCheck size={18} aria-hidden="true" />, title: "20 years experience", text: "Long-term operational expertise." },
-        { icon: <Building2 size={18} aria-hidden="true" />, title: "ICANN & BTK authorized", text: "Secure processes with global and local compliance." },
-        { icon: <Wrench size={18} aria-hidden="true" />, title: "Tucows infrastructure", text: "World-class registrar infrastructure." },
+        { icon: <Building2 size={18} aria-hidden="true" />, title: "ICANN & BTK authorized", text: "We are an officially authorized, government-regulated registrar." },
+        { icon: <Wrench size={18} aria-hidden="true" />, title: "Global infrastructure", text: "We run on one of the world's largest domain infrastructures." },
         { icon: <Headphones size={18} aria-hidden="true" />, title: "24/7 support", text: "Fast access to support and sales teams." },
       ];
 
   return (
     <section className="bg-white text-neutral-950">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div className="rounded-2xl bg-gradient-to-br from-brand-primary-light to-neutral-100 border border-neutral-200 min-h-[340px] p-8 flex items-end">
-          <p className="text-sm text-neutral-600">
-            {isTr
-              ? "Temsil görseli: ekip, ofis ve teknoloji altyapısı."
-              : "Placeholder visual: team, office and technology infrastructure."}
-          </p>
+        <div className="rounded-2xl overflow-hidden border border-neutral-200 min-h-[340px]">
+          <img
+            src="/images/home/trust-team-20-years.png"
+            alt={isTr ? "Domaintescil ekibi ve operasyon merkezi" : "Domaintescil team and operations center"}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
         </div>
         <div>
           <h2 className="font-display font-semibold text-[28px] sm:text-[36px] leading-tight">

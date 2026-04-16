@@ -61,7 +61,7 @@ export default function HostingTypeCards() {
                   href={isEn ? it.hrefEn : it.hrefTr}
                   className="min-h-[44px] inline-flex items-center justify-center rounded-full px-5 border border-brand-primary text-brand-primary font-bold hover:bg-brand-primary-light focus-visible:ring-2 focus-visible:ring-brand-primary"
                 >
-                  İncele
+                  {isEn ? "Explore" : "İncele"}
                 </Link>
               </div>
             </div>
