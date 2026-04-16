@@ -239,18 +239,18 @@ export default async function JoomlaHostingPage({
             items={
               isTr
                 ? [
-                    { q: "Joomla nedir, WordPress'ten farkı ne?", a: "Joomla ve WordPress ikisi de web sitesi kurmak için kullanılan platformlardır. Joomla çok dilli yapı, gelişmiş kullanıcı yetkilendirmesi ve karmaşık içerik mimarisinde daha güçlüdür; WordPress ise daha kolay başlangıç ve geniş eklenti ekosistemi sunar." },
+                    { q: "Joomla nedir, WordPress'ten farkı ne?", a: "İkisi de web sitesi kurmak için kullanılan platformlardır. Joomla çok dilli yapısı, gelişmiş kullanıcı yetkilendirmesi ve karmaşık içerik mimarisinde daha güçlüdür; WordPress ise daha kolay başlangıç ve geniş eklenti ekosistemi sunar." },
                     { q: "Joomla'yı kendim kurmak zorunda mıyım?", a: "Hayır. Tüm paketlerimizde Joomla tek tıkla kurulur, teknik bilgi gerekmez. Sorun yaşarsanız 7/24 destek ekibimiz yardımcı olur." },
-                    { q: "Mevcut Joomla sitemi taşıyabilir miyim?", a: "Evet. Mevcut Joomla sitenizi Domaintescil'e taşımak için destek ekibimizle iletişime geçin; taşıma sırasında siteniz erişilebilir kalmaya devam eder." },
-                    { q: "Çok dilli site kurabilir miyim?", a: "Evet, Joomla ek eklenti gerektirmeden birden fazla dili destekler." },
-                    { q: "Sonradan paketi yükseltebilir miyim?", a: "Evet, istediğiniz zaman veri kaybı olmadan üst pakete geçebilirsiniz." },
+                    { q: "Mevcut Joomla sitemi taşıyabilir misiniz?", a: "Evet, taşıma ücretsizdir. Mevcut Joomla sitenizi Domaintescil'e taşımak için destek ekibimizle iletişime geçin; taşıma sırasında siteniz erişilebilir kalmaya devam eder." },
+                    { q: "Çok dilli site kurabilir miyim?", a: "Evet. Joomla, ek eklenti gerektirmeden birden fazla dili destekler; uluslararası projeler ve çok dilli kurumsal siteler için idealdir." },
+                    { q: "Sonradan paket yükseltebilir miyim?", a: "Evet, istediğiniz zaman veri kaybı olmadan üst pakete geçebilirsiniz." },
                   ]
                 : [
-                    { q: "What is Joomla, and how is it different from WordPress?", a: "Both are website platforms. Joomla is stronger for multilingual structures, advanced user permissions, and complex content architecture. WordPress is easier to start with and has a wider plugin ecosystem." },
-                    { q: "Do I have to install Joomla myself?", a: "No. Joomla is installed in one click on all our plans. No technical setup is required, and our support team is available 24/7." },
-                    { q: "Can I migrate my existing Joomla website?", a: "Yes. Contact our support team and we will guide your migration while keeping your site accessible during the process." },
-                    { q: "Can I run a multilingual site?", a: "Yes. Joomla supports multilingual publishing without requiring extra plugins." },
-                    { q: "Can I upgrade my plan later?", a: "Yes, you can upgrade anytime without data loss." },
+                    { q: "What is Joomla, and how is it different from WordPress?", a: "Both are platforms used to build websites. Joomla is stronger with multilingual structures, advanced user permissions, and complex content architecture, while WordPress offers an easier start and a broader plugin ecosystem." },
+                    { q: "Do I have to install Joomla myself?", a: "No. Joomla can be installed with one click in all our packages, and no technical knowledge is required. If you run into any issues, our 24/7 support team is here to help." },
+                    { q: "Can you migrate my existing Joomla site?", a: "Yes, migration is free. Contact our support team to move your current Joomla site to Domaintescil; your website stays accessible during the migration process." },
+                    { q: "Can I build a multilingual site?", a: "Yes. Joomla supports multiple languages without requiring extra plugins, making it ideal for international projects and multilingual corporate websites." },
+                    { q: "Can I upgrade my package later?", a: "Yes, you can move to a higher package at any time without losing data." },
                   ]
             }
           />

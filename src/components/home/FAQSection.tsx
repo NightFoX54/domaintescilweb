@@ -12,74 +12,78 @@ export default function FAQSection() {
     locale === "tr"
       ? [
           {
-            q: "Alan adı ne kadar süreyle tescil edilir?",
-            a: "1-10 yıl arası seçilebilir. Süre dolduğunda yenileme yapmazsanız domain serbest kalır.",
+            q: "Alan adı tescili ne kadar sürer?",
+            a: ".com, .net, .org gibi uzantılar anlık olarak aktif hale gelir. .com.tr ve diğer .tr uzantıları da tescil işleminin ardından genellikle birkaç dakika ile birkaç saat içinde aktif hale gelir.",
           },
           {
-            q: ".com.tr için belge gerekiyor mu?",
-            a: "2023 itibarıyla hayır. .com.tr dahil tüm .tr uzantılarında belge zorunluluğu kaldırıldı. Anında tescil yapabilirsiniz.",
+            q: ".com.tr almak için belge gerekiyor mu?",
+            a: "Hayır. 2022 yılında yapılan NIC.tr politika değişikliğiyle birlikte .tr uzantılarının tamamı için belge zorunluluğu kaldırıldı. Artık .com.tr, .net.tr, .web.tr gibi uzantıları herhangi bir belge sunmadan tescil edebilirsiniz.",
           },
           {
-            q: "Domain transferi ne kadar sürer?",
-            a: "Geniş uzantılarda ortalama 5-7 iş günü sürer. .tr transferleri NIC.TR süreçlerine bağlıdır.",
+            q: "Aynı anda birden fazla alan adı tescil edebilir miyim?",
+            a: "Evet, tek sipariş ile istediğiniz kadar alan adını aynı anda tescil edebilirsiniz. Tüm alan adlarınızı tek panelden yönetebilir, toplu yenileme ve DNS değişikliklerini kolayca yapabilirsiniz.",
           },
           {
-            q: "Domain kaybedersem ne olur?",
-            a: "Sona erme sonrası kısa bir grace period vardır. Bu sürede yenileme yapılabilir. Sonrasında domain genel havuza döner.",
+            q: "Alan adı süresi dolmadan önce uyarı alır mıyım?",
+            a: "Evet. Vade tarihine 60, 30 ve 7 gün kala e-posta ile bildirim gönderiyoruz. Otomatik yenileme özelliğini aktif ederek alan adınızın hiç kesintisiz aktif kalmasını da sağlayabilirsiniz.",
           },
           {
-            q: "Neden Domaintescil'i tercih etmeliyim?",
-            a: "ICANN Akredite Kayıt Kuruluşu olarak 20 yıllık tecrübeyle güvenilir domain ve hosting hizmeti sunuyoruz.",
+            q: "Alan adımı başka bir kayıt kuruluşundan transfer edebilir miyim?",
+            a: "Evet. Transfer talebini panel üzerinden başlatabilirsiniz. .com ve genel uzantılarda EPP/Auth kodu ile işlem yapılır ve genellikle 5-7 gün sürer. .tr uzantıları için mevcut kayıt kuruluşunuzdan transfer onayı almanız yeterlidir.",
           },
           {
-            q: "Positive SSL iadesi var mı?",
-            a: "Evet. Positive SSL için 15 günlük iade garantisi sunuyoruz. OV ve EV sertifikalarında onay sonrası iade yapılmaz.",
+            q: "Alan adımı kaybedersem ne olur?",
+            a: 'Süresi dolan alan adı hemen silinmez; önce "expired", ardından "redemption" (kurtarma) dönemine girer. Bu süreçte ek ücretle alan adınızı geri alabilirsiniz. Redemption süresi de geçerse alan adı genel havuza düşer ve herkes tarafından alınabilir hale gelir. Bu yüzden otomatik yenilemeyi aktif tutmanızı öneririz.',
+          },
+          {
+            q: "Domaintescil.com güvenilir mi?",
+            a: "20 yılı aşkın sektör deneyimimiz, ICANN akreditasyonumuz ve BTK yetkili kayıt kuruluşu statümüzle Türkiye'nin en köklü alan adı tescil sağlayıcılarından biriyiz. 30.000'den fazla aktif web sitesine hizmet vermekteyiz.",
           },
           {
             q: "Hangi ödeme yöntemlerini kabul ediyorsunuz?",
-            a: "Kredi kartı, banka havalesi ve EFT ile ödeme alıyoruz. Tüm ödemeler WHMCS üzerinden güvenli işlenir.",
+            a: "Kredi/banka kartı (Visa, Mastercard), havale/EFT ve dijital cüzdan ile ödeme yapabilirsiniz. Kurumsal müşterilerimiz için fatura karşılığı ödeme seçeneği de mevcuttur.",
           },
           {
-            q: "ICANN akreditasyonu ne anlama gelir?",
-            a: "ICANN, küresel domain yönetiminden sorumlu uluslararası otoritedir. Akredite operatör olmak standartlara uygunluğun resmi onayıdır.",
-          },
-          {
-            q: "Aldığım domain adını nasıl web siteme bağlarım?",
-            a: "Alan adı bağlantısı için destek ekibimiz adım adım yönlendirme sağlar.",
+            q: "Yenileme fiyatı nasıl belirleniyor?",
+            a: "Yenileme fiyatlarımız her yıl Ocak ayında bir önceki yılın 12 aylık UFE ve TUFE ortalaması baz alınarak güncellenmektedir.",
           },
         ]
       : [
           {
-            q: "How long can I register a domain for?",
-            a: "You can register between 1 and 10 years. If you do not renew before expiry, the domain becomes available again.",
+            q: "How long does domain registration take?",
+            a: "Extensions like .com, .net, and .org become active instantly. .com.tr and other .tr extensions also usually become active within a few minutes to a few hours after registration.",
           },
           {
-            q: "Do I need documents for .com.tr?",
-            a: "No. Since 2023, document requirements have been removed for .tr extensions including .com.tr.",
+            q: "Do I need documents to register .com.tr?",
+            a: "No. Following the NIC.tr policy change made in 2022, the document requirement was removed for all .tr extensions. You can now register extensions like .com.tr, .net.tr, and .web.tr without submitting any documents.",
           },
           {
-            q: "How long does domain transfer take?",
-            a: "For common TLDs, transfer usually takes 5-7 business days. .tr transfers depend on NIC.TR processes.",
+            q: "Can I register multiple domain names at the same time?",
+            a: "Yes. You can register as many domain names as you want in a single order. You can manage all your domains from one panel and handle bulk renewals and DNS changes easily.",
           },
           {
-            q: "What happens if I lose my domain?",
-            a: "There is a short grace period after expiry. You can renew within that window before the domain returns to the public pool.",
+            q: "Will I get a warning before my domain expires?",
+            a: "Yes. We send email reminders 60, 30, and 7 days before the due date. You can also enable auto-renewal to keep your domain active without interruption.",
           },
           {
-            q: "Why choose Domaintescil?",
-            a: "As an ICANN-accredited registrar, we provide reliable domain and hosting services backed by 20 years of experience.",
+            q: "Can I transfer my domain from another registrar?",
+            a: "Yes. You can start the transfer request from your panel. For .com and other generic extensions, the process uses an EPP/Auth code and usually takes 5-7 days. For .tr extensions, approval from your current registrar is sufficient.",
           },
           {
-            q: "Is there a refund for Positive SSL?",
-            a: "Yes. Positive SSL includes a 15-day refund period. OV and EV products are non-refundable after approval.",
+            q: "What happens if I lose my domain name?",
+            a: 'An expired domain is not deleted immediately. It first enters the "expired" stage, then the "redemption" period. During this time, you can recover it for an additional fee. If the redemption period also ends, the domain returns to the public pool and becomes available to everyone. That is why we recommend keeping auto-renewal enabled.',
           },
           {
-            q: "Which payment methods are supported?",
-            a: "We accept credit card and bank transfer. All payments are securely processed through WHMCS.",
+            q: "Is Domaintescil.com reliable?",
+            a: "With more than 20 years of industry experience, ICANN accreditation, and BTK-authorized registrar status, we are one of Turkey's most established domain registration providers. We currently serve more than 30,000 active websites.",
           },
           {
-            q: "What does ICANN accreditation mean?",
-            a: "ICANN is the global authority for domain naming. Accreditation confirms compliance with recognized registrar standards.",
+            q: "Which payment methods do you accept?",
+            a: "You can pay by credit/debit card (Visa, Mastercard), wire transfer/EFT, and digital wallet. We also offer invoice-based payment options for corporate customers.",
+          },
+          {
+            q: "How is the renewal price determined?",
+            a: "Our renewal prices are updated every January based on the average annual CPI and PPI values of the previous 12 months.",
           },
         ];
   const faqSchema = JSON.stringify({

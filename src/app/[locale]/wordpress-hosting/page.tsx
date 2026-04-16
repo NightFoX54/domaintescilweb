@@ -228,18 +228,22 @@ export default async function WordPressHostingPage({
             items={
               isTr
                 ? [
-                    { q: "WooCommerce kullanabilir miyim?", a: "Evet, WooCommerce için uygun altyapı sunar." },
-                    { q: "Tek tık kurulum nasıl çalışır?", a: "Paket seçimi sonrası panelden kurulum başlatılır." },
-                    { q: "Mevcut sitemi taşıyabilir miyim?", a: "Evet, taşıma adımlarında destek alabilirsiniz." },
-                    { q: "WordPress ile e-ticaret sitesi kurmak istiyorum, nereden başlamalıyım?", a: "Standart Web veya Profesyonel paket alın, WooCommerce tek tıkla kurulur. Destek ekibimiz ilk adımda yardımcı olur." },
-                    { q: "Sonradan paketi yükseltebilir miyim?", a: "Evet, veri kaybı olmadan istediğiniz zaman üst pakete geçebilirsiniz." },
+                    { q: "WordPress önceden kurulu geliyor mu?", a: "Evet. Tüm WordPress hosting paketlerimizde WordPress önceden kurulu olarak gelir, paket aktivasyonunun ardından siteniz kullanıma hazırdır." },
+                    { q: "WooCommerce kullanabilir miyim?", a: "Evet. Tüm paketlerimiz WooCommerce ile tam uyumludur. Hosting satın aldıktan sonra WooCommerce eklentisini tek tıkla kurabilir, e-ticaret sitenizi hızla yayına alabilirsiniz." },
+                    { q: "WordPress ile e-ticaret sitesi kurmak istiyorum, nereden başlamalıyım?", a: "Temel, Gelişen veya İşletme paketlerinden birini seçin; WooCommerce panelden tek tıkla kurulur. Destek ekibimiz ilk adımda size yardımcı olmaktan memnuniyet duyar." },
+                    { q: "Mevcut WordPress sitemi taşıyabilir misiniz?", a: "Evet, taşıma ücretsizdir. Uzman ekibimiz sitenizi veri kaybı ve kesinti yaşatmadan Domaintescil WordPress hosting altyapısına taşır." },
+                    { q: "Güvenlik konusunda ne gibi önlemler alınıyor?", a: "Tüm paketlerde Web Uygulaması Güvenlik Duvarı (WAF) ve günlük kötü amaçlı yazılım taraması aktiftir. Bunun yanı sıra günlük otomatik yedekleme ile verileriniz her zaman koruma altındadır." },
+                    { q: "Verilerimin yedeği alınıyor mu?", a: "Evet. Dosyalarınız ve veritabanınız her gün otomatik olarak yedeklenir. Herhangi bir sorun yaşandığında 24 saat öncesine dönebilirsiniz." },
+                    { q: "Sonradan paket yükseltebilir miyim?", a: "Evet, istediğiniz zaman veri kaybı olmadan üst pakete geçebilirsiniz." },
                   ]
                 : [
-                    { q: "Can I use WooCommerce?", a: "Yes, the stack supports WooCommerce workloads." },
-                    { q: "How does one-click install work?", a: "After choosing a plan, start the install from the panel." },
-                    { q: "Can I migrate an existing site?", a: "Yes, you can get help during migration steps." },
-                    { q: "I want to build an e-commerce site with WordPress. Where should I start?", a: "Choose Standard Web or Professional. WooCommerce installs in one click, and our support team helps you with the first setup." },
-                    { q: "Can I upgrade my plan later?", a: "Yes, you can upgrade anytime without losing data." },
+                    { q: "Does WordPress come pre-installed?", a: "Yes. WordPress comes pre-installed on all our WordPress hosting packages, and your site is ready to use right after activation." },
+                    { q: "Can I use WooCommerce?", a: "Yes. All our packages are fully compatible with WooCommerce. After purchasing hosting, you can install the WooCommerce plugin with one click and launch your e-commerce site quickly." },
+                    { q: "I want to build an e-commerce site with WordPress. Where should I start?", a: "Choose one of the Basic, Growing, or Business packages; WooCommerce can be installed from the panel with one click. Our support team will be happy to help you with the first step." },
+                    { q: "Can you migrate my existing WordPress site?", a: "Yes, migration is free. Our expert team moves your website to the Domaintescil WordPress hosting infrastructure without data loss or downtime." },
+                    { q: "What security measures are in place?", a: "A Web Application Firewall (WAF) and daily malware scanning are active in all packages. In addition, daily automatic backups keep your data protected at all times." },
+                    { q: "Are my data backed up?", a: "Yes. Your files and database are automatically backed up every day. If anything goes wrong, you can roll back to the previous 24 hours." },
+                    { q: "Can I upgrade my package later?", a: "Yes, you can move to a higher package at any time without losing data." },
                   ]
             }
           />

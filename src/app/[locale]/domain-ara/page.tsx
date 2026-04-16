@@ -264,62 +264,54 @@ export default async function DomainSearchPage({
               isTr
                 ? [
                     {
-                      q: "Alan adı ne kadar süreyle tescil edilir?",
-                      a: "1-10 yıl arası seçilebilir. Süre dolduğunda yenileme yapmazsanız domain serbest kalır.",
+                      q: "Alan adını kaç yıllığına tescil edebilirim?",
+                      a: "1 ile 5 yıl arasında istediğiniz süreyi seçebilirsiniz. Daha uzun süreli tescil, alan adınızı yenileme riskine karşı korur.",
                     },
                     {
-                      q: ".com.tr için belge gerekiyor mu?",
-                      a: "2023 itibarıyla hayır. .com.tr dahil tüm .tr uzantılarında belge zorunluluğu kaldırıldı. Anında tescil yapabilirsiniz.",
+                      q: "Aradığım domain alınmışsa ne yapabilirim?",
+                      a: "Farklı uzantı seçeneklerini (örneğin .net, .org, .com.tr) aynı sayfada görüntüleyebilirsiniz. Marka adınıza uygun bir alternatif bulmak genellikle mümkündür.",
                     },
                     {
-                      q: "Domain transferi mümkün mü?",
-                      a: "Evet. Birçok uzantıda EPP/auth kodu ile transfer yapılabilir. .tr transferleri NIC.TR süreçlerine bağlıdır.",
+                      q: ".com.tr almak için belge gerekiyor mu?",
+                      a: "Hayır. 2022 yılında yapılan NIC.tr politika değişikliğiyle .tr uzantılarının tamamında belge zorunluluğu kaldırıldı.",
                     },
                     {
-                      q: "Domain fiyatları değişir mi?",
-                      a: "Uzantıya ve kampanyalara göre değişebilir. Sorgu sırasında güncel fiyatı görürsünüz.",
+                      q: "Domain ne zaman aktif olur?",
+                      a: ".com, .net gibi uzantılar ödemenin ardından anlık aktif hale gelir. .tr uzantıları genellikle birkaç dakika ile birkaç saat içinde yayına girer.",
                     },
                     {
-                      q: "Domain kaybedersem ne olur?",
-                      a: "Sona erme sonrası kısa bir grace period vardır. Bu sürede yenileme yapılabilir. Sonrasında domain genel havuza döner.",
+                      q: "Domain yanında başka ürünler de alabilir miyim?",
+                      a: "Evet. Sepet adımında hosting, SSL sertifikası ve kurumsal e-posta gibi ek hizmetleri domain'inizle birlikte alabilirsiniz.",
                     },
                     {
-                      q: "ICANN akreditasyonu ne anlama gelir?",
-                      a: "ICANN, küresel domain yönetiminden sorumlu uluslararası otoritedir. Akredite operatör olmak, standartlara uygunluğun resmi onayıdır.",
-                    },
-                    {
-                      q: "Aldığım domain adını nasıl web siteme bağlarım?",
-                      a: "Bağlantı adımlarında destek ekibimiz yönlendirme sağlar.",
+                      q: "Alan adımı kaybedersem ne olur?",
+                      a: 'Süresi dolan alan adı hemen silinmez; önce "expired", ardından "redemption" (kurtarma) dönemine girer. Bu süreçte ek ücretle geri alabilirsiniz. Redemption süresi de geçerse alan adı genel havuza düşer. Otomatik yenilemeyi aktif tutmanızı öneririz.',
                     },
                   ]
                 : [
                     {
-                      q: "How long can I register a domain for?",
-                      a: "You can register it for 1 to 10 years. If you do not renew at the end, it becomes available again.",
+                      q: "How many years can I register a domain for?",
+                      a: "You can choose any period between 1 and 5 years. A longer registration term helps protect your domain against renewal risk.",
                     },
                     {
-                      q: "Do I need documents for .com.tr?",
-                      a: "No. Since 2023, document requirements have been removed for .tr extensions including .com.tr.",
+                      q: "What can I do if the domain I want is already taken?",
+                      a: "You can view alternative extensions such as .net, .org, and .com.tr on the same page. It is usually possible to find a good match for your brand name.",
                     },
                     {
-                      q: "Can I transfer a domain?",
-                      a: "Yes. Many extensions can be transferred with an EPP/Auth code. .tr transfers depend on NIC.TR processes.",
+                      q: "Do I need documents to register .com.tr?",
+                      a: "No. Following the NIC.tr policy change made in 2022, the document requirement was removed for all .tr extensions.",
                     },
                     {
-                      q: "Do domain prices change?",
-                      a: "Prices can vary by extension and campaign. You see the current price during search.",
+                      q: "When does a domain become active?",
+                      a: "Extensions like .com and .net become active instantly after payment. .tr extensions usually go live within a few minutes to a few hours.",
                     },
                     {
-                      q: "What happens if I lose my domain?",
-                      a: "There is a short grace period after expiration. You can renew during this period; then it returns to the public pool.",
+                      q: "Can I buy other products together with my domain?",
+                      a: "Yes. In the cart step, you can add services such as hosting, SSL certificates, and corporate email together with your domain.",
                     },
                     {
-                      q: "What does ICANN accreditation mean?",
-                      a: "ICANN is the global authority for domain management. Accreditation is official proof of registrar compliance.",
-                    },
-                    {
-                      q: "How do I connect my domain to my website?",
-                      a: "Our support team guides you step by step for domain connection.",
+                      q: "What happens if I lose my domain name?",
+                      a: 'An expired domain is not deleted immediately. It first enters the "expired" stage, then the "redemption" period. During this time, you can recover it for an additional fee. If the redemption period also ends, the domain returns to the public pool. We recommend keeping auto-renewal enabled.',
                     },
                   ]
             }

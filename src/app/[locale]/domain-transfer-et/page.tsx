@@ -259,54 +259,54 @@ export default async function DomainTransferPage({
               isTr
                 ? [
                     {
-                      q: "Transfer sırasında sitem kapanır mı?",
-                      a: "Genellikle hayır. Transfer, DNS ve hosting’i otomatik kapatmaz; süreç boyunca mevcut hizmet çalışmaya devam eder.",
+                      q: "Domain transferi nedir?",
+                      a: "Bir alan adının kayıtlı olduğu kayıt kuruluşundan alınıp başka bir kuruluşa taşınması işlemidir. Domaintescil'e transfer ile tüm alan adlarınızı tek panelden yönetebilirsiniz.",
                     },
                     {
-                      q: "Transfer ücreti var mı?",
-                      a: "Uzantıya göre değişebilir. Transfer başlatırken sistem size ilgili ücreti net şekilde gösterir.",
+                      q: "Domaintescil'e transfer ücretli mi?",
+                      a: "Hayır, dışarıdan Domaintescil'e transfer ücretsizdir.",
                     },
                     {
-                      q: ".tr transfer kaç gün sürer?",
-                      a: ".tr transferleri NIC.TR süreçlerine bağlıdır ve uzantıya göre değişebilir. Geniş uzantılarda ise ortalama 5-7 iş günü sürer.",
+                      q: "Transfer ne kadar sürer?",
+                      a: ".com ve genel uzantılarda EPP/Auth kodu ile işlem başlatılır, genellikle 5-7 gün sürer. Domaintescil içindeki hesaplar arası iç transferler ise 24 saat içinde tamamlanır.",
                     },
                     {
-                      q: "EPP/auth kodu nedir?",
-                      a: "Transferi yetkilendiren güvenlik kodudur. Mevcut kayıt operatörünüzden talep ederek transfer adımında kullanırsınız.",
+                      q: "Transfer kodunu (EPP/Auth) nasıl alırım?",
+                      a: "Mevcut kayıt kuruluşunuzun panelinden veya destek ekibinden talep edebilirsiniz. .tr uzantıları için transfer kodu yerine mevcut kayıt kuruluşunun onayı yeterlidir.",
                     },
                     {
-                      q: "ICANN akreditasyonu ne sağlar?",
-                      a: "ICANN, küresel domain yönetiminden sorumlu uluslararası otoritedir. Akredite operatör olmak, standartlara uygunluğun resmi onayıdır.",
+                      q: "Transfer sırasında alan adım erişilemez olur mu?",
+                      a: "Hayır. Transfer süreci boyunca alan adınız aktif kalmaya devam eder, sitenizde herhangi bir kesinti yaşanmaz.",
                     },
                     {
-                      q: "EPP kodunu nasıl alırım, sağlayıcım vermek istemezse ne yapmalıyım?",
-                      a: "Sağlayıcılar yasal olarak bu kodu vermek zorundadır. Sorun yaşarsanız destek ekibimizle iletişime geçin.",
+                      q: "Transfer tamamlandıktan sonra sürem uzar mı?",
+                      a: "Evet. Genel uzantılarda transfer işlemi tescil sürenizi 1 yıl uzatır. .tr uzantılarında mevcut süre aynen devam eder.",
                     },
                   ]
                 : [
                     {
-                      q: "Will my website go offline during transfer?",
-                      a: "Usually no. Transfer does not automatically shut down DNS or hosting, so your current website keeps running.",
+                      q: "What is domain transfer?",
+                      a: "It is the process of moving a domain name from its current registrar to another registrar. By transferring to Domaintescil, you can manage all your domain names from a single panel.",
                     },
                     {
-                      q: "Is there a transfer fee?",
-                      a: "It depends on the extension. The system clearly shows the exact fee before you start transfer.",
+                      q: "Is transfer to Domaintescil paid?",
+                      a: "No, transfers from external providers to Domaintescil are free of charge.",
                     },
                     {
-                      q: "How long does .tr transfer take?",
-                      a: ".tr transfers depend on NIC.TR rules and can vary by extension. Most global extensions complete in 5-7 business days.",
+                      q: "How long does transfer take?",
+                      a: "For .com and other generic extensions, the process starts with an EPP/Auth code and usually takes 5-7 days. Internal transfers between Domaintescil accounts are completed within 24 hours.",
                     },
                     {
-                      q: "What is an EPP/Auth code?",
-                      a: "It is the security code used to authorize transfer. You request it from your current registrar and use it during transfer.",
+                      q: "How do I get the transfer code (EPP/Auth)?",
+                      a: "You can request it from your current registrar's panel or support team. For .tr extensions, approval from the current registrar is enough instead of a transfer code.",
                     },
                     {
-                      q: "What does ICANN accreditation provide?",
-                      a: "ICANN is the global authority for domain management. Accreditation is official proof of registrar compliance.",
+                      q: "Will my domain become inaccessible during transfer?",
+                      a: "No. Your domain stays active throughout the transfer process, and your website remains available without interruption.",
                     },
                     {
-                      q: "How do I get the EPP code if my provider refuses?",
-                      a: "Providers are legally required to provide this code. If you face issues, contact our support team.",
+                      q: "Will my registration period be extended after transfer?",
+                      a: "Yes. For generic extensions, transfer extends your registration period by 1 year. For .tr extensions, the current period continues as it is.",
                     },
                   ]
             }

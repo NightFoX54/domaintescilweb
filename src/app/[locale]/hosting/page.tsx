@@ -145,14 +145,42 @@ export default async function HostingOverviewPage({
             items={
               isTr
                 ? [
-                    { q: "cPanel nedir?", a: "Hosting hesabınızı yönetmenizi sağlayan kontrol panelidir." },
-                    { q: "PHP sürümünü değiştirebilir miyim?", a: "Evet, cPanel üzerinden PHP sürümü seçimi yapılabilir." },
-                    { q: "Kaç e-posta açabilirim?", a: "E-posta hesap sayısı seçtiğiniz pakete göre değişir." },
+                    {
+                      q: "Hangi hosting paketini seçmeliyim?",
+                      a: "Kişisel blog veya küçük bir tanıtım sitesi için Linux hosting yeterlidir. WordPress ile site kuracaksanız WordPress hosting daha optimize bir deneyim sunar. Joomla kullanıyorsanız veya çok dilli, kurumsal bir yapı planlıyorsanız Joomla hosting önerilir.",
+                    },
+                    {
+                      q: "Linux, WordPress ve Joomla hosting arasındaki fark nedir?",
+                      a: "Linux hosting genel amaçlı bir altyapıdır; her üç platform da Linux üzerinde çalışır. WordPress ve Joomla hosting paketleri ise ilgili platforma özel optimizasyonlar, önceden kurulu yazılım ve güvenlik araçlarıyla birlikte gelir.",
+                    },
+                    {
+                      q: "cPanel nedir, ne işe yarar?",
+                      a: "cPanel, hosting hesabınızı yönetmenizi sağlayan kontrol panelidir. Dosya yönetimi, e-posta kurulumu, veritabanı oluşturma ve PHP sürüm seçimi gibi işlemleri teknik bilgi gerektirmeden yapabilirsiniz.",
+                    },
+                    { q: "PHP sürümünü değiştirebilir miyim?", a: "Evet, cPanel üzerinden istediğiniz PHP sürümünü seçebilirsiniz." },
+                    { q: "Kaç e-posta hesabı açabilirim?", a: "E-posta hesabı sayısı seçtiğiniz pakete göre değişir. Tüm paketlerde kurumsal e-posta desteği dahildir." },
+                    { q: "SSL sertifikası dahil mi?", a: "Evet. Tüm paketlerde ücretsiz SSL sertifikası dahildir ve otomatik olarak aktif hale gelir." },
+                    { q: "Mevcut siteimi taşıyabilir misiniz?", a: "Evet, taşıma ücretsizdir. Uzman ekibimiz sitenizi veri kaybı ve kesinti yaşatmadan Domaintescil altyapısına taşır." },
+                    { q: "Sonradan paket yükseltebilir miyim?", a: "Evet, istediğiniz zaman veri kaybı olmadan üst pakete geçebilirsiniz." },
                   ]
                 : [
-                    { q: "What is cPanel?", a: "It is the control panel where you manage your hosting account." },
-                    { q: "Can I change PHP version?", a: "Yes, you can choose PHP versions directly from cPanel." },
-                    { q: "How many email accounts can I create?", a: "The number of email accounts depends on your selected plan." },
+                    {
+                      q: "Which hosting package should I choose?",
+                      a: "Linux hosting is enough for a personal blog or a small presentation website. If you are building your site with WordPress, WordPress hosting offers a more optimized experience. If you use Joomla or plan a multilingual corporate structure, Joomla hosting is recommended.",
+                    },
+                    {
+                      q: "What is the difference between Linux, WordPress, and Joomla hosting?",
+                      a: "Linux hosting is a general-purpose infrastructure, and all three platforms run on Linux. WordPress and Joomla hosting packages come with platform-specific optimizations, pre-installed software, and security tools.",
+                    },
+                    {
+                      q: "What is cPanel and what does it do?",
+                      a: "cPanel is the control panel that lets you manage your hosting account. You can handle file management, email setup, database creation, and PHP version selection without technical expertise.",
+                    },
+                    { q: "Can I change the PHP version?", a: "Yes, you can choose the PHP version you want through cPanel." },
+                    { q: "How many email accounts can I create?", a: "The number of email accounts depends on the package you choose. Corporate email support is included in all packages." },
+                    { q: "Is an SSL certificate included?", a: "Yes. A free SSL certificate is included in all packages and is activated automatically." },
+                    { q: "Can you migrate my existing site?", a: "Yes, migration is free. Our expert team moves your website to the Domaintescil infrastructure without data loss or downtime." },
+                    { q: "Can I upgrade my package later?", a: "Yes, you can move to a higher package at any time without losing data." },
                   ]
             }
           />

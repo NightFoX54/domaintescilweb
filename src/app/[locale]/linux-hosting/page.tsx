@@ -144,20 +144,36 @@ export default async function LinuxHostingPage({
             items={
               isTr
                 ? [
-                    { q: "Linux hosting kimler için uygun?", a: "Genel amaçlı projeler ve farklı CMS kullananlar için uygundur." },
-                    { q: "MySQL limitleri nedir?", a: "Seçtiğiniz pakete göre MySQL veritabanı sayısı değişir." },
-                    { q: "FTP hesabı oluşturabilir miyim?", a: "Evet, cPanel üzerinden FTP hesabı ekleyebilirsiniz." },
-                    { q: "Linux hosting ile WordPress kullanabilir miyim?", a: "Evet, Linux hosting WordPress dahil tüm CMS platformlarını destekler." },
-                    { q: "Hosting alınca sitem hemen yayına girer mi?", a: "Hosting aktif olduktan sonra alan adı yönlendirmesini yapmanız gerekir, destek ekibimiz bu adımda yardımcı olur." },
-                    { q: "Sonradan paketi yükseltebilir miyim?", a: "Evet, istediğiniz zaman üst pakete geçebilirsiniz." },
+                    {
+                      q: "Linux hosting nedir, ne işe yarar?",
+                      a: "Linux hosting, web sitenizin dosyalarının Linux tabanlı sunucularda barındırılarak internet üzerinden erişilebilir hale getirilmesi hizmetidir. PHP, MySQL ve WordPress gibi en yaygın web teknolojileriyle tam uyumludur.",
+                    },
+                    {
+                      q: "Hangi paket bana uygun?",
+                      a: "Kişisel blog veya küçük bir tanıtım sitesi için Ekonomik veya Temel paket yeterlidir. Birden fazla site veya büyüyen bir proje için Gelişen, kurumsal ihtiyaçlar için İşletme paketini öneriyoruz.",
+                    },
+                    { q: "Trafik limiti var mı?", a: "Hayır. Tüm Linux hosting paketlerimizde trafik limitsizdir, sitenizin ziyaretçi sayısı ne kadar artarsa artsın ek ücret ödemezsiniz." },
+                    { q: "SSL sertifikası dahil mi?", a: "Evet. Tüm paketlerde ücretsiz SSL sertifikası dahildir ve otomatik olarak aktif hale gelir." },
+                    { q: "Mevcut siteimi taşıyabilir misiniz?", a: "Evet, taşıma ücretsizdir. Uzman ekibimiz sitenizi veri kaybı ve kesinti yaşatmadan Domaintescil Linux hosting altyapısına taşır." },
+                    { q: "Sunucularınız nerede?", a: "Tüm sunucularımız Türkiye'de, İstanbul veri merkezinde konuşlandırılmıştır. Bu sayede Türkiye'deki ziyaretçilerinize düşük gecikme süresiyle hizmet verilir ve verileriniz KVKK kapsamında yurt içinde saklanır." },
+                    { q: "Verilerimin yedeği alınıyor mu?", a: "Evet. Tüm dosya ve veritabanlarınız günlük olarak otomatik yedeklenir. Herhangi bir sorun yaşandığında 24 saat öncesine dönebilirsiniz." },
+                    { q: "WordPress sitemi Linux hosting ile kullanabilir miyim?", a: "Evet, WordPress dahil PHP/MySQL tabanlı tüm popüler içerik yönetim sistemleri Domaintescil Linux hosting ile tam uyumludur." },
                   ]
                 : [
-                    { q: "Who is Linux hosting for?", a: "It fits general projects and users running different CMSs." },
-                    { q: "What are MySQL limits?", a: "MySQL database count depends on your chosen plan." },
-                    { q: "Can I create FTP accounts?", a: "Yes, you can add FTP accounts via cPanel." },
-                    { q: "Can I run WordPress on Linux hosting?", a: "Yes. Linux hosting supports WordPress and other major CMS platforms." },
-                    { q: "Will my site go live immediately after purchase?", a: "After hosting is active, you still need to point your domain. Our support team helps with this step." },
-                    { q: "Can I upgrade my plan later?", a: "Yes, you can upgrade to a higher plan whenever you want." },
+                    {
+                      q: "What is Linux hosting and what does it do?",
+                      a: "Linux hosting is the service of hosting your website files on Linux-based servers so they can be accessed over the internet. It is fully compatible with the most common web technologies such as PHP, MySQL, and WordPress.",
+                    },
+                    {
+                      q: "Which package is right for me?",
+                      a: "An Economic or Basic package is enough for a personal blog or small showcase website. We recommend Growing for multiple sites or an expanding project, and Business for corporate needs.",
+                    },
+                    { q: "Is there a traffic limit?", a: "No. All our Linux hosting packages include unlimited traffic, so you do not pay extra no matter how much your visitor count grows." },
+                    { q: "Is an SSL certificate included?", a: "Yes. A free SSL certificate is included in all packages and is activated automatically." },
+                    { q: "Can you migrate my existing website?", a: "Yes, migration is free. Our expert team moves your site to the Domaintescil Linux hosting infrastructure without data loss or downtime." },
+                    { q: "Where are your servers located?", a: "All our servers are located in Turkey, in our Istanbul data center. This provides low latency for visitors in Turkey and keeps your data stored domestically within KVKK compliance." },
+                    { q: "Are my data backed up?", a: "Yes. All your files and databases are backed up automatically every day. If anything goes wrong, you can roll back to the previous 24 hours." },
+                    { q: "Can I run my WordPress site on Linux hosting?", a: "Yes. All popular PHP/MySQL-based content management systems, including WordPress, are fully compatible with Domaintescil Linux hosting." },
                   ]
             }
           />
