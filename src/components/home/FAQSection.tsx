@@ -45,7 +45,7 @@ export default function FAQSection() {
           },
           {
             q: "Yenileme fiyatı nasıl belirleniyor?",
-            a: "Yenileme fiyatlarımız her yıl Ocak ayında bir önceki yılın 12 aylık UFE ve TUFE ortalaması baz alınarak güncellenmektedir.",
+            a: "Yenileme fiyatlarımız her yıl Ocak ayında bir önceki yılın 12 aylık ÜFE ve TÜFE ortalaması baz alınarak güncellenmektedir.",
           },
         ]
       : [
